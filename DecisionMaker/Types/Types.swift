@@ -57,8 +57,8 @@ class Decision: CustomStringConvertible, ObservableObject {
 				let optionAttribute2: OptionAttribute = $1.getOptionAttribute(for: staticAttribute)
 				
 				let weight: BoundFloat = staticAttribute.importance
-				weightedAverage1 = weightedAverage1 + ((optionAttribute1.goodness ?? BoundFloat(0)) * weight)
-				weightedAverage2 = weightedAverage2 + ((optionAttribute2.goodness ?? BoundFloat(0)) * weight)
+				weightedAverage1 = weightedAverage1 + ((optionAttribute1.goodness) * weight)
+				weightedAverage2 = weightedAverage2 + ((optionAttribute2.goodness) * weight)
 			}
 			
 			return weightedAverage1 > weightedAverage2
