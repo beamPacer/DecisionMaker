@@ -96,11 +96,11 @@
 		B531B8DF2A3E15D900A59DBC /* DecisionMaker */ = {
 			isa = PBXGroup;
 			children = (
-				B531B90A2A3E166500A59DBC /* Types */,
 				B531B8E02A3E15D900A59DBC /* DecisionMakerApp.swift */,
+				B531B8E62A3E15D900A59DBC /* Preview Content */,
+				B531B90A2A3E166500A59DBC /* Types */,
 				B531B8E22A3E15D900A59DBC /* ContentView.swift */,
 				B531B8E42A3E15D900A59DBC /* Assets.xcassets */,
-				B531B8E62A3E15D900A59DBC /* Preview Content */,
 			);
 			path = DecisionMaker;
 			sourceTree = "<group>";
