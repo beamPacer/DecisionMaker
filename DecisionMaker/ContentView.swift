@@ -60,7 +60,7 @@ struct EditStaticAttributeView: View {
 		Form {
 			TextField("Title", text: self.$staticAttribute.title)
 			VStack(alignment: .leading) {
-				Text("Importance: \(staticAttribute.importance.value, specifier: "%.2f")")
+				Text("Importance:")
 				Slider(value: $staticAttribute.importance.value, in: staticAttribute.importance.minimumLimit...staticAttribute.importance.maximumLimit)
 			}
 		}
@@ -82,7 +82,7 @@ struct EditOptionAttributeView: View {
 	var body: some View {
 		TextField("Value", text: $viewModel.optionAttribute.value)
 		VStack(alignment: .leading) {
-			Text("Goodness: \(viewModel.optionAttribute.goodness.value, specifier: "%.2f")")
+			Text("Goodness:")
 			Slider(value: $viewModel.optionAttribute.goodness.value, in: viewModel.optionAttribute.goodness.minimumLimit...viewModel.optionAttribute.goodness.maximumLimit)
 		}
 	}
