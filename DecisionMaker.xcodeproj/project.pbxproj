@@ -15,6 +15,7 @@
 		B531B8FC2A3E15D900A59DBC /* DecisionMakerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B531B8FB2A3E15D900A59DBC /* DecisionMakerUITests.swift */; };
 		B531B8FE2A3E15D900A59DBC /* DecisionMakerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B531B8FD2A3E15D900A59DBC /* DecisionMakerUITestsLaunchTests.swift */; };
 		B531B90C2A3E168F00A59DBC /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = B531B90B2A3E168F00A59DBC /* Types.swift */; };
+		B5325CFC2A40D40E000142BF /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5325CFB2A40D40E000142BF /* Strings.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		B531B8FB2A3E15D900A59DBC /* DecisionMakerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionMakerUITests.swift; sourceTree = "<group>"; };
 		B531B8FD2A3E15D900A59DBC /* DecisionMakerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionMakerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B531B90B2A3E168F00A59DBC /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		B5325CFB2A40D40E000142BF /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +102,7 @@
 				B531B8E62A3E15D900A59DBC /* Preview Content */,
 				B531B90A2A3E166500A59DBC /* Types */,
 				B531B8E22A3E15D900A59DBC /* ContentView.swift */,
+				B5325CFB2A40D40E000142BF /* Strings.swift */,
 				B531B8E42A3E15D900A59DBC /* Assets.xcassets */,
 			);
 			path = DecisionMaker;
@@ -270,6 +273,7 @@
 			files = (
 				B531B90C2A3E168F00A59DBC /* Types.swift in Sources */,
 				B531B8E32A3E15D900A59DBC /* ContentView.swift in Sources */,
+				B5325CFC2A40D40E000142BF /* Strings.swift in Sources */,
 				B531B8E12A3E15D900A59DBC /* DecisionMakerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

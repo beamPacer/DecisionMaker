@@ -13,12 +13,12 @@ struct ContentView: View {
 	var body: some View {
 		NavigationView {
 			VStack {
-				Text("Decision Title")
+				Text(decision.title)
 					.font(.title)
 					.padding(.bottom, 10)
 				
 				List {
-					Section(header: Text("Static Attributes").textCase(.none)) {
+					Section(header: Text(Strings.StaticAttributes.groupLabel).textCase(.none)) {
 						ForEach(decision.staticAttributes.indices, id: \.self) { index in
 							NavigationLink(destination: EditStaticAttributeView(staticAttribute: $decision.staticAttributes[index])) {
 								Text(decision.staticAttributes[index].title)
@@ -26,29 +26,29 @@ struct ContentView: View {
 						}
 						Button(action: {
 							let newStaticAttribute = StaticAttribute()
-							newStaticAttribute.title = "New attribute"
+							newStaticAttribute.title = Strings.StaticAttributes.newAttributeTitle
 							decision.staticAttributes.append(newStaticAttribute)
 						}) {
-							Label("Add New Attribute", systemImage: "plus")
+							Label( Strings.StaticAttributes.addNewTitle, systemImage: "plus")
 						}
 					}
 					
-					Section(header: Text("Options").textCase(.none)) {
+					Section(header: Text(Strings.Options.groupLabel).textCase(.none)) {
 						ForEach(decision.options.indices, id: \.self) { index in
 							NavigationLink(destination: EditOptionView(option: decision.options[index], decision: decision)) {
 								Text(decision.options[index].title)
 							}
 						}
 						Button(action: {
-							let newOption = Option(title: "New option")
+							let newOption = Option(title: Strings.Options.newOptionTitle)
 							decision.options.append(newOption)
 						}) {
-							Label("Add New Option", systemImage: "plus")
+							Label(Strings.Options.addNewTitle, systemImage: "plus")
 						}
 					}
 				}
 			}
-			.navigationBarTitle("Decision Maker")
+			.navigationBarTitle(Strings.App.title)
 		}
 	}
 }
@@ -58,13 +58,13 @@ struct EditStaticAttributeView: View {
 
 	var body: some View {
 		Form {
-			TextField("Title", text: self.$staticAttribute.title)
+			TextField(Strings.StaticAttributes.defaultTitle, text: self.$staticAttribute.title)
 			VStack(alignment: .leading) {
-				Text("Importance:")
+				Text(Strings.StaticAttributes.importanceLabel)
 				Slider(value: $staticAttribute.importance.value, in: staticAttribute.importance.minimumLimit...staticAttribute.importance.maximumLimit)
 			}
 		}
-		.navigationTitle("Edit Attribute")
+		.navigationTitle(Strings.StaticAttributes.editAttributeNavTitle)
 	}
 }
 
@@ -80,9 +80,9 @@ struct EditOptionAttributeView: View {
 	@ObservedObject var viewModel: OptionAttributeViewModel
 
 	var body: some View {
-		TextField("Value", text: $viewModel.optionAttribute.value)
+		TextField(Strings.OptionAttributes.defaultValue, text: $viewModel.optionAttribute.value)
 		VStack(alignment: .leading) {
-			Text("Goodness:")
+			Text(Strings.OptionAttributes.goodnessLabel)
 			Slider(value: $viewModel.optionAttribute.goodness.value,
 				   in: viewModel.optionAttribute.goodness.minimumLimit...viewModel.optionAttribute.goodness.maximumLimit)
 		}
@@ -95,7 +95,7 @@ struct EditOptionView: View {
 
 	var body: some View {
 		Form {
-			TextField("Title", text: $option.title)
+			TextField(Strings.Options.defaultTitle, text: $option.title)
 			ForEach(decision.staticAttributes, id: \.self) { staticAttribute in
 				if let optionAttribute = option.getOptionAttribute(for: staticAttribute) {
 					NavigationLink(destination: EditOptionAttributeView(viewModel: OptionAttributeViewModel(optionAttribute: optionAttribute))) {

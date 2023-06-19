@@ -23,6 +23,7 @@ import Foundation
 class Decision: CustomStringConvertible, ObservableObject {
 	@Published var staticAttributes: [StaticAttribute] = []
 	@Published var options: [Option] = []
+	@Published var title: String = Strings.Decision.newDecisionTitle
 	
 	var description: String {
 		var returnString: String = "Static attributes:\n"
