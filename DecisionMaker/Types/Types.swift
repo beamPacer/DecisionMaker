@@ -94,9 +94,9 @@ class StaticAttribute: Hashable, CustomStringConvertible, ObservableObject {
 	}
 }
 
-struct OptionAttribute: CustomStringConvertible {
-	var value: String = ""
-	var goodness: BoundFloat = BoundFloat(0)
+class OptionAttribute: CustomStringConvertible {
+	@Published var value: String = ""
+	@Published var goodness: BoundFloat = BoundFloat(0)
 	
 	var description: String {
 		"OptionAttribute("
@@ -146,7 +146,7 @@ class Option: CustomStringConvertible, ObservableObject {
 		_ goodness: BoundFloat,
 		for staticAttribute: StaticAttribute
 	) {
-		var optionAttribute = getOptionAttribute(for: staticAttribute)
+		let optionAttribute = getOptionAttribute(for: staticAttribute)
 		optionAttribute.goodness = goodness
 		setOptionAttribute(optionAttribute, for: staticAttribute)
 	}

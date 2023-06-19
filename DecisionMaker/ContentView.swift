@@ -71,8 +71,8 @@ struct EditStaticAttributeView: View {
 class OptionAttributeViewModel: ObservableObject {
 	@Published var optionAttribute: OptionAttribute
 	
-	init(option: Option, staticAttribute: StaticAttribute) {
-		self.optionAttribute = option.getOptionAttribute(for: staticAttribute)
+	init(optionAttribute: OptionAttribute) {
+		self.optionAttribute = optionAttribute
 	}
 }
 
@@ -83,7 +83,8 @@ struct EditOptionAttributeView: View {
 		TextField("Value", text: $viewModel.optionAttribute.value)
 		VStack(alignment: .leading) {
 			Text("Goodness:")
-			Slider(value: $viewModel.optionAttribute.goodness.value, in: viewModel.optionAttribute.goodness.minimumLimit...viewModel.optionAttribute.goodness.maximumLimit)
+			Slider(value: $viewModel.optionAttribute.goodness.value,
+				   in: viewModel.optionAttribute.goodness.minimumLimit...viewModel.optionAttribute.goodness.maximumLimit)
 		}
 	}
 }
@@ -96,8 +97,10 @@ struct EditOptionView: View {
 		Form {
 			TextField("Title", text: $option.title)
 			ForEach(decision.staticAttributes, id: \.self) { staticAttribute in
-				NavigationLink(destination: EditOptionAttributeView(viewModel: OptionAttributeViewModel(option: option, staticAttribute: staticAttribute))) {
-					Text(staticAttribute.title)
+				if let optionAttribute = option.getOptionAttribute(for: staticAttribute) {
+					NavigationLink(destination: EditOptionAttributeView(viewModel: OptionAttributeViewModel(optionAttribute: optionAttribute))) {
+						Text(staticAttribute.title)
+					}
 				}
 			}
 		}
