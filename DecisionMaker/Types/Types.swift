@@ -20,9 +20,9 @@ import Foundation
  [ Option ] <----> [ OptionAttribute ]
  */
 
-struct Decision: CustomStringConvertible {
-	var staticAttributes: [StaticAttribute] = []
-	var options: [Option] = []
+class Decision: CustomStringConvertible, ObservableObject {
+	@Published var staticAttributes: [StaticAttribute] = []
+	@Published var options: [Option] = []
 	
 	var description: String {
 		var returnString: String = "Static attributes:\n"
@@ -56,7 +56,7 @@ struct Decision: CustomStringConvertible {
 				let optionAttribute1: OptionAttribute = $0.getOptionAttribute(for: staticAttribute)
 				let optionAttribute2: OptionAttribute = $1.getOptionAttribute(for: staticAttribute)
 				
-				let weight: BoundFloat = staticAttribute.importance ?? BoundFloat(0)
+				let weight: BoundFloat = staticAttribute.importance
 				weightedAverage1 = weightedAverage1 + ((optionAttribute1.goodness ?? BoundFloat(0)) * weight)
 				weightedAverage2 = weightedAverage2 + ((optionAttribute2.goodness ?? BoundFloat(0)) * weight)
 			}
@@ -66,22 +66,22 @@ struct Decision: CustomStringConvertible {
 	}
 }
 
-class StaticAttribute: Hashable, CustomStringConvertible {
+class StaticAttribute: Hashable, CustomStringConvertible, ObservableObject {
 	private var uniqueHash = UUID().uuidString
 	
-	var title: String?
-	var importance: BoundFloat?
+	@Published var title: String
+	@Published var importance: BoundFloat
 	
-	init(title: String? = nil, importance: BoundFloat? = nil) {
+	init(title: String = "", importance: BoundFloat = BoundFloat(0)) {
 		self.title = title
 		self.importance = importance
 	}
 	
 	var description: String {
 		"StaticAttribute("
-		+ "\"\(title ?? "No value")\""
+		+ "\"\(title)\""
 		+ ", "
-		+ "\(importance?.description ?? "No importance")"
+		+ "\(importance.description)"
 		+ ")"
 	}
 	
@@ -107,19 +107,20 @@ struct OptionAttribute: CustomStringConvertible {
 	}
 }
 
-class Option: CustomStringConvertible {
-	var title: String?
+class Option: CustomStringConvertible, ObservableObject {
+	@Published var title: String
 	
 	private var map: [StaticAttribute: OptionAttribute] = [:]
 	
-	init(title: String? = nil) {
+	init(title: String = "") {
 		self.title = title
 	}
 	
 	var description: String {
-		guard let title = title else { return "Option(No title)" }
 		return "Option(\"\(title)\")"
 	}
+	
+	func getOptionAttributes() -> [OptionAttribute] { Array(map.values) }
 	
 	func getOptionAttribute(for staticAttribute: StaticAttribute) -> OptionAttribute {
 		if map[staticAttribute] == nil {
