@@ -35,7 +35,7 @@ struct ContentView: View {
 					
 					Section(header: Text("Options").textCase(.none)) {
 						ForEach(decision.options.indices, id: \.self) { index in
-							NavigationLink(destination: EditOptionView(option: $decision.options[index])) {
+							NavigationLink(destination: EditOptionView(option: decision.options[index], decision: decision)) {
 								Text(decision.options[index].title)
 							}
 						}
@@ -68,19 +68,39 @@ struct EditStaticAttributeView: View {
 	}
 }
 
+class OptionAttributeViewModel: ObservableObject {
+	@Published var optionAttribute: OptionAttribute
+	
+	init(option: Option, staticAttribute: StaticAttribute) {
+		self.optionAttribute = option.getOptionAttribute(for: staticAttribute)
+	}
+}
+
+struct EditOptionAttributeView: View {
+	@ObservedObject var viewModel: OptionAttributeViewModel
+
+	var body: some View {
+		TextField("Value", text: $viewModel.optionAttribute.value)
+		VStack(alignment: .leading) {
+			Text("Goodness: \(viewModel.optionAttribute.goodness.value, specifier: "%.2f")")
+			Slider(value: $viewModel.optionAttribute.goodness.value, in: viewModel.optionAttribute.goodness.minimumLimit...viewModel.optionAttribute.goodness.maximumLimit)
+		}
+	}
+}
+
 struct EditOptionView: View {
-	@Binding var option: Option
+	@ObservedObject var option: Option
+	@ObservedObject var decision: Decision
 
 	var body: some View {
 		Form {
-			// show a little grey label that says "Title"
-			TextField("Title", text: self.$option.title)
-			// show all values for all static attributes.
-			// each is clickable and brings you to a view titled the
-			// title of the static attribute, and showing the value in an
-			// editable field, and with a "goodness" slider like the setup in
-			// EditStaticAttributeView.
+			TextField("Title", text: $option.title)
+			ForEach(decision.staticAttributes, id: \.self) { staticAttribute in
+				NavigationLink(destination: EditOptionAttributeView(viewModel: OptionAttributeViewModel(option: option, staticAttribute: staticAttribute))) {
+					Text(staticAttribute.title)
+				}
+			}
 		}
-		.navigationTitle($option.title)
+		.navigationTitle(option.title)
 	}
 }

@@ -95,14 +95,14 @@ class StaticAttribute: Hashable, CustomStringConvertible, ObservableObject {
 }
 
 struct OptionAttribute: CustomStringConvertible {
-	var value: String?
-	var goodness: BoundFloat?
+	var value: String = ""
+	var goodness: BoundFloat = BoundFloat(0)
 	
 	var description: String {
 		"OptionAttribute("
-		+ "\"\(value ?? "No value")\""
+		+ "\"\(value)\""
 		+ ", "
-		+ "\(goodness?.description ?? "No goodness")"
+		+ "\(goodness.description)"
 		+ ")"
 	}
 }
