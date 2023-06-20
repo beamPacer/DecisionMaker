@@ -69,9 +69,13 @@ struct EditStaticAttributeView: View {
 }
 
 class OptionAttributeViewModel: ObservableObject {
+	let staticAttribute: StaticAttribute
+	let option: Option
 	@Published var optionAttribute: OptionAttribute
 	
-	init(optionAttribute: OptionAttribute) {
+	init(staticAttribute: StaticAttribute, option: Option, optionAttribute: OptionAttribute) {
+		self.staticAttribute = staticAttribute
+		self.option = option
 		self.optionAttribute = optionAttribute
 	}
 }
@@ -80,12 +84,15 @@ struct EditOptionAttributeView: View {
 	@ObservedObject var viewModel: OptionAttributeViewModel
 
 	var body: some View {
-		TextField(Strings.OptionAttributes.defaultValue, text: $viewModel.optionAttribute.value)
-		VStack(alignment: .leading) {
-			Text(Strings.OptionAttributes.goodnessLabel)
-			Slider(value: $viewModel.optionAttribute.goodness.value,
-				   in: viewModel.optionAttribute.goodness.minimumLimit...viewModel.optionAttribute.goodness.maximumLimit)
+		Form {
+			TextField(Strings.OptionAttributes.defaultValue, text: $viewModel.optionAttribute.value)
+			VStack(alignment: .leading) {
+				Text(Strings.OptionAttributes.goodnessLabel)
+				Slider(value: $viewModel.optionAttribute.goodness.value,
+					   in: viewModel.optionAttribute.goodness.minimumLimit...viewModel.optionAttribute.goodness.maximumLimit)
+			}
 		}
+		.navigationTitle(viewModel.staticAttribute.title)
 	}
 }
 
@@ -98,7 +105,7 @@ struct EditOptionView: View {
 			TextField(Strings.Options.defaultTitle, text: $option.title)
 			ForEach(decision.staticAttributes, id: \.self) { staticAttribute in
 				if let optionAttribute = option.getOptionAttribute(for: staticAttribute) {
-					NavigationLink(destination: EditOptionAttributeView(viewModel: OptionAttributeViewModel(optionAttribute: optionAttribute))) {
+					NavigationLink(destination: EditOptionAttributeView(viewModel: OptionAttributeViewModel(staticAttribute: staticAttribute, option: option, optionAttribute: optionAttribute))) {
 						Text(staticAttribute.title)
 					}
 				}
