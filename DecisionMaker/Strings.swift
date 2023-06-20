@@ -18,7 +18,7 @@ struct Strings {
 	
 	struct StaticAttributes {
 		static let groupLabel: String = "Static Attributes"
-		static let addNewTitle: String = "Add New attribute"
+		static let addNewTitle: String = "Add New Attribute"
 		static let newAttributeTitle: String = "New Attribute"
 		static let defaultTitle: String = "Title"
 		static let importanceLabel: String = "Importance:"
