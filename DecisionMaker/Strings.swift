@@ -30,6 +30,7 @@ struct Strings {
 		static let addNewTitle: String = "Add New Option"
 		static let newOptionTitle: String = "New Option"
 		static let defaultTitle: String = "Title"
+		static let editOptionNavTitle: String = "Edit Option"
 	}
 	
 	struct OptionAttributes {

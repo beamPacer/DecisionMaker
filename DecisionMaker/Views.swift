@@ -13,9 +13,11 @@ struct ContentView: View {
 	var body: some View {
 		NavigationView {
 			VStack {
-				Text(decision.title)
+				TextField("Decision Title", text: $decision.title)
 					.font(.title)
 					.padding(.bottom, 10)
+					.textFieldStyle(.roundedBorder) // added style, optional
+					.multilineTextAlignment(.center) // center text, optional
 				
 				List {
 					Section(header: Text(Strings.StaticAttributes.groupLabel).textCase(.none)) {
@@ -111,6 +113,6 @@ struct EditOptionView: View {
 				}
 			}
 		}
-		.navigationTitle(option.title)
+		.navigationTitle(Strings.Options.editOptionNavTitle)
 	}
 }
