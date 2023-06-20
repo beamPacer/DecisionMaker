@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  Views.swift
 //  DecisionMaker
 //
 //  Created by Emma Sinclair on 6/17/23.
