@@ -17,24 +17,24 @@ struct Strings {
 	}
 	
 	struct StaticAttributes {
-		static let groupLabel: String = "Static Attributes"
-		static let addNewTitle: String = "Add New Attribute"
-		static let newAttributeTitle: String = "New Attribute"
+		static let groupLabel: String = "Attributes I'm looking for"
+		static let addNewTitle: String = "Add new attribute"
+		static let newAttributeTitle: String = "New attribute"
 		static let defaultTitle: String = "Title"
 		static let importanceLabel: String = "Importance:"
-		static let editAttributeNavTitle: String = "Edit Attribute"
+		static let editAttributeNavTitle: String = "Edit attribute"
 	}
 	
 	struct Options {
-		static let groupLabel: String = "Options"
-		static let addNewTitle: String = "Add New Option"
-		static let newOptionTitle: String = "New Option"
+		static let groupLabel: String = "Options I have"
+		static let addNewTitle: String = "Add new option"
+		static let newOptionTitle: String = "New option"
 		static let defaultTitle: String = "Title"
-		static let editOptionNavTitle: String = "Edit Option"
+		static let editOptionNavTitle: String = "Edit option"
 	}
 	
 	struct OptionAttributes {
 		static let defaultValue: String = "Value"
-		static let goodnessLabel: String = "Goodness:"
+		static let goodnessLabel: String = "How happy I am with this value:"
 	}
 }
