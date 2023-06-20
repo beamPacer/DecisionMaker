@@ -9,6 +9,8 @@ import SwiftUI
 
 struct ContentView: View {
 	@StateObject var decision = Decision()
+	@State private var activeNewAttribute: StaticAttribute? = nil
+	@State private var activeNewOption: Option? = nil
 
 	var body: some View {
 		NavigationView {
@@ -16,34 +18,35 @@ struct ContentView: View {
 				TextField("Decision Title", text: $decision.title)
 					.font(.title)
 					.padding(.bottom, 10)
-					.textFieldStyle(.roundedBorder) // added style, optional
-					.multilineTextAlignment(.center) // center text, optional
+					.textFieldStyle(.roundedBorder)
+					.multilineTextAlignment(.center)
 				
 				List {
 					Section(header: Text(Strings.StaticAttributes.groupLabel).textCase(.none)) {
 						ForEach(decision.staticAttributes.indices, id: \.self) { index in
-							NavigationLink(destination: EditStaticAttributeView(staticAttribute: $decision.staticAttributes[index])) {
+							NavigationLink(destination: EditStaticAttributeView(staticAttribute: $decision.staticAttributes[index]), tag: decision.staticAttributes[index], selection: $activeNewAttribute) {
 								Text(decision.staticAttributes[index].title)
 							}
 						}
 						Button(action: {
 							let newStaticAttribute = StaticAttribute()
-							newStaticAttribute.title = Strings.StaticAttributes.newAttributeTitle
 							decision.staticAttributes.append(newStaticAttribute)
+							activeNewAttribute = newStaticAttribute
 						}) {
-							Label( Strings.StaticAttributes.addNewTitle, systemImage: "plus")
+							Label(Strings.StaticAttributes.addNewTitle, systemImage: "plus")
 						}
 					}
 					
 					Section(header: Text(Strings.Options.groupLabel).textCase(.none)) {
 						ForEach(decision.options.indices, id: \.self) { index in
-							NavigationLink(destination: EditOptionView(option: decision.options[index], decision: decision)) {
+							NavigationLink(destination: EditOptionView(option: decision.options[index], decision: decision), tag: decision.options[index], selection: $activeNewOption) {
 								Text(decision.options[index].title)
 							}
 						}
 						Button(action: {
-							let newOption = Option(title: Strings.Options.newOptionTitle)
+							let newOption = Option()
 							decision.options.append(newOption)
+							activeNewOption = newOption
 						}) {
 							Label(Strings.Options.addNewTitle, systemImage: "plus")
 						}
@@ -54,6 +57,7 @@ struct ContentView: View {
 		}
 	}
 }
+
 
 struct EditStaticAttributeView: View {
 	@Binding var staticAttribute: StaticAttribute

@@ -23,7 +23,7 @@ import Foundation
 class Decision: CustomStringConvertible, ObservableObject {
 	@Published var staticAttributes: [StaticAttribute] = []
 	@Published var options: [Option] = []
-	@Published var title: String = Strings.Decision.newDecisionTitle
+	@Published var title: String = ""
 	
 	var description: String {
 		var returnString: String = "Static attributes:\n"
@@ -68,7 +68,7 @@ class Decision: CustomStringConvertible, ObservableObject {
 }
 
 class StaticAttribute: Hashable, CustomStringConvertible, ObservableObject {
-	private var uniqueHash = UUID().uuidString
+	private let uniqueHash = UUID().uuidString
 	
 	@Published var title: String
 	@Published var importance: BoundFloat
@@ -108,10 +108,11 @@ class OptionAttribute: CustomStringConvertible {
 	}
 }
 
-class Option: CustomStringConvertible, ObservableObject {
+class Option: CustomStringConvertible, ObservableObject, Hashable {
 	@Published var title: String
 	
 	private var map: [StaticAttribute: OptionAttribute] = [:]
+	private let uniqueHash = UUID().uuidString
 	
 	init(title: String = "") {
 		self.title = title
@@ -119,6 +120,14 @@ class Option: CustomStringConvertible, ObservableObject {
 	
 	var description: String {
 		return "Option(\"\(title)\")"
+	}
+	
+	static func == (lhs: Option, rhs: Option) -> Bool {
+		lhs.uniqueHash == rhs.uniqueHash
+	}
+	
+	func hash(into hasher: inout Hasher) {
+		hasher.combine(uniqueHash)
 	}
 	
 	func getOptionAttributes() -> [OptionAttribute] { Array(map.values) }
