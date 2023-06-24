@@ -61,8 +61,9 @@ struct ContentView: View {
 							}
 						}
 						Button(action: {
-							let newOption = Option()
-							decision.options.append(newOption)
+							let newOptionStack = Option()
+							decision.options.append(newOptionStack)
+							newOption = newOptionStack
 							isShowingNewOptionView = true
 						}) {
 							Label(Strings.Options.addNewTitle, systemImage: "plus")
