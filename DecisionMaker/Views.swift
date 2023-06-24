@@ -32,6 +32,10 @@ struct ContentView: View {
 									Text(staticAttribute.title)
 								}
 							}
+							.onDelete { indexSet in
+								decision.staticAttributes.remove(atOffsets: indexSet)
+							}
+
 							Button(action: {
 								let newStaticAttribute = StaticAttribute()
 								decision.addAttribute(newStaticAttribute)
@@ -66,6 +70,10 @@ struct ContentView: View {
 									Text(option.title)
 								}
 							}
+							.onDelete { indexSet in
+								decision.options.remove(atOffsets: indexSet)
+							}
+
 							Button(action: {
 								let newOptionStack = Option()
 								decision.addOption(newOptionStack)
