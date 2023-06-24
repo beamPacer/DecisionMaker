@@ -25,6 +25,16 @@ class Decision: CustomStringConvertible, ObservableObject {
 	@Published var options: [Option] = []
 	@Published var title: String = ""
 	
+	func addAttribute(_ attribute: StaticAttribute) {
+		self.staticAttributes.append(attribute)
+		self.objectWillChange.send()
+	}
+
+	func addOption(_ option: Option) {
+		self.options.append(option)
+		self.objectWillChange.send()
+	}
+	
 	var description: String {
 		var returnString: String = "Static attributes:\n"
 		for staticAttribute in staticAttributes {

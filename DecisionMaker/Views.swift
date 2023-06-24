@@ -33,7 +33,7 @@ struct ContentView: View {
 						}
 						Button(action: {
 							let newStaticAttribute = StaticAttribute()
-							decision.staticAttributes.append(newStaticAttribute)
+							decision.addAttribute(newStaticAttribute)
 							newAttribute = newStaticAttribute
 							isShowingNewAttributeView = true
 						}) {
@@ -67,7 +67,7 @@ struct ContentView: View {
 						}
 						Button(action: {
 							let newOptionStack = Option()
-							decision.options.append(newOptionStack)
+							decision.addOption(newOptionStack)
 							newOption = newOptionStack
 							isShowingNewOptionView = true
 						}) {
@@ -96,7 +96,7 @@ struct ContentView: View {
 				Button(action: {
 					isShowingResultsView = true
 				}) {
-					Text("Get Results")
+					Text(Strings.Decision.getResults)
 						.font(.system(.title, design: .rounded))
 						.fontWeight(.bold)
 						.frame(minWidth: 0, maxWidth: .infinity)

@@ -14,6 +14,7 @@ struct Strings {
 	
 	struct Decision {
 		static let newDecisionTitle: String = "New Decision"
+		static let getResults: String = "Get Results"
 	}
 	
 	struct StaticAttributes {
