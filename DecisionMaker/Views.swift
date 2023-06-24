@@ -16,108 +16,111 @@ struct ContentView: View {
 	@State private var newOption: Option = Option()
 
 	var body: some View {
-		NavigationView {
-			VStack {
-				TextField("Decision Title", text: $decision.title)
-					.font(.title)
-					.padding(.bottom, 10)
-					.textFieldStyle(.roundedBorder)
-					.multilineTextAlignment(.center)
-				
-				List {
-					Section(header: Text(Strings.StaticAttributes.groupLabel).textCase(.none)) {
-						ForEach(decision.staticAttributes, id: \.self) { staticAttribute in
-							NavigationLink(destination: EditStaticAttributeView(staticAttribute: .constant(staticAttribute))) {
-								Text(staticAttribute.title)
-							}
-						}
-						Button(action: {
-							let newStaticAttribute = StaticAttribute()
-							decision.addAttribute(newStaticAttribute)
-							newAttribute = newStaticAttribute
-							isShowingNewAttributeView = true
-						}) {
-							Label(Strings.StaticAttributes.addNewTitle, systemImage: "plus")
-						}
-						.sheet(isPresented: $isShowingNewAttributeView) {
-							NavigationView {
-								EditStaticAttributeView(staticAttribute: $newAttribute)
-									.navigationBarTitle(Strings.StaticAttributes.editAttributeNavTitle, displayMode: .inline)
-									.toolbar {
-										Button(Strings.Common.done) {
-											isShowingNewAttributeView = false
-										}
-									}
-							}
-							.onDisappear {
-								newAttribute = StaticAttribute()
-								if let lastStaticAttribute = decision.staticAttributes.last {
-									lastStaticAttribute.objectWillChange.send()
-								}
-								decision.objectWillChange.send()
-							}
-						}
-					}
+		GeometryReader { geometry in
+			NavigationView {
+				VStack {
+					TextField("Decision Title", text: $decision.title)
+						.font(.title)
+						.padding(.bottom, 10)
+						.textFieldStyle(.roundedBorder)
+						.multilineTextAlignment(.center)
 					
-					Section(header: Text(Strings.Options.groupLabel).textCase(.none)) {
-						ForEach(decision.options, id: \.self) { option in
-							NavigationLink(destination: EditOptionView(option: .constant(option), decision: decision)) {
-								Text(option.title)
-							}
-						}
-						Button(action: {
-							let newOptionStack = Option()
-							decision.addOption(newOptionStack)
-							newOption = newOptionStack
-							isShowingNewOptionView = true
-						}) {
-							Label(Strings.Options.addNewTitle, systemImage: "plus")
-						}
-						.sheet(isPresented: $isShowingNewOptionView) {
-							NavigationView {
-								EditOptionView(option: .constant(newOption), decision: decision)
-									.navigationBarTitle(Strings.Options.editOptionNavTitle, displayMode: .inline)
-									.toolbar {
-										Button(Strings.Common.done) {
-											isShowingNewOptionView = false
-										}
-									}
-							}
-							.onDisappear {
-								newOption = Option()
-								if let lastOption = decision.options.last {
-									lastOption.objectWillChange.send()
+					List {
+						Section(header: Text(Strings.StaticAttributes.groupLabel).textCase(.none)) {
+							ForEach(decision.staticAttributes, id: \.self) { staticAttribute in
+								NavigationLink(destination: EditStaticAttributeView(staticAttribute: .constant(staticAttribute))) {
+									Text(staticAttribute.title)
 								}
-								decision.objectWillChange.send()
+							}
+							Button(action: {
+								let newStaticAttribute = StaticAttribute()
+								decision.addAttribute(newStaticAttribute)
+								newAttribute = newStaticAttribute
+								isShowingNewAttributeView = true
+							}) {
+								Label(Strings.StaticAttributes.addNewTitle, systemImage: "plus")
+							}
+							.sheet(isPresented: $isShowingNewAttributeView) {
+								NavigationView {
+									EditStaticAttributeView(staticAttribute: $newAttribute)
+										.navigationBarTitle(Strings.StaticAttributes.editAttributeNavTitle, displayMode: .inline)
+										.toolbar {
+											Button(Strings.Common.done) {
+												isShowingNewAttributeView = false
+											}
+										}
+								}
+								.onDisappear {
+									newAttribute = StaticAttribute()
+									if let lastStaticAttribute = decision.staticAttributes.last {
+										lastStaticAttribute.objectWillChange.send()
+									}
+									decision.objectWillChange.send()
+								}
+							}
+						}
+						
+						Section(header: Text(Strings.Options.groupLabel).textCase(.none)) {
+							ForEach(decision.options, id: \.self) { option in
+								NavigationLink(destination: EditOptionView(option: .constant(option), decision: decision)) {
+									Text(option.title)
+								}
+							}
+							Button(action: {
+								let newOptionStack = Option()
+								decision.addOption(newOptionStack)
+								newOption = newOptionStack
+								isShowingNewOptionView = true
+							}) {
+								Label(Strings.Options.addNewTitle, systemImage: "plus")
+							}
+							.sheet(isPresented: $isShowingNewOptionView) {
+								NavigationView {
+									EditOptionView(option: .constant(newOption), decision: decision)
+										.navigationBarTitle(Strings.Options.editOptionNavTitle, displayMode: .inline)
+										.toolbar {
+											Button(Strings.Common.done) {
+												isShowingNewOptionView = false
+											}
+										}
+								}
+								.onDisappear {
+									newOption = Option()
+									if let lastOption = decision.options.last {
+										lastOption.objectWillChange.send()
+									}
+									decision.objectWillChange.send()
+								}
 							}
 						}
 					}
+					Button(action: {
+						isShowingResultsView = true
+					}) {
+						Text(Strings.Decision.getResults)
+							.font(.title2)
+							.fontWeight(.bold)
+							.padding()
+							.frame(width: geometry.size.width / 2)
+							.background(Color.blue)
+							.foregroundColor(.white)
+							.cornerRadius(500)
+							.padding()
+					}
+					.padding()
 				}
-				Button(action: {
-					isShowingResultsView = true
-				}) {
-					Text(Strings.Decision.getResults)
-						.font(.system(.title, design: .rounded))
-						.fontWeight(.bold)
-						.frame(minWidth: 0, maxWidth: .infinity)
-						.padding()
-						.background(Color.blue)
-						.foregroundColor(.white)
-						.cornerRadius(40)
-				}
-				.padding()
-			}
-			.sheet(isPresented: $isShowingResultsView) {
-				NavigationView {
-					ResultsView(options: decision.getResults())
-						.toolbar {
-							Button(Strings.Common.done) {
-								isShowingResultsView = false
+				.sheet(isPresented: $isShowingResultsView) {
+					NavigationView {
+						ResultsView(options: decision.getResults())
+							.toolbar {
+								Button(Strings.Common.done) {
+									isShowingResultsView = false
+								}
 							}
-						}
+					}
 				}
+				.navigationBarTitle(Strings.App.title)
 			}
-			.navigationBarTitle(Strings.App.title)
 		}
 	}
 }
@@ -126,10 +129,15 @@ struct ResultsView: View {
 	var options: [Option]
 	
 	var body: some View {
-		List(options, id: \.self) { option in
-			Text(option.title)
+		switch options.count {
+		case 0: Text(Strings.Result.noItemsTitle)
+		case 1: Text(Strings.Result.oneItemTitle)
+		default:
+			List(options, id: \.self) { option in
+				Text(option.title)
+			}
+			.navigationTitle(Strings.Result.title)
 		}
-		.navigationTitle("Results")
 	}
 }
 
