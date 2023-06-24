@@ -11,6 +11,7 @@ struct ContentView: View {
 	@ObservedObject var decision = Decision()
 	@State private var isShowingNewAttributeView: Bool = false
 	@State private var isShowingNewOptionView: Bool = false
+	@State private var isShowingResultsView: Bool = false
 	@State private var newAttribute: StaticAttribute = StaticAttribute()
 	@State private var newOption: Option = Option()
 
@@ -92,9 +93,43 @@ struct ContentView: View {
 						}
 					}
 				}
+				Button(action: {
+					isShowingResultsView = true
+				}) {
+					Text("Get Results")
+						.font(.system(.title, design: .rounded))
+						.fontWeight(.bold)
+						.frame(minWidth: 0, maxWidth: .infinity)
+						.padding()
+						.background(Color.blue)
+						.foregroundColor(.white)
+						.cornerRadius(40)
+				}
+				.padding()
+			}
+			.sheet(isPresented: $isShowingResultsView) {
+				NavigationView {
+					ResultsView(options: decision.getResults())
+						.toolbar {
+							Button(Strings.Common.done) {
+								isShowingResultsView = false
+							}
+						}
+				}
 			}
 			.navigationBarTitle(Strings.App.title)
 		}
+	}
+}
+
+struct ResultsView: View {
+	var options: [Option]
+	
+	var body: some View {
+		List(options, id: \.self) { option in
+			Text(option.title)
+		}
+		.navigationTitle("Results")
 	}
 }
 
