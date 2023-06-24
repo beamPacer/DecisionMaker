@@ -129,14 +129,40 @@ struct ResultsView: View {
 	var options: [Option]
 	
 	var body: some View {
-		switch options.count {
-		case 0: Text(Strings.Result.noItemsTitle)
-		case 1: Text(Strings.Result.oneItemTitle)
-		default:
-			List(options, id: \.self) { option in
-				Text(option.title)
+		GeometryReader { geometry in
+			switch options.count {
+			case 0:
+				VStack {
+					Spacer()
+					HStack {
+						Spacer()
+						Text(Strings.Result.noItemsTitle)
+							.frame(width: geometry.size.width * 0.75)
+							.font(.system(size: 22))
+							.multilineTextAlignment(.center)
+						Spacer()
+					}
+					Spacer()
+				}
+			case 1:
+				VStack {
+					Spacer()
+					HStack {
+						Spacer()
+						Text(Strings.Result.oneItemTitle)
+							.frame(width: geometry.size.width * 0.75)
+							.font(.system(size: 22))
+							.multilineTextAlignment(.center)
+						Spacer()
+					}
+					Spacer()
+				}
+			default:
+				List(options, id: \.self) { option in
+					Text(option.title)
+				}
+				.navigationTitle(Strings.Result.title)
 			}
-			.navigationTitle(Strings.Result.title)
 		}
 	}
 }
