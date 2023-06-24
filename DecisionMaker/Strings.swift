@@ -37,4 +37,8 @@ struct Strings {
 		static let defaultValue: String = "Value"
 		static let goodnessLabel: String = "How happy I am with this value:"
 	}
+	
+	struct Common {
+		static let done: String = "Done"
+	}
 }

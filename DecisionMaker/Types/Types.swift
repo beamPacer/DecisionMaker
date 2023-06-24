@@ -67,8 +67,8 @@ class Decision: CustomStringConvertible, ObservableObject {
 	}
 }
 
-class StaticAttribute: Hashable, CustomStringConvertible, ObservableObject {
-	private let uniqueHash = UUID().uuidString
+class StaticAttribute: Hashable, CustomStringConvertible, ObservableObject, Identifiable {
+	var id = UUID()
 	
 	@Published var title: String
 	@Published var importance: BoundFloat
@@ -87,11 +87,11 @@ class StaticAttribute: Hashable, CustomStringConvertible, ObservableObject {
 	}
 	
 	static func == (lhs: StaticAttribute, rhs: StaticAttribute) -> Bool {
-		lhs.uniqueHash == rhs.uniqueHash
+		lhs.id == rhs.id
 	}
 	
 	func hash(into hasher: inout Hasher) {
-		hasher.combine(uniqueHash)
+		hasher.combine(id)
 	}
 }
 
@@ -108,11 +108,11 @@ class OptionAttribute: CustomStringConvertible {
 	}
 }
 
-class Option: CustomStringConvertible, ObservableObject, Hashable {
+class Option: CustomStringConvertible, ObservableObject, Hashable, Identifiable {
+	var id = UUID()
 	@Published var title: String
 	
 	private var map: [StaticAttribute: OptionAttribute] = [:]
-	private let uniqueHash = UUID().uuidString
 	
 	init(title: String = "") {
 		self.title = title
@@ -123,11 +123,11 @@ class Option: CustomStringConvertible, ObservableObject, Hashable {
 	}
 	
 	static func == (lhs: Option, rhs: Option) -> Bool {
-		lhs.uniqueHash == rhs.uniqueHash
+		lhs.id == rhs.id
 	}
 	
 	func hash(into hasher: inout Hasher) {
-		hasher.combine(uniqueHash)
+		hasher.combine(id)
 	}
 	
 	func getOptionAttributes() -> [OptionAttribute] { Array(map.values) }

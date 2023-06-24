@@ -8,9 +8,11 @@
 import SwiftUI
 
 struct ContentView: View {
-	@StateObject var decision = Decision()
-	@State private var activeNewAttribute: StaticAttribute? = nil
-	@State private var activeNewOption: Option? = nil
+	@ObservedObject var decision = Decision()
+	@State private var isShowingNewAttributeView: Bool = false
+	@State private var isShowingNewOptionView: Bool = false
+	@State private var newAttribute: StaticAttribute = StaticAttribute()
+	@State private var newOption: Option = Option()
 
 	var body: some View {
 		NavigationView {
@@ -23,32 +25,61 @@ struct ContentView: View {
 				
 				List {
 					Section(header: Text(Strings.StaticAttributes.groupLabel).textCase(.none)) {
-						ForEach(decision.staticAttributes.indices, id: \.self) { index in
-							NavigationLink(destination: EditStaticAttributeView(staticAttribute: $decision.staticAttributes[index]), tag: decision.staticAttributes[index], selection: $activeNewAttribute) {
-								Text(decision.staticAttributes[index].title)
+						ForEach(decision.staticAttributes, id: \.self) { staticAttribute in
+							NavigationLink(destination: EditStaticAttributeView(staticAttribute: .constant(staticAttribute))) {
+								Text(staticAttribute.title)
 							}
 						}
 						Button(action: {
 							let newStaticAttribute = StaticAttribute()
 							decision.staticAttributes.append(newStaticAttribute)
-							activeNewAttribute = newStaticAttribute
+							newAttribute = newStaticAttribute
+							isShowingNewAttributeView = true
 						}) {
 							Label(Strings.StaticAttributes.addNewTitle, systemImage: "plus")
+						}
+						.sheet(isPresented: $isShowingNewAttributeView) {
+							NavigationView {
+								EditStaticAttributeView(staticAttribute: $newAttribute)
+									.navigationBarTitle(Strings.StaticAttributes.editAttributeNavTitle, displayMode: .inline)
+									.toolbar {
+										Button(Strings.Common.done) {
+											isShowingNewAttributeView = false
+										}
+									}
+							}
+							.onDisappear {
+								newAttribute = StaticAttribute()
+							}
 						}
 					}
 					
 					Section(header: Text(Strings.Options.groupLabel).textCase(.none)) {
-						ForEach(decision.options.indices, id: \.self) { index in
-							NavigationLink(destination: EditOptionView(option: decision.options[index], decision: decision), tag: decision.options[index], selection: $activeNewOption) {
-								Text(decision.options[index].title)
+						ForEach(decision.getResults(), id: \.self) { option in
+							NavigationLink(destination: EditOptionView(option: .constant(option), decision: decision)) {
+								Text(option.title)
 							}
 						}
 						Button(action: {
 							let newOption = Option()
 							decision.options.append(newOption)
-							activeNewOption = newOption
+							isShowingNewOptionView = true
 						}) {
 							Label(Strings.Options.addNewTitle, systemImage: "plus")
+						}
+						.sheet(isPresented: $isShowingNewOptionView) {
+							NavigationView {
+								EditOptionView(option: .constant(newOption), decision: decision)
+									.navigationBarTitle(Strings.Options.editOptionNavTitle, displayMode: .inline)
+									.toolbar {
+										Button(Strings.Common.done) {
+											isShowingNewOptionView = false
+										}
+									}
+							}
+							.onDisappear {
+								newOption = Option()
+							}
 						}
 					}
 				}
@@ -57,7 +88,6 @@ struct ContentView: View {
 		}
 	}
 }
-
 
 struct EditStaticAttributeView: View {
 	@Binding var staticAttribute: StaticAttribute
@@ -103,7 +133,7 @@ struct EditOptionAttributeView: View {
 }
 
 struct EditOptionView: View {
-	@ObservedObject var option: Option
+	@Binding var option: Option
 	@ObservedObject var decision: Decision
 
 	var body: some View {
