@@ -50,12 +50,16 @@ struct ContentView: View {
 							}
 							.onDisappear {
 								newAttribute = StaticAttribute()
+								if let lastStaticAttribute = decision.staticAttributes.last {
+									lastStaticAttribute.objectWillChange.send()
+								}
+								decision.objectWillChange.send()
 							}
 						}
 					}
 					
 					Section(header: Text(Strings.Options.groupLabel).textCase(.none)) {
-						ForEach(decision.getResults(), id: \.self) { option in
+						ForEach(decision.options, id: \.self) { option in
 							NavigationLink(destination: EditOptionView(option: .constant(option), decision: decision)) {
 								Text(option.title)
 							}
@@ -80,6 +84,10 @@ struct ContentView: View {
 							}
 							.onDisappear {
 								newOption = Option()
+								if let lastOption = decision.options.last {
+									lastOption.objectWillChange.send()
+								}
+								decision.objectWillChange.send()
 							}
 						}
 					}
