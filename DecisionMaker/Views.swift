@@ -9,7 +9,7 @@ import SwiftUI
 
 struct DecisionListView: View {
 	@EnvironmentObject var decisionData: DecisionData
-	@State private var newDecision: Decision? = nil
+	@State private var newDecisionTitle: String = ""
 	@State private var isShowingNewDecisionView = false
 	
 	var body: some View {
@@ -22,27 +22,35 @@ struct DecisionListView: View {
 				}
 				
 				Button(action: {
-					let newDecision = Decision()
-					decisionData.decisions.append(newDecision)
-					self.newDecision = newDecision
 					isShowingNewDecisionView = true
 				}) {
 					Label(Strings.Decision.addNewTitle, systemImage: "plus")
 				}
 				.sheet(isPresented: $isShowingNewDecisionView) {
-					ContentView(decision: .constant(newDecision!))
-						.navigationBarTitle("", displayMode: .inline)
-						.toolbar {
-							Button(Strings.Common.done) {
+					NavigationView {
+						VStack {
+							TextField(Strings.Decision.enterNewPrompt, text: $newDecisionTitle)
+								.textFieldStyle(.roundedBorder)
+								.padding()
+							
+							Button(action: {
+								let newDecision = Decision()
+								newDecision.title = newDecisionTitle
+								decisionData.decisions.append(newDecision)
 								isShowingNewDecisionView = false
+								newDecisionTitle = ""
+							}) {
+								Text(Strings.Common.done)
+									.font(.title2)
+									.fontWeight(.bold)
+									.padding()
+									.background(Color.blue)
+									.foregroundColor(.white)
+									.cornerRadius(10)
+									.padding()
 							}
 						}
-						.onDisappear {
-							if let lastDecision = decisionData.decisions.last {
-								lastDecision.objectWillChange.send()
-							}
-							decisionData.objectWillChange.send()
-						}
+					}
 				}
 			}
 			.navigationBarTitle(Strings.Decision.mainListTitle)
