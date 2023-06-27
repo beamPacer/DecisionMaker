@@ -9,9 +9,12 @@ import SwiftUI
 
 @main
 struct DecisionMakerApp: App {
-    var body: some Scene {
-        WindowGroup {
-            ContentView()
-        }
-    }
+	@StateObject var decisionData = DecisionData()
+	
+	var body: some Scene {
+		WindowGroup {
+			DecisionListView()
+				.environmentObject(decisionData)
+		}
+	}
 }

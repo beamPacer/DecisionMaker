@@ -20,6 +20,10 @@ import Foundation
  [ Option ] <----> [ OptionAttribute ]
  */
 
+class DecisionData: ObservableObject {
+	@Published var decisions: [Decision] = []
+}
+
 class Decision: CustomStringConvertible, ObservableObject {
 	@Published var staticAttributes: [StaticAttribute] = []
 	@Published var options: [Option] = []

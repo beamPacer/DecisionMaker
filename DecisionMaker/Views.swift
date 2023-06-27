@@ -7,8 +7,45 @@
 
 import SwiftUI
 
+struct DecisionListView: View {
+	@EnvironmentObject var decisionData: DecisionData
+	@State private var newDecision: Decision? = nil
+	@State private var isShowingNewDecisionView = false
+	
+	var body: some View {
+		NavigationView {
+			List {
+				ForEach(decisionData.decisions.indices, id: \.self) { index in
+					NavigationLink(destination: ContentView(decision: $decisionData.decisions[index])) {
+						Text(decisionData.decisions[index].title)
+					}
+				}
+				
+				Button(action: {
+					let newDecision = Decision()
+					decisionData.decisions.append(newDecision)
+					self.newDecision = newDecision
+					isShowingNewDecisionView = true
+				}) {
+					Label(Strings.Decision.addNewTitle, systemImage: "plus")
+				}
+				.sheet(isPresented: $isShowingNewDecisionView) {
+					ContentView(decision: .constant(newDecision!))
+						.navigationBarTitle("", displayMode: .inline)
+						.toolbar {
+							Button(Strings.Common.done) {
+								isShowingNewDecisionView = false
+							}
+						}
+				}
+			}
+			.navigationBarTitle(Strings.Decision.mainListTitle)
+		}
+	}
+}
+
 struct ContentView: View {
-	@ObservedObject var decision = Decision()
+	@Binding var decision: Decision
 	@State private var isShowingNewAttributeView: Bool = false
 	@State private var isShowingNewOptionView: Bool = false
 	@State private var isShowingResultsView: Bool = false
