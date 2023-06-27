@@ -37,6 +37,12 @@ struct DecisionListView: View {
 								isShowingNewDecisionView = false
 							}
 						}
+						.onDisappear {
+							if let lastDecision = decisionData.decisions.last {
+								lastDecision.objectWillChange.send()
+							}
+							decisionData.objectWillChange.send()
+						}
 				}
 			}
 			.navigationBarTitle(Strings.Decision.mainListTitle)
@@ -54,118 +60,116 @@ struct ContentView: View {
 
 	var body: some View {
 		GeometryReader { geometry in
-			NavigationView {
-				VStack {
-					TextField("Decision Title", text: $decision.title)
-						.font(.title)
-						.padding(.bottom, 10)
-						.textFieldStyle(.roundedBorder)
-						.multilineTextAlignment(.center)
+			VStack {
+				TextField("Decision Title", text: $decision.title)
+					.font(.title)
+					.padding(.bottom, 10)
+					.textFieldStyle(.roundedBorder)
+					.multilineTextAlignment(.center)
+				
+				List {
+					Section(header: Text(Strings.StaticAttributes.groupLabel).textCase(.none)) {
+						ForEach(decision.staticAttributes, id: \.self) { staticAttribute in
+							NavigationLink(destination: EditStaticAttributeView(staticAttribute: .constant(staticAttribute))) {
+								Text(staticAttribute.title)
+							}
+						}
+						.onDelete { indexSet in
+							decision.staticAttributes.remove(atOffsets: indexSet)
+						}
+
+						Button(action: {
+							let newStaticAttribute = StaticAttribute()
+							decision.addAttribute(newStaticAttribute)
+							newAttribute = newStaticAttribute
+							isShowingNewAttributeView = true
+						}) {
+							Label(Strings.StaticAttributes.addNewTitle, systemImage: "plus")
+						}
+						.sheet(isPresented: $isShowingNewAttributeView) {
+							NavigationView {
+								EditStaticAttributeView(staticAttribute: $newAttribute)
+									.navigationBarTitle(Strings.StaticAttributes.editAttributeNavTitle, displayMode: .inline)
+									.toolbar {
+										Button(Strings.Common.done) {
+											isShowingNewAttributeView = false
+										}
+									}
+							}
+							.onDisappear {
+								newAttribute = StaticAttribute()
+								if let lastStaticAttribute = decision.staticAttributes.last {
+									lastStaticAttribute.objectWillChange.send()
+								}
+								decision.objectWillChange.send()
+							}
+						}
+					}
 					
-					List {
-						Section(header: Text(Strings.StaticAttributes.groupLabel).textCase(.none)) {
-							ForEach(decision.staticAttributes, id: \.self) { staticAttribute in
-								NavigationLink(destination: EditStaticAttributeView(staticAttribute: .constant(staticAttribute))) {
-									Text(staticAttribute.title)
-								}
-							}
-							.onDelete { indexSet in
-								decision.staticAttributes.remove(atOffsets: indexSet)
-							}
-
-							Button(action: {
-								let newStaticAttribute = StaticAttribute()
-								decision.addAttribute(newStaticAttribute)
-								newAttribute = newStaticAttribute
-								isShowingNewAttributeView = true
-							}) {
-								Label(Strings.StaticAttributes.addNewTitle, systemImage: "plus")
-							}
-							.sheet(isPresented: $isShowingNewAttributeView) {
-								NavigationView {
-									EditStaticAttributeView(staticAttribute: $newAttribute)
-										.navigationBarTitle(Strings.StaticAttributes.editAttributeNavTitle, displayMode: .inline)
-										.toolbar {
-											Button(Strings.Common.done) {
-												isShowingNewAttributeView = false
-											}
-										}
-								}
-								.onDisappear {
-									newAttribute = StaticAttribute()
-									if let lastStaticAttribute = decision.staticAttributes.last {
-										lastStaticAttribute.objectWillChange.send()
-									}
-									decision.objectWillChange.send()
-								}
+					Section(header: Text(Strings.Options.groupLabel).textCase(.none)) {
+						ForEach(decision.options, id: \.self) { option in
+							NavigationLink(destination: EditOptionView(option: .constant(option), decision: decision)) {
+								Text(option.title)
 							}
 						}
-						
-						Section(header: Text(Strings.Options.groupLabel).textCase(.none)) {
-							ForEach(decision.options, id: \.self) { option in
-								NavigationLink(destination: EditOptionView(option: .constant(option), decision: decision)) {
-									Text(option.title)
-								}
-							}
-							.onDelete { indexSet in
-								decision.options.remove(atOffsets: indexSet)
-							}
+						.onDelete { indexSet in
+							decision.options.remove(atOffsets: indexSet)
+						}
 
-							Button(action: {
-								let newOptionStack = Option()
-								decision.addOption(newOptionStack)
-								newOption = newOptionStack
-								isShowingNewOptionView = true
-							}) {
-								Label(Strings.Options.addNewTitle, systemImage: "plus")
-							}
-							.sheet(isPresented: $isShowingNewOptionView) {
-								NavigationView {
-									EditOptionView(option: .constant(newOption), decision: decision)
-										.navigationBarTitle(Strings.Options.editOptionNavTitle, displayMode: .inline)
-										.toolbar {
-											Button(Strings.Common.done) {
-												isShowingNewOptionView = false
-											}
+						Button(action: {
+							let newOptionStack = Option()
+							decision.addOption(newOptionStack)
+							newOption = newOptionStack
+							isShowingNewOptionView = true
+						}) {
+							Label(Strings.Options.addNewTitle, systemImage: "plus")
+						}
+						.sheet(isPresented: $isShowingNewOptionView) {
+							NavigationView {
+								EditOptionView(option: .constant(newOption), decision: decision)
+									.navigationBarTitle(Strings.Options.editOptionNavTitle, displayMode: .inline)
+									.toolbar {
+										Button(Strings.Common.done) {
+											isShowingNewOptionView = false
 										}
-								}
-								.onDisappear {
-									newOption = Option()
-									if let lastOption = decision.options.last {
-										lastOption.objectWillChange.send()
 									}
-									decision.objectWillChange.send()
+							}
+							.onDisappear {
+								newOption = Option()
+								if let lastOption = decision.options.last {
+									lastOption.objectWillChange.send()
 								}
+								decision.objectWillChange.send()
 							}
 						}
 					}
-					Button(action: {
-						isShowingResultsView = true
-					}) {
-						Text(Strings.Decision.getResults)
-							.font(.title2)
-							.fontWeight(.bold)
-							.padding()
-							.frame(width: geometry.size.width / 2)
-							.background(Color.blue)
-							.foregroundColor(.white)
-							.cornerRadius(500)
-							.padding()
-					}
-					.padding()
 				}
-				.sheet(isPresented: $isShowingResultsView) {
-					NavigationView {
-						ResultsView(options: decision.getResults())
-							.toolbar {
-								Button(Strings.Common.done) {
-									isShowingResultsView = false
-								}
-							}
-					}
+				Button(action: {
+					isShowingResultsView = true
+				}) {
+					Text(Strings.Decision.getResults)
+						.font(.title2)
+						.fontWeight(.bold)
+						.padding()
+						.frame(width: geometry.size.width / 2)
+						.background(Color.blue)
+						.foregroundColor(.white)
+						.cornerRadius(500)
+						.padding()
 				}
-				.navigationBarTitle(Strings.App.title)
+				.padding()
 			}
+			.sheet(isPresented: $isShowingResultsView) {
+				NavigationView {
+					ResultsView(options: decision.getResults())
+						.toolbar {
+							Button(Strings.Common.done) {
+								isShowingResultsView = false
+							}
+						}
+				}
+			}
+			.navigationBarTitle(Strings.App.title)
 		}
 	}
 }
