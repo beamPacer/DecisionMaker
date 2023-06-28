@@ -16,6 +16,7 @@
 		B531B8FE2A3E15D900A59DBC /* DecisionMakerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B531B8FD2A3E15D900A59DBC /* DecisionMakerUITestsLaunchTests.swift */; };
 		B531B90C2A3E168F00A59DBC /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = B531B90B2A3E168F00A59DBC /* Types.swift */; };
 		B5325CFC2A40D40E000142BF /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5325CFB2A40D40E000142BF /* Strings.swift */; };
+		B54D53F22A4BE387003F804C /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54D53F12A4BE387003F804C /* Persistence.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -48,6 +49,7 @@
 		B531B8FD2A3E15D900A59DBC /* DecisionMakerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionMakerUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B531B90B2A3E168F00A59DBC /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
 		B5325CFB2A40D40E000142BF /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
+		B54D53F12A4BE387003F804C /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -103,6 +105,7 @@
 				B531B90A2A3E166500A59DBC /* Types */,
 				B531B8E22A3E15D900A59DBC /* Views.swift */,
 				B5325CFB2A40D40E000142BF /* Strings.swift */,
+				B54D53F12A4BE387003F804C /* Persistence.swift */,
 				B531B8E42A3E15D900A59DBC /* Assets.xcassets */,
 			);
 			path = DecisionMaker;
@@ -275,6 +278,7 @@
 				B531B8E32A3E15D900A59DBC /* Views.swift in Sources */,
 				B5325CFC2A40D40E000142BF /* Strings.swift in Sources */,
 				B531B8E12A3E15D900A59DBC /* DecisionMakerApp.swift in Sources */,
+				B54D53F22A4BE387003F804C /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

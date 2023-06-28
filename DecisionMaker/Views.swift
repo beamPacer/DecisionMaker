@@ -68,6 +68,7 @@ struct ContentView: View {
 	@State private var isShowingResultsView: Bool = false
 	@State private var newAttribute: StaticAttribute = StaticAttribute()
 	@State private var newOption: Option = Option()
+	@State private var uiRefreshToggle: Bool = false
 
 	var body: some View {
 		GeometryReader { geometry in
@@ -82,7 +83,12 @@ struct ContentView: View {
 					Section(header: Text(Strings.StaticAttributes.groupLabel).textCase(.none)) {
 						ForEach(decision.staticAttributes, id: \.self) { staticAttribute in
 							NavigationLink(destination: EditStaticAttributeView(staticAttribute: .constant(staticAttribute))) {
-								Text(staticAttribute.title)
+								if uiRefreshToggle || !uiRefreshToggle {
+									Text(staticAttribute.title)
+								}
+							}
+							.onDisappear {
+								uiRefreshToggle.toggle()
 							}
 						}
 						.onDelete { indexSet in

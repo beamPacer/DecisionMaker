@@ -20,14 +20,53 @@ import Foundation
  [ Option ] <----> [ OptionAttribute ]
  */
 
-class DecisionData: ObservableObject {
+class DecisionData: ObservableObject, Codable {
 	@Published var decisions: [Decision] = []
+
+	enum CodingKeys: CodingKey {
+		case decisions
+	}
+	
+	init() { decisions = [] }
+
+	required init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		decisions = try container.decode([Decision].self, forKey: .decisions)
+	}
+
+	func encode(to encoder: Encoder) throws {
+		var container = encoder.container(keyedBy: CodingKeys.self)
+		try container.encode(decisions, forKey: .decisions)
+	}
 }
 
-class Decision: CustomStringConvertible, ObservableObject {
+class Decision: ObservableObject, Codable, CustomStringConvertible {
 	@Published var staticAttributes: [StaticAttribute] = []
 	@Published var options: [Option] = []
 	@Published var title: String = ""
+	var id = UUID()
+	
+	init() {}
+
+	enum CodingKeys: CodingKey {
+		case staticAttributes, options, title, id
+	}
+
+	required init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		staticAttributes = try container.decode([StaticAttribute].self, forKey: .staticAttributes)
+		options = try container.decode([Option].self, forKey: .options)
+		title = try container.decode(String.self, forKey: .title)
+		id = try container.decode(UUID.self, forKey: .id)
+	}
+
+	func encode(to encoder: Encoder) throws {
+		var container = encoder.container(keyedBy: CodingKeys.self)
+		try container.encode(staticAttributes, forKey: .staticAttributes)
+		try container.encode(options, forKey: .options)
+		try container.encode(title, forKey: .title)
+		try container.encode(id, forKey: .id)
+	}
 	
 	func addAttribute(_ attribute: StaticAttribute) {
 		self.staticAttributes.append(attribute)
@@ -81,11 +120,28 @@ class Decision: CustomStringConvertible, ObservableObject {
 	}
 }
 
-class StaticAttribute: Hashable, CustomStringConvertible, ObservableObject, Identifiable {
+class StaticAttribute: ObservableObject, Codable, Identifiable, Hashable, CustomStringConvertible {
 	var id = UUID()
-	
 	@Published var title: String
 	@Published var importance: BoundFloat
+
+	enum CodingKeys: CodingKey {
+		case id, title, importance
+	}
+
+	required init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		id = try container.decode(UUID.self, forKey: .id)
+		title = try container.decode(String.self, forKey: .title)
+		importance = try container.decode(BoundFloat.self, forKey: .importance)
+	}
+
+	func encode(to encoder: Encoder) throws {
+		var container = encoder.container(keyedBy: CodingKeys.self)
+		try container.encode(id, forKey: .id)
+		try container.encode(title, forKey: .title)
+		try container.encode(importance, forKey: .importance)
+	}
 	
 	init(title: String = "", importance: BoundFloat = BoundFloat(0)) {
 		self.title = title
@@ -109,9 +165,27 @@ class StaticAttribute: Hashable, CustomStringConvertible, ObservableObject, Iden
 	}
 }
 
-class OptionAttribute: CustomStringConvertible, ObservableObject {
+class OptionAttribute: ObservableObject, Codable, CustomStringConvertible {
 	@Published var value: String = ""
 	@Published var goodness: BoundFloat = BoundFloat(0)
+	
+	init() {}
+	
+	enum CodingKeys: CodingKey {
+		case value, goodness
+	}
+
+	required init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		value = try container.decode(String.self, forKey: .value)
+		goodness = try container.decode(BoundFloat.self, forKey: .goodness)
+	}
+
+	func encode(to encoder: Encoder) throws {
+		var container = encoder.container(keyedBy: CodingKeys.self)
+		try container.encode(value, forKey: .value)
+		try container.encode(goodness, forKey: .goodness)
+	}
 	
 	var description: String {
 		"OptionAttribute("
@@ -122,11 +196,29 @@ class OptionAttribute: CustomStringConvertible, ObservableObject {
 	}
 }
 
-class Option: CustomStringConvertible, ObservableObject, Hashable, Identifiable {
+class Option: ObservableObject, Codable, CustomStringConvertible, Hashable, Identifiable {
 	var id = UUID()
 	@Published var title: String
 	
 	private var map: [StaticAttribute: OptionAttribute] = [:]
+	
+	enum CodingKeys: CodingKey {
+		case id, title, map
+	}
+
+	required init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		id = try container.decode(UUID.self, forKey: .id)
+		title = try container.decode(String.self, forKey: .title)
+		map = try container.decode([StaticAttribute: OptionAttribute].self, forKey: .map)
+	}
+
+	func encode(to encoder: Encoder) throws {
+		var container = encoder.container(keyedBy: CodingKeys.self)
+		try container.encode(id, forKey: .id)
+		try container.encode(title, forKey: .title)
+		try container.encode(map, forKey: .map)
+	}
 	
 	init(title: String = "") {
 		self.title = title
@@ -176,11 +268,29 @@ class Option: CustomStringConvertible, ObservableObject, Hashable, Identifiable 
 	}
 }
 
-struct BoundFloat: Comparable, CustomStringConvertible {
+struct BoundFloat: Comparable, Codable, CustomStringConvertible {
 	let maximumLimit: Float
 	let minimumLimit: Float
 	
 	private var hiddenValue: Float
+	
+	enum CodingKeys: CodingKey {
+		case maximumLimit, minimumLimit, hiddenValue
+	}
+
+	init(from decoder: Decoder) throws {
+		let container = try decoder.container(keyedBy: CodingKeys.self)
+		maximumLimit = try container.decode(Float.self, forKey: .maximumLimit)
+		minimumLimit = try container.decode(Float.self, forKey: .minimumLimit)
+		hiddenValue = try container.decode(Float.self, forKey: .hiddenValue)
+	}
+
+	func encode(to encoder: Encoder) throws {
+		var container = encoder.container(keyedBy: CodingKeys.self)
+		try container.encode(maximumLimit, forKey: .maximumLimit)
+		try container.encode(minimumLimit, forKey: .minimumLimit)
+		try container.encode(hiddenValue, forKey: .hiddenValue)
+	}
 	
 	var value: Float {
 		get {
