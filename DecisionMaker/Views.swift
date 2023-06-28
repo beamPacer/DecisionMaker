@@ -273,8 +273,12 @@ struct EditOptionView: View {
 
 	var body: some View {
 		Form {
-			TextField(Strings.Options.defaultTitle, text: $option.title)
-			ForEach(decision.staticAttributes, id: \.self) { staticAttribute in
+			Section() {
+				TextField(Strings.Options.defaultTitle, text: $option.title)
+			}
+			
+			Section() {
+				ForEach(decision.staticAttributes, id: \.self) { staticAttribute in
 					NavigationLink(destination: EditOptionAttributeView(
 						viewModel: OptionAttributeViewModel(
 							staticAttribute: staticAttribute,
@@ -284,6 +288,7 @@ struct EditOptionView: View {
 					)) {
 						Text(staticAttribute.title)
 					}
+				}
 			}
 		}
 		.navigationTitle(Strings.Options.editOptionNavTitle)
