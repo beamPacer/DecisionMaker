@@ -20,6 +20,9 @@ struct DecisionListView: View {
 						Text(decisionData.decisions[index].title)
 					}
 				}
+				.onDelete { indexSet in
+					decisionData.decisions.remove(atOffsets: indexSet)
+				}
 				
 				Button(action: {
 					isShowingNewDecisionView = true
