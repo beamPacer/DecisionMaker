@@ -224,8 +224,21 @@ struct ResultsView: View {
 					Spacer()
 				}
 			default:
-				List(options, id: \.self) { option in
-					Text(option.title)
+				VStack {
+					if let firstOption = options.first {
+						Text(firstOption.title)
+							.font(.system(size: 32))
+							.multilineTextAlignment(.center)
+							.padding()
+					}
+					
+					List {
+						Section(header: Text("Runners Up")) {
+							ForEach(options.dropFirst(), id: \.self) { option in
+								Text(option.title)
+							}
+						}
+					}
 				}
 				.navigationTitle(Strings.Result.title)
 			}
