@@ -9,7 +9,7 @@ import SwiftUI
 
 @main
 struct DecisionMakerApp: App {
-	@StateObject var decisionData = Persistence.shared.loadDecisionData()
+	@StateObject var decisionData: DecisionData = Persistence.shared.loadDecisionData()
 
 	var body: some Scene {
 		WindowGroup {
