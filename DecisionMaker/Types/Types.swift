@@ -28,6 +28,8 @@ class DecisionData: ObservableObject, Codable {
 	}
 	
 	init() { decisions = [] }
+	
+	init(_ decision: Decision) { decisions = [decision] }
 
 	required init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -46,7 +48,11 @@ class Decision: ObservableObject, Codable, CustomStringConvertible {
 	@Published var title: String = ""
 	var id = UUID()
 	
-	init() {}
+	init(staticAttributes: [StaticAttribute] = [], options: [Option] = [], title: String = "") {
+		self.staticAttributes = staticAttributes
+		self.options = options
+		self.title = title
+	}
 
 	enum CodingKeys: CodingKey {
 		case staticAttributes, options, title, id
@@ -169,7 +175,10 @@ class OptionAttribute: ObservableObject, Codable, CustomStringConvertible {
 	@Published var value: String = ""
 	@Published var goodness: BoundFloat = BoundFloat(0)
 	
-	init() {}
+	init(value: String = "", goodness: BoundFloat = BoundFloat(0)) {
+		self.value = value
+		self.goodness = goodness
+	}
 	
 	enum CodingKeys: CodingKey {
 		case value, goodness

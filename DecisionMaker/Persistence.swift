@@ -23,7 +23,10 @@ struct Persistence {
 	}
 
 	func loadDecisionData() -> DecisionData {
-		guard let codeData = try? Data(contentsOf: getArchiveURL()) else { return DecisionData() }
+		guard let codeData = try? Data(contentsOf: getArchiveURL()) else {
+			// Brand new install; load up the example payload
+			return DecisionData(ExampleData.buyingAHouse)
+		}
 		let decoder = PropertyListDecoder()
 		if let returnValue = try? decoder.decode(DecisionData.self, from: codeData) {
 			return returnValue

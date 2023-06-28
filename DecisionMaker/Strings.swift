@@ -12,6 +12,59 @@ struct Strings {
 		static let title: String = "Decision Maker"
 	}
 	
+	struct ExampleData {
+		struct BuyingAHouse {
+			static let title: String = "Example: House Buying"
+			
+			static let color: String = "Color"
+			static let colorImportance: BoundFloat = BoundFloat(0.27)
+			static let price: String = "Price"
+			static let priceImportance: BoundFloat = BoundFloat(1.0)
+			static let location: String = "Location"
+			static let locationImportance: BoundFloat = BoundFloat(0.6)
+			
+			struct Option1 {
+				static let title: String = "144 38th St."
+				static let color: String = "Green"
+				static let colorGoodness: BoundFloat = BoundFloat(0.4)
+				static let price: String = "244k"
+				static let priceGoodness: BoundFloat = BoundFloat(0.13)
+				static let location: String = "Near work"
+				static let locationGoodness: BoundFloat = BoundFloat(0.9)
+			}
+			
+			struct Option2 {
+				static let title: String = "N. Broadway Yellow House"
+				static let color: String = "Yellow"
+				static let colorGoodness: BoundFloat = BoundFloat(0.1)
+				static let price: String = "197k"
+				static let priceGoodness: BoundFloat = BoundFloat(0.3)
+				static let location: String = "Near dog park"
+				static let locationGoodness: BoundFloat = BoundFloat(1.0)
+			}
+			
+			struct Option3 {
+				static let title: String = "Condo on 47th"
+				static let color: String = "Brown"
+				static let colorGoodness: BoundFloat = BoundFloat(0.35)
+				static let price: String = "152k"
+				static let priceGoodness: BoundFloat = BoundFloat(0.66)
+				static let location: String = "Nearest to work"
+				static let locationGoodness: BoundFloat = BoundFloat(0.95)
+			}
+			
+			struct Option4 {
+				static let title: String = "Split-level on Grand"
+				static let color: String = "Purple"
+				static let colorGoodness: BoundFloat = BoundFloat(1.0)
+				static let price: String = "114k"
+				static let priceGoodness: BoundFloat = BoundFloat(1.0)
+				static let location: String = "Near Gym"
+				static let locationGoodness: BoundFloat = BoundFloat(0.8)
+			}
+		}
+	}
+	
 	struct Decision {
 		static let newDecisionTitle: String = "New Decision"
 		static let enterNewPrompt: String = "Enter decision title"
