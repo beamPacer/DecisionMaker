@@ -109,7 +109,7 @@ class StaticAttribute: Hashable, CustomStringConvertible, ObservableObject, Iden
 	}
 }
 
-class OptionAttribute: CustomStringConvertible {
+class OptionAttribute: CustomStringConvertible, ObservableObject {
 	@Published var value: String = ""
 	@Published var goodness: BoundFloat = BoundFloat(0)
 	

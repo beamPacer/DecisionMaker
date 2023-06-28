@@ -270,6 +270,7 @@ struct EditOptionAttributeView: View {
 struct EditOptionView: View {
 	@Binding var option: Option
 	@ObservedObject var decision: Decision
+	@State private var uiRefreshToggle: Bool = false
 
 	var body: some View {
 		Form {
@@ -286,7 +287,20 @@ struct EditOptionView: View {
 							optionAttribute: option.getOptionAttribute(for: staticAttribute)
 						)
 					)) {
-						Text(staticAttribute.title)
+						HStack {
+							Text(staticAttribute.title)
+							Spacer()
+							if uiRefreshToggle || !uiRefreshToggle {
+								Text(option.getOptionAttribute(for: staticAttribute).value)
+									.foregroundColor(.gray)
+							}
+						}
+					}
+					.onAppear {
+						uiRefreshToggle.toggle()
+					}
+					.onDisappear {
+						uiRefreshToggle.toggle()
 					}
 				}
 			}
