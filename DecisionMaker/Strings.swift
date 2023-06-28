@@ -15,6 +15,7 @@ struct Strings {
 	struct Decision {
 		static let newDecisionTitle: String = "New Decision"
 		static let enterNewPrompt: String = "Enter decision title"
+		static let titlePlaceholder: String = "Decision Title"
 		static let getResults: String = "Get Results"
 		static let addNewTitle: String = "Add new decision"
 		static let mainListTitle: String = "Decisions"

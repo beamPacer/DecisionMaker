@@ -69,7 +69,7 @@ struct ContentView: View {
 	var body: some View {
 		GeometryReader { geometry in
 			VStack {
-				TextField("Decision Title", text: $decision.title)
+				TextField(Strings.Decision.titlePlaceholder, text: $decision.title)
 					.font(.title)
 					.padding(.bottom, 10)
 					.textFieldStyle(.roundedBorder)
