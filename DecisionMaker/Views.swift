@@ -177,7 +177,7 @@ struct ContentView: View {
 			}
 			.sheet(isPresented: $isShowingResultsView) {
 				NavigationView {
-					ResultsView(options: decision.getResults())
+					ResultsView(results: decision.getResults())
 						.toolbar {
 							Button(Strings.Common.done) {
 								isShowingResultsView = false
@@ -191,11 +191,11 @@ struct ContentView: View {
 }
 
 struct ResultsView: View {
-	var options: [Option]
+	var results: [Result]
 	
 	var body: some View {
 		GeometryReader { geometry in
-			switch options.count {
+			switch results.count {
 			case 0:
 				VStack {
 					Spacer()
@@ -224,17 +224,23 @@ struct ResultsView: View {
 				}
 			default:
 				VStack {
-					if let firstOption = options.first {
-						Text(firstOption.title)
+					if let firstResult = results.first {
+						Text(firstResult.option.title)
 							.font(.system(size: 32))
 							.multilineTextAlignment(.center)
 							.padding()
+						Text("\(Int(firstResult.weightedAverage * 100))")
 					}
 					
 					List {
 						Section(header: Text("Runners Up")) {
-							ForEach(options.dropFirst(), id: \.self) { option in
-								Text(option.title)
+							ForEach(results.dropFirst(), id: \.self) { result in
+								HStack {
+									Text(result.option.title)
+									Spacer()
+									Text("\(Int(result.weightedAverage * 100))")
+										.foregroundColor(.gray)
+								}
 							}
 						}
 					}

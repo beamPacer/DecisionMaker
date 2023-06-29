@@ -107,23 +107,34 @@ class Decision: ObservableObject, Codable, CustomStringConvertible {
 		return returnString
 	}
 	
-	func getResults() -> [Option] {
-		return options.sorted {
-			var weightedAverage1: BoundFloat = BoundFloat(0)
-			var weightedAverage2: BoundFloat = BoundFloat(0)
-			
-			for staticAttribute in staticAttributes {
-				let optionAttribute1: OptionAttribute = $0.getOptionAttribute(for: staticAttribute)
-				let optionAttribute2: OptionAttribute = $1.getOptionAttribute(for: staticAttribute)
-				
-				let weight: BoundFloat = staticAttribute.importance
-				weightedAverage1 = weightedAverage1 + ((optionAttribute1.goodness) * weight)
-				weightedAverage2 = weightedAverage2 + ((optionAttribute2.goodness) * weight)
-			}
-			
-			return weightedAverage1 > weightedAverage2
+	func getResults() -> [Result] {
+		var results: [Result] = options.map {
+			Result(
+				option: $0,
+				weightedAverage: getWeightedAverage(for: $0)
+			)
 		}
+		
+		return results.sorted { $0.weightedAverage > $1.weightedAverage }
 	}
+	
+	func getWeightedAverage(for option: Option) -> Float {
+		var weightedAverage: Float = 0
+		
+		for staticAttribute in staticAttributes {
+			let optionAttribute: OptionAttribute = option.getOptionAttribute(for: staticAttribute)
+			
+			let weight: Float = staticAttribute.importance.value
+			weightedAverage = weightedAverage + ((optionAttribute.goodness.value) * weight)
+		}
+		
+		return weightedAverage
+	}
+}
+
+struct Result: Hashable {
+	let option: Option
+	let weightedAverage: Float
 }
 
 class StaticAttribute: ObservableObject, Codable, Identifiable, Hashable, CustomStringConvertible {
