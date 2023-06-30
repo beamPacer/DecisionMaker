@@ -154,7 +154,7 @@ class StaticAttribute: ObservableObject, Codable, Identifiable, Hashable, Custom
 		do {
 			emoji = try container.decode(String.self, forKey: .emoji)
 		} catch {
-			emoji = ""
+			emoji = Strings.Common.defaultEmoji
 		}
 	}
 
@@ -169,7 +169,7 @@ class StaticAttribute: ObservableObject, Codable, Identifiable, Hashable, Custom
 	init(title: String = "", importance: BoundFloat = BoundFloat(0), emoji: String? = nil) {
 		self.title = title
 		self.importance = importance
-		self.emoji = emoji != nil ? emoji! : EmojiHandler.shared.emoji(for: title) ?? "?"
+		self.emoji = emoji != nil ? emoji! : EmojiHandler.shared.emoji(for: title) ?? Strings.Common.defaultEmoji
 	}
 	
 	var description: String {

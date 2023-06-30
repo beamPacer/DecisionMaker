@@ -55,7 +55,7 @@ struct EmojiPicker: View {
 				}
 			}
 			.navigationBarItems(trailing: doneButton)
-			.navigationBarTitle(Text("Choose an Emoji"))
+			.navigationBarTitle(Text(Strings.EmojiPicker.title))
 		}
 	}
 	
@@ -63,7 +63,7 @@ struct EmojiPicker: View {
 		Button(action: {
 			presentationMode.wrappedValue.dismiss()
 		}) {
-			Text("Done")
+			Text(Strings.Common.done)
 				.font(.headline)
 				.foregroundColor(.blue)
 		}
@@ -75,7 +75,7 @@ struct SearchBar: View {
 	
 	var body: some View {
 		HStack {
-			TextField("Search", text: $text)
+			TextField(Strings.Common.search, text: $text)
 				.padding(.vertical, 8)
 				.padding(.horizontal, 16)
 				.background(Color(.systemGray5))
