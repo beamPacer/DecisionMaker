@@ -108,14 +108,13 @@ class Decision: ObservableObject, Codable, CustomStringConvertible {
 	}
 	
 	func getResults() -> [Result] {
-		let results: [Result] = options.map {
+		return options.map {
 			Result(
 				option: $0,
 				weightedAverage: getWeightedAverage(for: $0)
 			)
 		}
-		
-		return results.sorted { $0.weightedAverage > $1.weightedAverage }
+		.sorted { $0.weightedAverage > $1.weightedAverage }
 	}
 	
 	func getWeightedAverage(for option: Option) -> Float {
