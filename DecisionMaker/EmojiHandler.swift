@@ -38,6 +38,20 @@ struct EmojiHandler {
 		}
 	}
 	
+	func emojis(for searchString: String) -> [String] {
+		let searchTerms: [String] = searchString.split(separator: " ").map { String($0).uppercased() }
+		var candidates: [String] = []
+		for key in allEmojis.keys {
+			for searchTerm in searchTerms {
+				if key.contains(searchTerm), let value = allEmojis[key], !candidates.contains(value) {
+					candidates.append(value)
+				}
+			}
+		}
+		
+		return candidates
+	}
+	
 	func emoji(for searchString: String) -> String? {
 		let searchTerms: [String] = searchString.split(separator: " ").map { String($0).uppercased() }
 		var candidates: [String: Int] = [:]

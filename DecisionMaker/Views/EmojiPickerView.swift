@@ -8,33 +8,81 @@
 import SwiftUI
 
 struct EmojiPicker: View {
-	@Binding var selectedEmoji: String
+	let emojis: [[String]]
+	@Binding var selectedEmoji: String?
+	@State var searchText = ""
+	@Environment(\.presentationMode) var presentationMode
+	
+	var filteredEmojis: [[String]] {
+		if searchText.isEmpty {
+			return emojis
+		} else {
+			return [EmojiHandler.shared.emojis(for: searchText)]
+		}
+	}
 	
 	var body: some View {
-		VStack {
-			Text("Choose an Emoji")
-				.font(.title)
-				.padding()
-			
-			ScrollView(.horizontal, showsIndicators: false) {
-				HStack(spacing: 20) {
-					ForEach(EmojiHandler.shared.allEmojisArray, id: \.self) { emoji in
-						Button(action: {
-							selectedEmoji = emoji
-						}) {
-							Text(emoji)
-								.font(.system(size: 50))
-								.padding()
-								.background(
-									RoundedRectangle(cornerRadius: 10)
-										.fill(selectedEmoji == emoji ? Color.blue : Color.gray)
-								)
-								.foregroundColor(.white)
+		NavigationView {
+			VStack {
+				SearchBar(text: $searchText)
+					.padding(.horizontal)
+				
+				List {
+					ForEach(filteredEmojis.indices, id: \.self) { row in
+						Section {
+							ForEach(filteredEmojis[row].indices, id: \.self) { column in
+								let emoji = filteredEmojis[row][column]
+								
+								Button(action: {
+									selectedEmoji = emoji
+									presentationMode.wrappedValue.dismiss()
+								}) {
+									HStack {
+										Text(emoji)
+											.font(.largeTitle)
+									}
+								}
+							}
 						}
 					}
 				}
-				.padding()
 			}
+			.navigationBarItems(trailing: doneButton)
+			.navigationBarTitle(Text("Choose an Emoji"))
+		}
+	}
+	
+	var doneButton: some View {
+		Button(action: {
+			presentationMode.wrappedValue.dismiss()
+		}) {
+			Text("Done")
+				.font(.headline)
+				.foregroundColor(.blue)
+		}
+	}
+}
+
+struct SearchBar: View {
+	@Binding var text: String
+	
+	var body: some View {
+		HStack {
+			TextField("Search", text: $text)
+				.padding(.vertical, 8)
+				.padding(.horizontal, 16)
+				.background(Color(.systemGray5))
+				.cornerRadius(8)
+			
+			Button(action: {
+				text = ""
+			}) {
+				Image(systemName: "xmark.circle.fill")
+					.foregroundColor(.gray)
+					.font(.system(size: 20))
+			}
+			.padding(.trailing, 8)
+			.opacity(text.isEmpty ? 0 : 1)
 		}
 	}
 }

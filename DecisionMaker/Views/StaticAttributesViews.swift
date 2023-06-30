@@ -9,6 +9,7 @@ import SwiftUI
 
 struct EditStaticAttributeView: View {
 	@Binding var staticAttribute: StaticAttribute
+	@State private var selectedEmoji: String? = nil
 	@State private var showEmojiPicker = false
 	
 	var body: some View {
@@ -19,11 +20,18 @@ struct EditStaticAttributeView: View {
 				Button(action: {
 					showEmojiPicker = true
 				}) {
-					Text(staticAttribute.emoji)
+					Text(selectedEmoji == nil ? staticAttribute.emoji : selectedEmoji!)
 						.font(.largeTitle)
 				}
 				.sheet(isPresented: $showEmojiPicker, content: {
-					EmojiPicker(selectedEmoji: $staticAttribute.emoji)
+					EmojiPicker(emojis: [EmojiHandler.shared.allEmojisArray], selectedEmoji: $selectedEmoji)
+						.onDisappear {
+							if let selected = selectedEmoji {
+								staticAttribute.emoji = selected
+							}
+							
+							staticAttribute.objectWillChange.send()
+						}
 				})
 			}
 			
