@@ -28,8 +28,8 @@ class DecisionData: ObservableObject, Codable {
 	}
 	
 	init() { decisions = [] }
-	
-	init(_ decision: Decision) { decisions = [decision] }
+	init(_ decision: Decision) { self.decisions = [decision] }
+	init(_ decisions: [Decision]) { self.decisions = decisions }
 
 	required init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -162,10 +162,10 @@ class StaticAttribute: ObservableObject, Codable, Identifiable, Hashable, Custom
 		try container.encode(emoji, forKey: .emoji)
 	}
 	
-	init(title: String = "", importance: BoundFloat = BoundFloat(0)) {
+	init(title: String = "", importance: BoundFloat = BoundFloat(0), emoji: String? = nil) {
 		self.title = title
 		self.importance = importance
-		self.emoji = EmojiHandler.shared.emoji(for: title) ?? "?"
+		self.emoji = emoji != nil ? emoji! : EmojiHandler.shared.emoji(for: title) ?? "?"
 	}
 	
 	var description: String {

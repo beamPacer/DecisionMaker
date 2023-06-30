@@ -11,15 +11,18 @@ struct ExampleData {
 	static var buyingAHouse: Decision {
 		let colorAttribute = StaticAttribute(
 			title: Strings.ExampleData.BuyingAHouse.color,
-			importance: Strings.ExampleData.BuyingAHouse.colorImportance
+			importance: Strings.ExampleData.BuyingAHouse.colorImportance,
+			emoji: "🌈"
 		)
 		let priceAttribute = StaticAttribute(
 			title: Strings.ExampleData.BuyingAHouse.price,
-			importance: Strings.ExampleData.BuyingAHouse.priceImportance
+			importance: Strings.ExampleData.BuyingAHouse.priceImportance,
+			emoji: "💰"
 		)
 		let locationAttribute = StaticAttribute(
 			title: Strings.ExampleData.BuyingAHouse.location,
-			importance: Strings.ExampleData.BuyingAHouse.locationImportance
+			importance: Strings.ExampleData.BuyingAHouse.locationImportance,
+			emoji: "📍"
 		)
 		
 		let option1 = Option(title: Strings.ExampleData.BuyingAHouse.Option1.title)
