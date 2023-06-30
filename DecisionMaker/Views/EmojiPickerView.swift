@@ -14,7 +14,7 @@ struct EmojiPicker: View {
 	@Environment(\.presentationMode) var presentationMode
 	
 	var filteredEmojis: [[String]] {
-		if searchText.isEmpty {
+		if searchText.isEmpty || searchText.count == 1 {
 			return emojis
 		} else {
 			return [EmojiHandler.shared.emojis(for: searchText)]
