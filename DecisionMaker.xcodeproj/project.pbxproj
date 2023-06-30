@@ -106,7 +106,7 @@
 				B59F5FC72A4E3AB30090BAB6 /* Info.plist */,
 				B531B8E02A3E15D900A59DBC /* DecisionMakerApp.swift */,
 				B531B8E62A3E15D900A59DBC /* Preview Content */,
-				B531B90A2A3E166500A59DBC /* Types */,
+				B531B90B2A3E168F00A59DBC /* Types.swift */,
 				B531B8E22A3E15D900A59DBC /* Views.swift */,
 				B5325CFB2A40D40E000142BF /* Strings.swift */,
 				B54D53F12A4BE387003F804C /* Persistence.swift */,
@@ -139,14 +139,6 @@
 				B531B8FD2A3E15D900A59DBC /* DecisionMakerUITestsLaunchTests.swift */,
 			);
 			path = DecisionMakerUITests;
-			sourceTree = "<group>";
-		};
-		B531B90A2A3E166500A59DBC /* Types */ = {
-			isa = PBXGroup;
-			children = (
-				B531B90B2A3E168F00A59DBC /* Types.swift */,
-			);
-			path = Types;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
