@@ -42,7 +42,7 @@ struct EmojiHandler {
 		for key in allEmojis.keys {
 			for searchTerm in searchTerms {
 				if key.contains(searchTerm) {
-					if candidates[key] != nil, var value = candidates[key] {
+					if var value = candidates[key] {
 						value += 1
 						candidates[key] = value
 					} else {
