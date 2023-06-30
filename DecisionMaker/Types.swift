@@ -149,12 +149,13 @@ class StaticAttribute: ObservableObject, Codable, Identifiable, Hashable, Custom
 	required init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		id = try container.decode(UUID.self, forKey: .id)
-		title = try container.decode(String.self, forKey: .title)
+		let stringTitle = try container.decode(String.self, forKey: .title)
+		title = stringTitle
 		importance = try container.decode(BoundFloat.self, forKey: .importance)
 		do {
 			emoji = try container.decode(String.self, forKey: .emoji)
 		} catch {
-			emoji = Strings.Common.defaultEmoji
+			emoji = EmojiHandler.shared.emoji(for: stringTitle) ?? Strings.Common.defaultEmoji
 		}
 	}
 
