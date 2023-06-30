@@ -34,6 +34,7 @@ struct EditStaticAttributeView: View {
 						}
 				})
 			}
+			.listRowSeparator(.hidden)
 			
 			VStack(alignment: .leading) {
 				Text(Strings.StaticAttributes.importanceLabel)
