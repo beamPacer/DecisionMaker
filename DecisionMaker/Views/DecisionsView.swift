@@ -92,8 +92,12 @@ struct ContentView: View {
 									
 								}
 							}
-							.onDisappear {
-								uiRefreshToggle.toggle()
+							.onAppear {
+								decision = Decision(
+									staticAttributes: decision.staticAttributes,
+									options: decision.options,
+									title: decision.title
+								)
 							}
 						}
 						.onDelete { indexSet in
