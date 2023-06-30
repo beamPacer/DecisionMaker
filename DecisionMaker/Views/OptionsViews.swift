@@ -1,0 +1,78 @@
+//
+//  OptionsViews.swift
+//  DecisionMaker
+//
+//  Created by Emma Sinclair on 6/30/23.
+//
+
+import SwiftUI
+
+class OptionAttributeViewModel: ObservableObject {
+	let staticAttribute: StaticAttribute
+	let option: Option
+	@Published var optionAttribute: OptionAttribute
+	
+	init(staticAttribute: StaticAttribute, option: Option, optionAttribute: OptionAttribute) {
+		self.staticAttribute = staticAttribute
+		self.option = option
+		self.optionAttribute = optionAttribute
+	}
+}
+
+struct EditOptionAttributeView: View {
+	@ObservedObject var viewModel: OptionAttributeViewModel
+
+	var body: some View {
+		Form {
+			TextField(Strings.OptionAttributes.defaultValue, text: $viewModel.optionAttribute.value)
+			VStack(alignment: .leading) {
+				Text(Strings.OptionAttributes.goodnessLabel)
+				Slider(value: $viewModel.optionAttribute.goodness.value,
+					   in: viewModel.optionAttribute.goodness.minimumLimit...viewModel.optionAttribute.goodness.maximumLimit)
+			}
+		}
+		.navigationTitle(viewModel.staticAttribute.title)
+	}
+}
+
+struct EditOptionView: View {
+	@Binding var option: Option
+	@ObservedObject var decision: Decision
+	@State private var uiRefreshToggle: Bool = false
+
+	var body: some View {
+		Form {
+			Section() {
+				TextField(Strings.Options.defaultTitle, text: $option.title)
+			}
+			
+			Section() {
+				ForEach(decision.staticAttributes, id: \.self) { staticAttribute in
+					NavigationLink(destination: EditOptionAttributeView(
+						viewModel: OptionAttributeViewModel(
+							staticAttribute: staticAttribute,
+							option: option,
+							optionAttribute: option.getOptionAttribute(for: staticAttribute)
+						)
+					)) {
+						HStack {
+							Text(staticAttribute.title)
+							Spacer()
+							if uiRefreshToggle || !uiRefreshToggle {
+								Text(option.getOptionAttribute(for: staticAttribute).value)
+									.foregroundColor(.gray)
+							}
+						}
+					}
+					.onAppear {
+						uiRefreshToggle.toggle()
+					}
+					.onDisappear {
+						uiRefreshToggle.toggle()
+					}
+				}
+			}
+		}
+		.navigationTitle(Strings.Options.editOptionNavTitle)
+	}
+}

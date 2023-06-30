@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B531B8E12A3E15D900A59DBC /* DecisionMakerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B531B8E02A3E15D900A59DBC /* DecisionMakerApp.swift */; };
-		B531B8E32A3E15D900A59DBC /* Views.swift in Sources */ = {isa = PBXBuildFile; fileRef = B531B8E22A3E15D900A59DBC /* Views.swift */; };
+		B531B8E32A3E15D900A59DBC /* DecisionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B531B8E22A3E15D900A59DBC /* DecisionsView.swift */; };
 		B531B8E52A3E15D900A59DBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B531B8E42A3E15D900A59DBC /* Assets.xcassets */; };
 		B531B8E82A3E15D900A59DBC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B531B8E72A3E15D900A59DBC /* Preview Assets.xcassets */; };
 		B531B8F22A3E15D900A59DBC /* DecisionMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B531B8F12A3E15D900A59DBC /* DecisionMakerTests.swift */; };
@@ -18,6 +18,9 @@
 		B5325CFC2A40D40E000142BF /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5325CFB2A40D40E000142BF /* Strings.swift */; };
 		B54D53F22A4BE387003F804C /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54D53F12A4BE387003F804C /* Persistence.swift */; };
 		B59F5FC62A4BE6970090BAB6 /* ExampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F5FC52A4BE6970090BAB6 /* ExampleData.swift */; };
+		B59F5FCA2A4ECFB70090BAB6 /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F5FC92A4ECFB70090BAB6 /* ResultsView.swift */; };
+		B59F5FCC2A4ECFF50090BAB6 /* StaticAttributesViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F5FCB2A4ECFF50090BAB6 /* StaticAttributesViews.swift */; };
+		B59F5FCE2A4ED0130090BAB6 /* OptionsViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F5FCD2A4ED0130090BAB6 /* OptionsViews.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,7 +43,7 @@
 /* Begin PBXFileReference section */
 		B531B8DD2A3E15D900A59DBC /* DecisionMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DecisionMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B531B8E02A3E15D900A59DBC /* DecisionMakerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionMakerApp.swift; sourceTree = "<group>"; };
-		B531B8E22A3E15D900A59DBC /* Views.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Views.swift; sourceTree = "<group>"; };
+		B531B8E22A3E15D900A59DBC /* DecisionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionsView.swift; sourceTree = "<group>"; };
 		B531B8E42A3E15D900A59DBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B531B8E72A3E15D900A59DBC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B531B8ED2A3E15D900A59DBC /* DecisionMakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DecisionMakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -53,6 +56,9 @@
 		B54D53F12A4BE387003F804C /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		B59F5FC52A4BE6970090BAB6 /* ExampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleData.swift; sourceTree = "<group>"; };
 		B59F5FC72A4E3AB30090BAB6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		B59F5FC92A4ECFB70090BAB6 /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
+		B59F5FCB2A4ECFF50090BAB6 /* StaticAttributesViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticAttributesViews.swift; sourceTree = "<group>"; };
+		B59F5FCD2A4ED0130090BAB6 /* OptionsViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsViews.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,7 +113,7 @@
 				B531B8E02A3E15D900A59DBC /* DecisionMakerApp.swift */,
 				B531B8E62A3E15D900A59DBC /* Preview Content */,
 				B531B90B2A3E168F00A59DBC /* Types.swift */,
-				B531B8E22A3E15D900A59DBC /* Views.swift */,
+				B59F5FC82A4ECF710090BAB6 /* Views */,
 				B5325CFB2A40D40E000142BF /* Strings.swift */,
 				B54D53F12A4BE387003F804C /* Persistence.swift */,
 				B59F5FC52A4BE6970090BAB6 /* ExampleData.swift */,
@@ -139,6 +145,17 @@
 				B531B8FD2A3E15D900A59DBC /* DecisionMakerUITestsLaunchTests.swift */,
 			);
 			path = DecisionMakerUITests;
+			sourceTree = "<group>";
+		};
+		B59F5FC82A4ECF710090BAB6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				B531B8E22A3E15D900A59DBC /* DecisionsView.swift */,
+				B59F5FC92A4ECFB70090BAB6 /* ResultsView.swift */,
+				B59F5FCB2A4ECFF50090BAB6 /* StaticAttributesViews.swift */,
+				B59F5FCD2A4ED0130090BAB6 /* OptionsViews.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -272,9 +289,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				B531B90C2A3E168F00A59DBC /* Types.swift in Sources */,
-				B531B8E32A3E15D900A59DBC /* Views.swift in Sources */,
+				B531B8E32A3E15D900A59DBC /* DecisionsView.swift in Sources */,
+				B59F5FCE2A4ED0130090BAB6 /* OptionsViews.swift in Sources */,
 				B59F5FC62A4BE6970090BAB6 /* ExampleData.swift in Sources */,
+				B59F5FCC2A4ECFF50090BAB6 /* StaticAttributesViews.swift in Sources */,
 				B5325CFC2A40D40E000142BF /* Strings.swift in Sources */,
+				B59F5FCA2A4ECFB70090BAB6 /* ResultsView.swift in Sources */,
 				B531B8E12A3E15D900A59DBC /* DecisionMakerApp.swift in Sources */,
 				B54D53F22A4BE387003F804C /* Persistence.swift in Sources */,
 			);
