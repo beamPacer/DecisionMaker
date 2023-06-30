@@ -21,15 +21,23 @@ struct EmojiPicker: View {
 		}
 	}
 	
+	let gridItemLayout = [
+		GridItem(.flexible()),
+		GridItem(.flexible()),
+		GridItem(.flexible()),
+		GridItem(.flexible()),
+		GridItem(.flexible())
+	]
+		
 	var body: some View {
 		NavigationView {
 			VStack {
 				SearchBar(text: $searchText)
 					.padding(.horizontal)
 				
-				List {
-					ForEach(filteredEmojis.indices, id: \.self) { row in
-						Section {
+				ScrollView {
+					LazyVGrid(columns: gridItemLayout, spacing: 8) {
+						ForEach(filteredEmojis.indices, id: \.self) { row in
 							ForEach(filteredEmojis[row].indices, id: \.self) { column in
 								let emoji = filteredEmojis[row][column]
 								
@@ -37,14 +45,13 @@ struct EmojiPicker: View {
 									selectedEmoji = emoji
 									presentationMode.wrappedValue.dismiss()
 								}) {
-									HStack {
-										Text(emoji)
-											.font(.largeTitle)
-									}
+									Text(emoji)
+										.font(.title)
 								}
 							}
 						}
 					}
+					.padding()
 				}
 			}
 			.navigationBarItems(trailing: doneButton)
