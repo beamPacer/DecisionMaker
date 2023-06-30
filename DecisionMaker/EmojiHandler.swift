@@ -11,6 +11,7 @@ struct EmojiHandler {
 	static let shared = EmojiHandler()
 	
 	private var allEmojis: [String: String] = [:]
+	private(set) var allEmojisArray: [String] = []
 	
 	init() {
 		let emojiRanges = [
@@ -31,6 +32,7 @@ struct EmojiHandler {
 					var range = CFRangeMake(0, CFStringGetLength(cfstr))
 					CFStringTransform(cfstr, &range, kCFStringTransformToUnicodeName, false)
 					allEmojis[cfstr as String] = emoji
+					allEmojisArray.append(emoji)
 				}
 			}
 		}

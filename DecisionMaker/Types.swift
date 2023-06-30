@@ -140,9 +140,10 @@ class StaticAttribute: ObservableObject, Codable, Identifiable, Hashable, Custom
 	var id = UUID()
 	@Published var title: String
 	@Published var importance: BoundFloat
+	var emoji: String
 
 	enum CodingKeys: CodingKey {
-		case id, title, importance
+		case id, title, importance, emoji
 	}
 
 	required init(from decoder: Decoder) throws {
@@ -150,6 +151,7 @@ class StaticAttribute: ObservableObject, Codable, Identifiable, Hashable, Custom
 		id = try container.decode(UUID.self, forKey: .id)
 		title = try container.decode(String.self, forKey: .title)
 		importance = try container.decode(BoundFloat.self, forKey: .importance)
+		emoji = try container.decode(String.self, forKey: .emoji)
 	}
 
 	func encode(to encoder: Encoder) throws {
@@ -157,11 +159,13 @@ class StaticAttribute: ObservableObject, Codable, Identifiable, Hashable, Custom
 		try container.encode(id, forKey: .id)
 		try container.encode(title, forKey: .title)
 		try container.encode(importance, forKey: .importance)
+		try container.encode(emoji, forKey: .emoji)
 	}
 	
 	init(title: String = "", importance: BoundFloat = BoundFloat(0)) {
 		self.title = title
 		self.importance = importance
+		self.emoji = EmojiHandler.shared.emoji(for: title) ?? "?"
 	}
 	
 	var description: String {
