@@ -151,7 +151,11 @@ class StaticAttribute: ObservableObject, Codable, Identifiable, Hashable, Custom
 		id = try container.decode(UUID.self, forKey: .id)
 		title = try container.decode(String.self, forKey: .title)
 		importance = try container.decode(BoundFloat.self, forKey: .importance)
-		emoji = try container.decode(String.self, forKey: .emoji)
+		do {
+			emoji = try container.decode(String.self, forKey: .emoji)
+		} catch {
+			emoji = ""
+		}
 	}
 
 	func encode(to encoder: Encoder) throws {
