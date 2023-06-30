@@ -29,9 +29,13 @@ struct Persistence {
 		}
 		let decoder = PropertyListDecoder()
 		if let returnValue = try? decoder.decode(DecisionData.self, from: codeData) {
+			if returnValue.decisions.isEmpty {
+				return DecisionData(ExampleData.buyingAHouse)
+			}
+			
 			return returnValue
 		}
 		
-		return DecisionData()
+		return DecisionData(ExampleData.buyingAHouse)
 	}
 }
