@@ -102,6 +102,7 @@ struct ContentView: View {
 						}
 						.onDelete { indexSet in
 							decision.staticAttributes.remove(atOffsets: indexSet)
+							refreshDecision()
 						}
 
 						Button(action: {
@@ -123,11 +124,7 @@ struct ContentView: View {
 									}
 							}
 							.onDisappear {
-								newAttribute = StaticAttribute()
-								if let lastStaticAttribute = decision.staticAttributes.last {
-									lastStaticAttribute.objectWillChange.send()
-								}
-								decision.objectWillChange.send()
+								refreshDecision()
 							}
 						}
 					}
@@ -162,10 +159,7 @@ struct ContentView: View {
 							}
 							.onDisappear {
 								newOption = Option()
-								if let lastOption = decision.options.last {
-									lastOption.objectWillChange.send()
-								}
-								decision.objectWillChange.send()
+								refreshDecision()
 							}
 						}
 					}
@@ -196,6 +190,14 @@ struct ContentView: View {
 			}
 			.navigationBarTitle(Strings.App.title)
 		}
+	}
+	
+	func refreshDecision() {
+		decision = Decision(
+			staticAttributes: decision.staticAttributes,
+			options: decision.options,
+			title: decision.title
+		)
 	}
 }
 
