@@ -104,5 +104,11 @@ struct Strings {
 	
 	struct Common {
 		static let done: String = "Done"
+		static let search: String = "Search"
+		static let defaultEmoji: String = "?"
+	}
+	
+	struct EmojiPicker {
+		static let title: String = "Choose an Emoji"
 	}
 }

@@ -10,6 +10,21 @@ import Foundation
 struct Persistence {
 	static let shared = Persistence()
 	
+	private static let currentPersistenceVersion = 2
+	private static let currentPersistenceKey = "persistence_version"
+	
+	func getLatestPersistenceVersion() -> Int {
+		if UserDefaults.standard.object(forKey: Persistence.currentPersistenceKey) != nil {
+			return UserDefaults.standard.integer(forKey: Persistence.currentPersistenceKey)
+		}
+		
+		return 0
+	}
+	
+	var needsNewExampleData: Bool {
+		return getLatestPersistenceVersion() < Persistence.currentPersistenceVersion
+	}
+	
 	func getArchiveURL() -> URL {
 		let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 		return documentsDirectory.appendingPathComponent("decision_data").appendingPathExtension("plist")
@@ -33,9 +48,15 @@ struct Persistence {
 				return DecisionData(ExampleData.buyingAHouse)
 			}
 			
-			return returnValue
+			return needsNewExampleData ? forceLoadLatestExample(into: returnValue) : returnValue
 		}
 		
 		return DecisionData(ExampleData.buyingAHouse)
+	}
+	
+	func forceLoadLatestExample(into data: DecisionData) -> DecisionData {
+		var filteredDecisions = data.decisions.filter { $0.title != Strings.ExampleData.BuyingAHouse.title }
+		filteredDecisions.append(ExampleData.buyingAHouse)
+		return DecisionData(filteredDecisions)
 	}
 }

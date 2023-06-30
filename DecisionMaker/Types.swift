@@ -28,8 +28,8 @@ class DecisionData: ObservableObject, Codable {
 	}
 	
 	init() { decisions = [] }
-	
-	init(_ decision: Decision) { decisions = [decision] }
+	init(_ decision: Decision) { self.decisions = [decision] }
+	init(_ decisions: [Decision]) { self.decisions = decisions }
 
 	required init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
@@ -140,16 +140,23 @@ class StaticAttribute: ObservableObject, Codable, Identifiable, Hashable, Custom
 	var id = UUID()
 	@Published var title: String
 	@Published var importance: BoundFloat
+	var emoji: String
 
 	enum CodingKeys: CodingKey {
-		case id, title, importance
+		case id, title, importance, emoji
 	}
 
 	required init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		id = try container.decode(UUID.self, forKey: .id)
-		title = try container.decode(String.self, forKey: .title)
+		let stringTitle = try container.decode(String.self, forKey: .title)
+		title = stringTitle
 		importance = try container.decode(BoundFloat.self, forKey: .importance)
+		do {
+			emoji = try container.decode(String.self, forKey: .emoji)
+		} catch {
+			emoji = EmojiHandler.shared.emoji(for: stringTitle) ?? Strings.Common.defaultEmoji
+		}
 	}
 
 	func encode(to encoder: Encoder) throws {
@@ -157,11 +164,13 @@ class StaticAttribute: ObservableObject, Codable, Identifiable, Hashable, Custom
 		try container.encode(id, forKey: .id)
 		try container.encode(title, forKey: .title)
 		try container.encode(importance, forKey: .importance)
+		try container.encode(emoji, forKey: .emoji)
 	}
 	
-	init(title: String = "", importance: BoundFloat = BoundFloat(0)) {
+	init(title: String = "", importance: BoundFloat = BoundFloat(0), emoji: String? = nil) {
 		self.title = title
 		self.importance = importance
+		self.emoji = emoji != nil ? emoji! : EmojiHandler.shared.emoji(for: title) ?? Strings.Common.defaultEmoji
 	}
 	
 	var description: String {
