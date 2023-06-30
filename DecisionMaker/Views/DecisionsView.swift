@@ -84,7 +84,12 @@ struct ContentView: View {
 						ForEach(decision.staticAttributes, id: \.self) { staticAttribute in
 							NavigationLink(destination: EditStaticAttributeView(staticAttribute: .constant(staticAttribute))) {
 								if uiRefreshToggle || !uiRefreshToggle {
-									Text(staticAttribute.title)
+									HStack {
+										Text(staticAttribute.title)
+										Spacer()
+										Text(staticAttribute.emoji)
+									}
+									
 								}
 							}
 							.onDisappear {
@@ -126,7 +131,7 @@ struct ContentView: View {
 					Section(header: Text(Strings.Options.groupLabel).textCase(.none)) {
 						ForEach(decision.options, id: \.self) { option in
 							NavigationLink(destination: EditOptionView(option: .constant(option), decision: decision)) {
-								Text(option.title)
+								OptionCellView(option: option, decision: decision)
 							}
 						}
 						.onDelete { indexSet in
@@ -187,5 +192,34 @@ struct ContentView: View {
 			}
 			.navigationBarTitle(Strings.App.title)
 		}
+	}
+}
+
+struct OptionCellView: View {
+	let option: Option
+	let decision: Decision
+	
+	var body: some View {
+		VStack(alignment: .leading, spacing: 4) {
+			Text(option.title)
+				.font(.headline)
+				.bold()
+				.lineLimit(1)
+			
+			ForEach(decision.staticAttributes, id: \.self) { staticAttribute in
+				let optionAttribute = option.getOptionAttribute(for: staticAttribute)
+				
+				HStack {
+					Text("\(staticAttribute.emoji):")
+						.fontWeight(.semibold)
+						.foregroundColor(.secondary)
+					
+					Text(optionAttribute.value)
+						.lineLimit(1)
+						.truncationMode(.tail)
+				}
+			}
+		}
+		.padding(.vertical, 8)
 	}
 }
