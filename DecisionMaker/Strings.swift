@@ -110,7 +110,7 @@ struct Strings {
 	struct Common {
 		static let done: String = "Done"
 		static let search: String = "Search"
-		static let defaultEmoji: String = "?"
+		static let defaultEmoji: String = "⋯"
 	}
 	
 	struct EmojiPicker {
