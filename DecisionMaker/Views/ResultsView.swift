@@ -46,7 +46,7 @@ struct ResultsView: View {
 							.font(.system(size: 32))
 							.multilineTextAlignment(.center)
 							.padding()
-						Text("\(Int(firstResult.percentWeightedAverage * 100))%")
+						Text(formatPercentWeightedAverage(for: firstResult))
 					}
 					
 					List {
@@ -55,7 +55,7 @@ struct ResultsView: View {
 								HStack {
 									Text(result.option.title)
 									Spacer()
-									Text("\(Int(result.percentWeightedAverage * 100))%")
+									Text(formatPercentWeightedAverage(for: result))
 										.foregroundColor(.gray)
 								}
 							}
@@ -65,5 +65,9 @@ struct ResultsView: View {
 				.navigationTitle(Strings.Result.title)
 			}
 		}
+	}
+	
+	func formatPercentWeightedAverage(for result: Result) -> String {
+		"\(Int(result.percentWeightedAverage * 100))%"
 	}
 }
