@@ -29,6 +29,7 @@ struct DecisionView: View {
 					staticAttributesListView
 					optionsListView
 				}
+				
 				Button(action: {
 					isShowingResultsView = true
 				}) {

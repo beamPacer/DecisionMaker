@@ -223,4 +223,59 @@ struct ExampleData {
 			title: "minimumSetup"
 		)
 	}
+	
+	static var minimumOptions_allZero: Decision {
+		let attribute1 = StaticAttribute(
+			title: "attribute1",
+			importance: BoundFloat(0.0)
+		)
+		let attribute2 = StaticAttribute(
+			title: "attribute2",
+			importance: BoundFloat(0.0)
+		)
+		
+		let option1 = Option(title: "a")
+		option1.setOptionAttribute(
+			OptionAttribute(
+				value: "attribute1Value1",
+				goodness: BoundFloat(0.0)
+			),
+			for: attribute1
+		)
+		option1.setOptionAttribute(
+			OptionAttribute(
+				value: "attribute2Value1",
+				goodness: BoundFloat(0.0)
+			),
+			for: attribute2
+		)
+		
+		let option2 = Option(title: "b")
+		option2.setOptionAttribute(
+			OptionAttribute(
+				value: "attribute1Value2",
+				goodness: BoundFloat(0.0)
+			),
+			for: attribute1
+		)
+		option2.setOptionAttribute(
+			OptionAttribute(
+				value: "attribute2Value2",
+				goodness: BoundFloat(0.0)
+			),
+			for: attribute2
+		)
+		
+		return Decision(
+			staticAttributes: [
+				attribute1,
+				attribute2
+			],
+			options: [
+				option1,
+				option2
+			],
+			title: "minimumSetup"
+		)
+	}
 }

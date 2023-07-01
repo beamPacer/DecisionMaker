@@ -96,4 +96,14 @@ final class TypesTests: XCTestCase {
 		XCTAssertEqual(option1WeightedAverage, 1.25)
 		XCTAssertEqual(option2WeightedAverage, 1.125)
 	}
+	
+	func testGetResults_allZero() throws {
+		let exampleData: Decision = ExampleData.minimumOptions_allZero
+		let results: [Result] = exampleData.getResults()
+		
+		XCTAssertEqual(results[0].weightedAverage, 0.0)
+		XCTAssertEqual(results[1].weightedAverage, 0.0)
+		XCTAssertEqual(results[0].percentWeightedAverage, 0.0)
+		XCTAssertEqual(results[1].percentWeightedAverage, 0.0)
+	}
 }

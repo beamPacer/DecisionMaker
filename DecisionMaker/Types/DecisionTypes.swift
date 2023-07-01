@@ -128,7 +128,7 @@ class Decision: ObservableObject, Codable, CustomStringConvertible {
 			Result(
 				option: $0.option,
 				weightedAverage: $0.weightedAverage,
-				percentWeightedAverage: $0.weightedAverage / max
+				percentWeightedAverage: max != 0 ? $0.weightedAverage / max : 0
 			)
 		}
 	}
