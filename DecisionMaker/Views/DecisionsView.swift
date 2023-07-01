@@ -16,7 +16,7 @@ struct DecisionListView: View {
 		NavigationView {
 			List {
 				ForEach(decisionData.decisions.indices, id: \.self) { index in
-					NavigationLink(destination: ContentView(decision: $decisionData.decisions[index])) {
+					NavigationLink(destination: DecisionView(decision: $decisionData.decisions[index])) {
 						Text(decisionData.decisions[index].title)
 					}
 				}
@@ -61,7 +61,7 @@ struct DecisionListView: View {
 	}
 }
 
-struct ContentView: View {
+struct DecisionView: View {
 	@Binding var decision: Decision
 	@State private var isShowingNewAttributeView: Bool = false
 	@State private var isShowingNewOptionView: Bool = false
