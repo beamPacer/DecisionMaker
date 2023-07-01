@@ -14,7 +14,7 @@
 		B531B8F22A3E15D900A59DBC /* DecisionMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B531B8F12A3E15D900A59DBC /* DecisionMakerTests.swift */; };
 		B531B8FC2A3E15D900A59DBC /* DecisionMakerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B531B8FB2A3E15D900A59DBC /* DecisionMakerUITests.swift */; };
 		B531B8FE2A3E15D900A59DBC /* DecisionMakerUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B531B8FD2A3E15D900A59DBC /* DecisionMakerUITestsLaunchTests.swift */; };
-		B531B90C2A3E168F00A59DBC /* Types.swift in Sources */ = {isa = PBXBuildFile; fileRef = B531B90B2A3E168F00A59DBC /* Types.swift */; };
+		B531B90C2A3E168F00A59DBC /* DecisionTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B531B90B2A3E168F00A59DBC /* DecisionTypes.swift */; };
 		B5325CFC2A40D40E000142BF /* Strings.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5325CFB2A40D40E000142BF /* Strings.swift */; };
 		B54D53F22A4BE387003F804C /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = B54D53F12A4BE387003F804C /* Persistence.swift */; };
 		B59F5FC62A4BE6970090BAB6 /* ExampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F5FC52A4BE6970090BAB6 /* ExampleData.swift */; };
@@ -25,6 +25,10 @@
 		B59F5FD42A4ED2410090BAB6 /* EmojiHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F5FD32A4ED2410090BAB6 /* EmojiHandlerTests.swift */; };
 		B5EF81CD2A4EDFF000BBE751 /* EmojiPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF81CC2A4EDFF000BBE751 /* EmojiPickerView.swift */; };
 		B5EF81CF2A4FB14F00BBE751 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF81CE2A4FB14F00BBE751 /* Common.swift */; };
+		B5EF81D22A4FCE4A00BBE751 /* OptionsTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF81D12A4FCE4A00BBE751 /* OptionsTypes.swift */; };
+		B5EF81D42A4FCE7C00BBE751 /* BoundFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF81D32A4FCE7C00BBE751 /* BoundFloat.swift */; };
+		B5EF81D62A4FCEAF00BBE751 /* StaticAttributeTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF81D52A4FCEAF00BBE751 /* StaticAttributeTypes.swift */; };
+		B5EF81D82A4FCEEA00BBE751 /* ResultsTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF81D72A4FCEEA00BBE751 /* ResultsTypes.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -55,7 +59,7 @@
 		B531B8F72A3E15D900A59DBC /* DecisionMakerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DecisionMakerUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B531B8FB2A3E15D900A59DBC /* DecisionMakerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionMakerUITests.swift; sourceTree = "<group>"; };
 		B531B8FD2A3E15D900A59DBC /* DecisionMakerUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionMakerUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		B531B90B2A3E168F00A59DBC /* Types.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Types.swift; sourceTree = "<group>"; };
+		B531B90B2A3E168F00A59DBC /* DecisionTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionTypes.swift; sourceTree = "<group>"; };
 		B5325CFB2A40D40E000142BF /* Strings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Strings.swift; sourceTree = "<group>"; };
 		B54D53F12A4BE387003F804C /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		B59F5FC52A4BE6970090BAB6 /* ExampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExampleData.swift; sourceTree = "<group>"; };
@@ -67,6 +71,10 @@
 		B59F5FD32A4ED2410090BAB6 /* EmojiHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiHandlerTests.swift; sourceTree = "<group>"; };
 		B5EF81CC2A4EDFF000BBE751 /* EmojiPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPickerView.swift; sourceTree = "<group>"; };
 		B5EF81CE2A4FB14F00BBE751 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		B5EF81D12A4FCE4A00BBE751 /* OptionsTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsTypes.swift; sourceTree = "<group>"; };
+		B5EF81D32A4FCE7C00BBE751 /* BoundFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundFloat.swift; sourceTree = "<group>"; };
+		B5EF81D52A4FCEAF00BBE751 /* StaticAttributeTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticAttributeTypes.swift; sourceTree = "<group>"; };
+		B5EF81D72A4FCEEA00BBE751 /* ResultsTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTypes.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -119,14 +127,12 @@
 			children = (
 				B59F5FC72A4E3AB30090BAB6 /* Info.plist */,
 				B531B8E02A3E15D900A59DBC /* DecisionMakerApp.swift */,
-				B531B8E62A3E15D900A59DBC /* Preview Content */,
-				B531B90B2A3E168F00A59DBC /* Types.swift */,
-				B59F5FC82A4ECF710090BAB6 /* Views */,
 				B5325CFB2A40D40E000142BF /* Strings.swift */,
-				B54D53F12A4BE387003F804C /* Persistence.swift */,
-				B59F5FD12A4ED1EB0090BAB6 /* EmojiHandler.swift */,
-				B59F5FC52A4BE6970090BAB6 /* ExampleData.swift */,
 				B531B8E42A3E15D900A59DBC /* Assets.xcassets */,
+				B531B8E62A3E15D900A59DBC /* Preview Content */,
+				B5EF81D02A4FCE0800BBE751 /* Types */,
+				B5EF81D92A4FCF4A00BBE751 /* Utilities */,
+				B59F5FC82A4ECF710090BAB6 /* Views */,
 			);
 			path = DecisionMaker;
 			sourceTree = "<group>";
@@ -160,14 +166,36 @@
 		B59F5FC82A4ECF710090BAB6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				B5EF81CE2A4FB14F00BBE751 /* Common.swift */,
 				B531B8E22A3E15D900A59DBC /* DecisionsView.swift */,
+				B5EF81CC2A4EDFF000BBE751 /* EmojiPickerView.swift */,
+				B59F5FCD2A4ED0130090BAB6 /* OptionsViews.swift */,
 				B59F5FC92A4ECFB70090BAB6 /* ResultsView.swift */,
 				B59F5FCB2A4ECFF50090BAB6 /* StaticAttributesViews.swift */,
-				B59F5FCD2A4ED0130090BAB6 /* OptionsViews.swift */,
-				B5EF81CC2A4EDFF000BBE751 /* EmojiPickerView.swift */,
-				B5EF81CE2A4FB14F00BBE751 /* Common.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		B5EF81D02A4FCE0800BBE751 /* Types */ = {
+			isa = PBXGroup;
+			children = (
+				B5EF81D32A4FCE7C00BBE751 /* BoundFloat.swift */,
+				B531B90B2A3E168F00A59DBC /* DecisionTypes.swift */,
+				B5EF81D12A4FCE4A00BBE751 /* OptionsTypes.swift */,
+				B5EF81D72A4FCEEA00BBE751 /* ResultsTypes.swift */,
+				B5EF81D52A4FCEAF00BBE751 /* StaticAttributeTypes.swift */,
+			);
+			path = Types;
+			sourceTree = "<group>";
+		};
+		B5EF81D92A4FCF4A00BBE751 /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				B59F5FD12A4ED1EB0090BAB6 /* EmojiHandler.swift */,
+				B59F5FC52A4BE6970090BAB6 /* ExampleData.swift */,
+				B54D53F12A4BE387003F804C /* Persistence.swift */,
+			);
+			path = Utilities;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -300,14 +328,18 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				B531B90C2A3E168F00A59DBC /* Types.swift in Sources */,
+				B5EF81D62A4FCEAF00BBE751 /* StaticAttributeTypes.swift in Sources */,
+				B531B90C2A3E168F00A59DBC /* DecisionTypes.swift in Sources */,
 				B59F5FD22A4ED1EB0090BAB6 /* EmojiHandler.swift in Sources */,
 				B531B8E32A3E15D900A59DBC /* DecisionsView.swift in Sources */,
+				B5EF81D82A4FCEEA00BBE751 /* ResultsTypes.swift in Sources */,
+				B5EF81D22A4FCE4A00BBE751 /* OptionsTypes.swift in Sources */,
 				B59F5FCE2A4ED0130090BAB6 /* OptionsViews.swift in Sources */,
 				B5EF81CF2A4FB14F00BBE751 /* Common.swift in Sources */,
 				B59F5FC62A4BE6970090BAB6 /* ExampleData.swift in Sources */,
 				B5EF81CD2A4EDFF000BBE751 /* EmojiPickerView.swift in Sources */,
 				B59F5FCC2A4ECFF50090BAB6 /* StaticAttributesViews.swift in Sources */,
+				B5EF81D42A4FCE7C00BBE751 /* BoundFloat.swift in Sources */,
 				B5325CFC2A40D40E000142BF /* Strings.swift in Sources */,
 				B59F5FCA2A4ECFB70090BAB6 /* ResultsView.swift in Sources */,
 				B531B8E12A3E15D900A59DBC /* DecisionMakerApp.swift in Sources */,
