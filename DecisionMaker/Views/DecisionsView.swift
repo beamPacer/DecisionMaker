@@ -208,7 +208,7 @@ struct OptionCellView: View {
 	var body: some View {
 		VStack(alignment: .leading, spacing: 4) {
 			Text(option.title)
-				.font(.headline)
+				.font(.system(size: 20))
 				.bold()
 				.lineLimit(1)
 			
