@@ -4,7 +4,12 @@ DecisionMaker (name and app icon TBD) is an app that uses weighted average decis
 
 ## Current status
 
-The app is in beta, but currently only works properly on phones. Pad support is planned as a roadmap item, and certainly pre-app-store.
+The app is in beta through TestFlight, but currently only works properly on phones. Pad support is planned as a roadmap item, and certainly pre-app-store.
+
+Other things to consider before go-live:
+- Pad support as mentioned
+- iCloud storage for sharing decisions across devices
+- Localization into other languages than English
 
 ## Coding Philosophy
 
