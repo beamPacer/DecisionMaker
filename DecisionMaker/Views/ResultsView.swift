@@ -46,16 +46,16 @@ struct ResultsView: View {
 							.font(.system(size: 32))
 							.multilineTextAlignment(.center)
 							.padding()
-						Text("\(Int(firstResult.weightedAverage * 100))")
+						Text("\(Int(firstResult.percentWeightedAverage * 100))%")
 					}
 					
 					List {
-						Section(header: Text("Runners Up")) {
+						Section(header: Text(Strings.Result.runnersUpTitle)) {
 							ForEach(results.dropFirst(), id: \.self) { result in
 								HStack {
 									Text(result.option.title)
 									Spacer()
-									Text("\(Int(result.weightedAverage * 100))")
+									Text("\(Int(result.percentWeightedAverage * 100))%")
 										.foregroundColor(.gray)
 								}
 							}

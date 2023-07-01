@@ -78,6 +78,7 @@ struct Strings {
 		static let title: String = "Results"
 		static let oneItemTitle: String = "You only have one option in your list! Come back when you have more options to consider."
 		static let noItemsTitle: String = "You don't have any options in your list! Come back when you've added some."
+		static let runnersUpTitle: String = "Runners Up"
 	}
 	
 	struct StaticAttributes {

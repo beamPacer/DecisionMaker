@@ -108,13 +108,29 @@ class Decision: ObservableObject, Codable, CustomStringConvertible {
 	}
 	
 	func getResults() -> [Result] {
-		return options.map {
+		let returnValue: [Result] = options.map {
 			Result(
 				option: $0,
-				weightedAverage: getWeightedAverage(for: $0)
+				weightedAverage: getWeightedAverage(for: $0),
+				percentWeightedAverage: 0.0
 			)
 		}
 		.sorted { $0.weightedAverage > $1.weightedAverage }
+		
+		var max: Float = 0
+		returnValue.forEach {
+			if $0.weightedAverage > max {
+				max = $0.weightedAverage
+			}
+		}
+		
+		return returnValue.map {
+			Result(
+				option: $0.option,
+				weightedAverage: $0.weightedAverage,
+				percentWeightedAverage: $0.weightedAverage / max
+			)
+		}
 	}
 	
 	func getWeightedAverage(for option: Option) -> Float {
@@ -134,6 +150,7 @@ class Decision: ObservableObject, Codable, CustomStringConvertible {
 struct Result: Hashable {
 	let option: Option
 	let weightedAverage: Float
+	var percentWeightedAverage: Float
 }
 
 class StaticAttribute: ObservableObject, Codable, Identifiable, Hashable, CustomStringConvertible {
