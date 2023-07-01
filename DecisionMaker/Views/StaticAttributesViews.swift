@@ -29,8 +29,6 @@ struct EditStaticAttributeView: View {
 							if let selected = selectedEmoji {
 								staticAttribute.emoji = selected
 							}
-							
-							staticAttribute.objectWillChange.send()
 						}
 				})
 			}

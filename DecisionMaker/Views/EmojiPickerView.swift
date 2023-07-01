@@ -55,7 +55,6 @@ struct EmojiPicker: View {
 				}
 			}
 			.navigationBarItems(trailing: doneButton)
-			.navigationBarTitle(Text(Strings.EmojiPicker.title))
 		}
 	}
 	
