@@ -170,7 +170,7 @@ struct OptionCellView: View {
 				let optionAttribute = option.getOptionAttribute(for: staticAttribute)
 				
 				HStack {
-					Text("\(staticAttribute.emoji):")
+					Text("\(staticAttribute.emoji)")
 						.fontWeight(.semibold)
 						.foregroundColor(.secondary)
 					
