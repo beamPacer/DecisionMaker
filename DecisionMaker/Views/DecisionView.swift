@@ -26,89 +26,8 @@ struct DecisionView: View {
 					.multilineTextAlignment(.center)
 				
 				List {
-					Section(header: Text(Strings.StaticAttributes.groupLabel).textCase(.none)) {
-						ForEach(decision.staticAttributes, id: \.self) { staticAttribute in
-							NavigationLink(destination: EditStaticAttributeView(staticAttribute: .constant(staticAttribute))) {
-								if uiRefreshToggle || !uiRefreshToggle {
-									HStack {
-										Text(staticAttribute.title)
-										Spacer()
-										Text(staticAttribute.emoji)
-									}
-									
-								}
-							}
-							.onAppear {
-								decision = Decision(
-									staticAttributes: decision.staticAttributes,
-									options: decision.options,
-									title: decision.title
-								)
-							}
-						}
-						.onDelete { indexSet in
-							decision.staticAttributes.remove(atOffsets: indexSet)
-							refreshDecision()
-						}
-
-						Button(action: {
-							let newStaticAttribute = StaticAttribute()
-							decision.addAttribute(newStaticAttribute)
-							newAttribute = newStaticAttribute
-							isShowingNewAttributeView = true
-						}) {
-							Label(Strings.StaticAttributes.addNewTitle, systemImage: "plus")
-						}
-						.sheet(isPresented: $isShowingNewAttributeView) {
-							NavigationView {
-								EditStaticAttributeView(staticAttribute: $newAttribute)
-									.navigationBarTitle(Strings.StaticAttributes.editAttributeNavTitle, displayMode: .inline)
-									.toolbar {
-										Button(Strings.Common.done) {
-											isShowingNewAttributeView = false
-										}
-									}
-							}
-							.onDisappear {
-								refreshDecision()
-							}
-						}
-					}
-					
-					Section(header: Text(Strings.Options.groupLabel).textCase(.none)) {
-						ForEach(decision.options, id: \.self) { option in
-							NavigationLink(destination: EditOptionView(option: .constant(option), decision: decision)) {
-								OptionCellView(option: option, decision: decision)
-							}
-						}
-						.onDelete { indexSet in
-							decision.options.remove(atOffsets: indexSet)
-						}
-
-						Button(action: {
-							let newOptionStack = Option()
-							decision.addOption(newOptionStack)
-							newOption = newOptionStack
-							isShowingNewOptionView = true
-						}) {
-							Label(Strings.Options.addNewTitle, systemImage: "plus")
-						}
-						.sheet(isPresented: $isShowingNewOptionView) {
-							NavigationView {
-								EditOptionView(option: .constant(newOption), decision: decision)
-									.navigationBarTitle(Strings.Options.editOptionNavTitle, displayMode: .inline)
-									.toolbar {
-										Button(Strings.Common.done) {
-											isShowingNewOptionView = false
-										}
-									}
-							}
-							.onDisappear {
-								newOption = Option()
-								refreshDecision()
-							}
-						}
-					}
+					staticAttributesListView
+					optionsListView
 				}
 				Button(action: {
 					isShowingResultsView = true
@@ -144,6 +63,94 @@ struct DecisionView: View {
 			options: decision.options,
 			title: decision.title
 		)
+	}
+	
+	var staticAttributesListView: some View {
+		Section(header: Text(Strings.StaticAttributes.groupLabel).textCase(.none)) {
+			ForEach(decision.staticAttributes, id: \.self) { staticAttribute in
+				NavigationLink(destination: EditStaticAttributeView(staticAttribute: .constant(staticAttribute))) {
+					if uiRefreshToggle || !uiRefreshToggle {
+						HStack {
+							Text(staticAttribute.title)
+							Spacer()
+							Text(staticAttribute.emoji)
+						}
+						
+					}
+				}
+				.onAppear {
+					decision = Decision(
+						staticAttributes: decision.staticAttributes,
+						options: decision.options,
+						title: decision.title
+					)
+				}
+			}
+			.onDelete { indexSet in
+				decision.staticAttributes.remove(atOffsets: indexSet)
+				refreshDecision()
+			}
+
+			Button(action: {
+				let newStaticAttribute = StaticAttribute()
+				decision.addAttribute(newStaticAttribute)
+				newAttribute = newStaticAttribute
+				isShowingNewAttributeView = true
+			}) {
+				Label(Strings.StaticAttributes.addNewTitle, systemImage: "plus")
+			}
+			.sheet(isPresented: $isShowingNewAttributeView) {
+				NavigationView {
+					EditStaticAttributeView(staticAttribute: $newAttribute)
+						.navigationBarTitle(Strings.StaticAttributes.editAttributeNavTitle, displayMode: .inline)
+						.toolbar {
+							Button(Strings.Common.done) {
+								isShowingNewAttributeView = false
+							}
+						}
+				}
+				.onDisappear {
+					refreshDecision()
+				}
+			}
+		}
+	}
+	
+	var optionsListView: some View {
+		Section(header: Text(Strings.Options.groupLabel).textCase(.none)) {
+			ForEach(decision.options, id: \.self) { option in
+				NavigationLink(destination: EditOptionView(option: .constant(option), decision: decision)) {
+					OptionCellView(option: option, decision: decision)
+				}
+			}
+			.onDelete { indexSet in
+				decision.options.remove(atOffsets: indexSet)
+			}
+
+			Button(action: {
+				let newOptionStack = Option()
+				decision.addOption(newOptionStack)
+				newOption = newOptionStack
+				isShowingNewOptionView = true
+			}) {
+				Label(Strings.Options.addNewTitle, systemImage: "plus")
+			}
+			.sheet(isPresented: $isShowingNewOptionView) {
+				NavigationView {
+					EditOptionView(option: .constant(newOption), decision: decision)
+						.navigationBarTitle(Strings.Options.editOptionNavTitle, displayMode: .inline)
+						.toolbar {
+							Button(Strings.Common.done) {
+								isShowingNewOptionView = false
+							}
+						}
+				}
+				.onDisappear {
+					newOption = Option()
+					refreshDecision()
+				}
+			}
+		}
 	}
 }
 
