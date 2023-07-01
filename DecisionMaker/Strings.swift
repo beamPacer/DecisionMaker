@@ -88,6 +88,8 @@ struct Strings {
 		static let defaultTitle: String = "Title"
 		static let importanceLabel: String = "Importance:"
 		static let editAttributeNavTitle: String = "Edit attribute"
+		static let importanceSliderStartLabel: String = "Not important"
+		static let importanceSliderEndLabel: String = "Very important"
 	}
 	
 	struct Options {
@@ -101,6 +103,8 @@ struct Strings {
 	struct OptionAttributes {
 		static let defaultValue: String = "Value"
 		static let goodnessLabel: String = "How happy I am with this value:"
+		static let goodnessSliderStartLabel: String = "Not great"
+		static let goodnessSliderEndLabel: String = "Very happy"
 	}
 	
 	struct Common {

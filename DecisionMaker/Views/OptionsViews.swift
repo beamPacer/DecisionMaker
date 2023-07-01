@@ -27,8 +27,13 @@ struct EditOptionAttributeView: View {
 			TextField(Strings.OptionAttributes.defaultValue, text: $viewModel.optionAttribute.value)
 			VStack(alignment: .leading) {
 				Text(Strings.OptionAttributes.goodnessLabel)
-				Slider(value: $viewModel.optionAttribute.goodness.value,
-					   in: viewModel.optionAttribute.goodness.minimumLimit...viewModel.optionAttribute.goodness.maximumLimit)
+				AnnotatedSlider(
+					startLabel: Strings.OptionAttributes.goodnessSliderStartLabel,
+					endLabel: Strings.OptionAttributes.goodnessSliderEndLabel,
+					value: $viewModel.optionAttribute.goodness.value,
+					range: viewModel.optionAttribute.goodness.minimumLimit...viewModel.optionAttribute.goodness.maximumLimit
+				)
+					.accentColor(.blue)
 			}
 		}
 		.navigationTitle(viewModel.staticAttribute.title)

@@ -38,7 +38,13 @@ struct EditStaticAttributeView: View {
 			
 			VStack(alignment: .leading) {
 				Text(Strings.StaticAttributes.importanceLabel)
-				Slider(value: $staticAttribute.importance.value, in: staticAttribute.importance.minimumLimit...staticAttribute.importance.maximumLimit)
+				AnnotatedSlider(
+					startLabel: Strings.StaticAttributes.importanceSliderStartLabel,
+					endLabel: Strings.StaticAttributes.importanceSliderEndLabel,
+					value: $staticAttribute.importance.value,
+					range: staticAttribute.importance.minimumLimit...staticAttribute.importance.maximumLimit
+				)
+					.accentColor(.blue)
 			}
 		}
 		.navigationTitle(Strings.StaticAttributes.editAttributeNavTitle)
