@@ -62,4 +62,14 @@ final class EmojiHandlerTests: XCTestCase {
 			"⛯"
 		].contains(emoji))
 	}
+	
+	// Search terms
+	
+	func testGetSearchTerms_shortTerms() {
+		let emojiHandler = EmojiHandler()
+		let search: String = "ca b"
+		let searchTerms = emojiHandler.getSearchTerms(for: search)
+		XCTAssertEqual(searchTerms.count, 1)
+		XCTAssertEqual(searchTerms, ["CA"])
+	}
 }

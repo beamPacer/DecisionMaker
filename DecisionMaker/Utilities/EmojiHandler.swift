@@ -39,7 +39,7 @@ struct EmojiHandler {
 	}
 	
 	func emojis(for searchString: String) -> [String] {
-		let searchTerms: [String] = searchString.split(separator: " ").map { String($0).uppercased() }
+		let searchTerms: [String] = getSearchTerms(for: searchString)
 		var candidates: [String] = []
 		for key in allEmojis.keys {
 			for searchTerm in searchTerms {
@@ -53,7 +53,7 @@ struct EmojiHandler {
 	}
 	
 	func emoji(for searchString: String) -> String? {
-		let searchTerms: [String] = searchString.split(separator: " ").map { String($0).uppercased() }
+		let searchTerms: [String] = getSearchTerms(for: searchString)
 		var candidates: [String: Int] = [:]
 		for key in allEmojis.keys {
 			for searchTerm in searchTerms {
@@ -77,5 +77,12 @@ struct EmojiHandler {
 		}
 		
 		return allEmojis[firstCandidate]
+	}
+	
+	func getSearchTerms(for searchString: String) -> [String] {
+		searchString
+			.split(separator: " ")
+			.map { String($0).uppercased() }
+			.filter { $0.count > 1 }
 	}
 }
