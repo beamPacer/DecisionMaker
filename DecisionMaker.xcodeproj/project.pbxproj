@@ -8,7 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		B531B8E12A3E15D900A59DBC /* DecisionMakerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B531B8E02A3E15D900A59DBC /* DecisionMakerApp.swift */; };
-		B531B8E32A3E15D900A59DBC /* DecisionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B531B8E22A3E15D900A59DBC /* DecisionsView.swift */; };
+		B531B8E32A3E15D900A59DBC /* DecisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B531B8E22A3E15D900A59DBC /* DecisionView.swift */; };
 		B531B8E52A3E15D900A59DBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B531B8E42A3E15D900A59DBC /* Assets.xcassets */; };
 		B531B8E82A3E15D900A59DBC /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B531B8E72A3E15D900A59DBC /* Preview Assets.xcassets */; };
 		B531B8F22A3E15D900A59DBC /* DecisionMakerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B531B8F12A3E15D900A59DBC /* DecisionMakerTests.swift */; };
@@ -29,6 +29,7 @@
 		B5EF81D42A4FCE7C00BBE751 /* BoundFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF81D32A4FCE7C00BBE751 /* BoundFloat.swift */; };
 		B5EF81D62A4FCEAF00BBE751 /* StaticAttributeTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF81D52A4FCEAF00BBE751 /* StaticAttributeTypes.swift */; };
 		B5EF81D82A4FCEEA00BBE751 /* ResultsTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF81D72A4FCEEA00BBE751 /* ResultsTypes.swift */; };
+		B5EF81DB2A4FD3B100BBE751 /* DecisionListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF81DA2A4FD3B100BBE751 /* DecisionListView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -51,7 +52,7 @@
 /* Begin PBXFileReference section */
 		B531B8DD2A3E15D900A59DBC /* DecisionMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DecisionMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B531B8E02A3E15D900A59DBC /* DecisionMakerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionMakerApp.swift; sourceTree = "<group>"; };
-		B531B8E22A3E15D900A59DBC /* DecisionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionsView.swift; sourceTree = "<group>"; };
+		B531B8E22A3E15D900A59DBC /* DecisionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionView.swift; sourceTree = "<group>"; };
 		B531B8E42A3E15D900A59DBC /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B531B8E72A3E15D900A59DBC /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		B531B8ED2A3E15D900A59DBC /* DecisionMakerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = DecisionMakerTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -75,6 +76,7 @@
 		B5EF81D32A4FCE7C00BBE751 /* BoundFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundFloat.swift; sourceTree = "<group>"; };
 		B5EF81D52A4FCEAF00BBE751 /* StaticAttributeTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticAttributeTypes.swift; sourceTree = "<group>"; };
 		B5EF81D72A4FCEEA00BBE751 /* ResultsTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTypes.swift; sourceTree = "<group>"; };
+		B5EF81DA2A4FD3B100BBE751 /* DecisionListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionListView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -167,7 +169,8 @@
 			isa = PBXGroup;
 			children = (
 				B5EF81CE2A4FB14F00BBE751 /* Common.swift */,
-				B531B8E22A3E15D900A59DBC /* DecisionsView.swift */,
+				B531B8E22A3E15D900A59DBC /* DecisionView.swift */,
+				B5EF81DA2A4FD3B100BBE751 /* DecisionListView.swift */,
 				B5EF81CC2A4EDFF000BBE751 /* EmojiPickerView.swift */,
 				B59F5FCD2A4ED0130090BAB6 /* OptionsViews.swift */,
 				B59F5FC92A4ECFB70090BAB6 /* ResultsView.swift */,
@@ -331,7 +334,7 @@
 				B5EF81D62A4FCEAF00BBE751 /* StaticAttributeTypes.swift in Sources */,
 				B531B90C2A3E168F00A59DBC /* DecisionTypes.swift in Sources */,
 				B59F5FD22A4ED1EB0090BAB6 /* EmojiHandler.swift in Sources */,
-				B531B8E32A3E15D900A59DBC /* DecisionsView.swift in Sources */,
+				B531B8E32A3E15D900A59DBC /* DecisionView.swift in Sources */,
 				B5EF81D82A4FCEEA00BBE751 /* ResultsTypes.swift in Sources */,
 				B5EF81D22A4FCE4A00BBE751 /* OptionsTypes.swift in Sources */,
 				B59F5FCE2A4ED0130090BAB6 /* OptionsViews.swift in Sources */,
@@ -343,6 +346,7 @@
 				B5325CFC2A40D40E000142BF /* Strings.swift in Sources */,
 				B59F5FCA2A4ECFB70090BAB6 /* ResultsView.swift in Sources */,
 				B531B8E12A3E15D900A59DBC /* DecisionMakerApp.swift in Sources */,
+				B5EF81DB2A4FD3B100BBE751 /* DecisionListView.swift in Sources */,
 				B54D53F22A4BE387003F804C /* Persistence.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
