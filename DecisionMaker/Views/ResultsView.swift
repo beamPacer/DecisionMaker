@@ -13,37 +13,22 @@ struct ResultsView: View {
 	var body: some View {
 		GeometryReader { geometry in
 			switch results.count {
-			case 0:		noResultsView
-			case 1:		oneResultView
+			case 0:		emptyStateView(hasOneOption: false)
+			case 1:		emptyStateView(hasOneOption: true)
 			default:	properResultsView
 			}
 		}
 	}
 	
-	var noResultsView: some View {
-		GeometryReader { geometry in
+	func emptyStateView(hasOneOption: Bool) -> some View {
+		let title = hasOneOption ? Strings.Result.oneItemTitle : Strings.Result.noItemsTitle
+		
+		return GeometryReader { geometry in
 			VStack {
 				Spacer()
 				HStack {
 					Spacer()
-					Text(Strings.Result.noItemsTitle)
-						.frame(width: geometry.size.width * 0.75)
-						.font(.system(size: 22))
-						.multilineTextAlignment(.center)
-					Spacer()
-				}
-				Spacer()
-			}
-		}
-	}
-	
-	var oneResultView: some View {
-		GeometryReader { geometry in
-			VStack {
-				Spacer()
-				HStack {
-					Spacer()
-					Text(Strings.Result.oneItemTitle)
+					Text(title)
 						.frame(width: geometry.size.width * 0.75)
 						.font(.system(size: 22))
 						.multilineTextAlignment(.center)
@@ -80,7 +65,7 @@ struct ResultsView: View {
 		.navigationTitle(Strings.Result.title)
 	}
 	
-	func formatPercentWeightedAverage(for result: Result) -> String {
+	private func formatPercentWeightedAverage(for result: Result) -> String {
 		"\(Int(result.percentWeightedAverage * 100))%"
 	}
 }
