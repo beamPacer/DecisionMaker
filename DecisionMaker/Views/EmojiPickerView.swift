@@ -68,27 +68,3 @@ struct EmojiPicker: View {
 		}
 	}
 }
-
-struct SearchBar: View {
-	@Binding var text: String
-	
-	var body: some View {
-		HStack {
-			TextField(Strings.Common.search, text: $text)
-				.padding(.vertical, 8)
-				.padding(.horizontal, 16)
-				.background(Color(.systemGray5))
-				.cornerRadius(8)
-			
-			Button(action: {
-				text = ""
-			}) {
-				Image(systemName: "xmark.circle.fill")
-					.foregroundColor(.gray)
-					.font(.system(size: 20))
-			}
-			.padding(.trailing, 8)
-			.opacity(text.isEmpty ? 0 : 1)
-		}
-	}
-}
