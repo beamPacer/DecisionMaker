@@ -67,6 +67,7 @@ struct Strings {
 	
 	struct Decision {
 		static let newDecisionTitle: String = String(localized: "decision.newDecisionTitle")
+		static let newDecisionPrompt: String = String(localized: "decision.newDecisionPrompt")
 		static let enterNewPrompt: String = String(localized: "decision.enterNewPrompt")
 		static let titlePlaceholder: String = String(localized: "decision.titlePlaceholder")
 		static let getResults: String = String(localized: "decision.getResults")

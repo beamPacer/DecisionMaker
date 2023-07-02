@@ -30,33 +30,11 @@ struct DecisionListView: View {
 					Label(Strings.Decision.addNewTitle, systemImage: "plus")
 				}
 				.sheet(isPresented: $isShowingNewDecisionView) {
-					NavigationView {
-						VStack {
-							TextField(Strings.Decision.enterNewPrompt, text: $newDecisionTitle)
-								.textFieldStyle(.roundedBorder)
-								.padding()
-							
-							Button(action: {
-								let newDecision = Decision()
-								newDecision.title = newDecisionTitle
-								decisionData.decisions.append(newDecision)
-								isShowingNewDecisionView = false
-								newDecisionTitle = ""
-							}) {
-								Text(Strings.Common.done)
-									.font(.title2)
-									.fontWeight(.bold)
-									.padding()
-									.background(Color.blue)
-									.foregroundColor(.white)
-									.cornerRadius(10)
-									.padding()
-							}
-						}
-					}
+					NewDecisionView(isPresented: $isShowingNewDecisionView, newDecisionTitle: $newDecisionTitle, decisionData: decisionData)
 				}
 			}
 			.navigationBarTitle(Strings.Decision.mainListTitle)
 		}
 	}
 }
+

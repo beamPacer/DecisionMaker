@@ -34,6 +34,7 @@
 "exampleData.buyingAHouse.option4.location" = "Near Gym";
 
 "decision.newDecisionTitle" = "New Decision";
+"decision.newDecisionPrompt" = "Enter a title:";
 "decision.enterNewPrompt" = "Enter decision title";
 "decision.titlePlaceholder" = "Decision Title";
 "decision.getResults" = "Get Results";
