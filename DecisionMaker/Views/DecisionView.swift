@@ -171,6 +171,7 @@ struct OptionCellView: View {
 				
 				HStack {
 					Text("\(staticAttribute.emoji)")
+						.frame(width: 30, alignment: .leading)
 						.fontWeight(.semibold)
 						.foregroundColor(.secondary)
 					
@@ -183,3 +184,4 @@ struct OptionCellView: View {
 		.padding(.vertical, 8)
 	}
 }
+
