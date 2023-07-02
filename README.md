@@ -18,3 +18,14 @@ This codebase is an experiment in coding with chatGPT. The data layer has been w
 - chatGPT hallucinates sometimes, but pretty rarely (using GPT 4) in my experience with this project.
 
 The big takeaway for me for developing with the assistance of chatGPT is that it's still an _assistant_, requiring at least an experienced engineer to evaluate, adjust, and integrate its work. But it has been a huge help as an assistant, and has greatly, greatly reduced the time this project has taken to implement.
+
+Probably the most helpful thing it has been able to do is generate Localizable.strings files, including the translations, just based on the Strings struct. That required zero revisions and was work that would have been both tedious and beyond my skill set (for the translations), and was of course lightning fast. So that was particularly great.
+
+## AI Coding Statistics
+
+As of the previous commit:
+
+ChatGPT has contributed 1377 lines of change to this branch.
+Overall, there have been 5737 lines of change to this branch.
+
+ChatGPT has contributed 24% of the lines of change to this branch. Thanks chatGPT!
