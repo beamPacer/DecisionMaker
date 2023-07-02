@@ -9,111 +9,111 @@ import Foundation
 
 struct Strings {
 	struct App {
-		static let title: String = "Decision Maker"
+		static let title: String = String(localized: "app.title")
 	}
 	
 	struct ExampleData {
 		struct BuyingAHouse {
-			static let title: String = "Example: House Buying"
+			static let title: String = String(localized: "exampleData.buyingAHouse.title")
 			
-			static let color: String = "Color"
+			static let color: String = String(localized: "exampleData.buyingAHouse.color")
 			static let colorImportance: BoundFloat = BoundFloat(0.27)
-			static let price: String = "Price"
+			static let price: String = String(localized: "exampleData.buyingAHouse.price")
 			static let priceImportance: BoundFloat = BoundFloat(1.0)
-			static let location: String = "Location"
+			static let location: String = String(localized: "exampleData.buyingAHouse.location")
 			static let locationImportance: BoundFloat = BoundFloat(0.6)
 			
 			struct Option1 {
-				static let title: String = "144 38th St."
-				static let color: String = "Green"
+				static let title: String = String(localized: "exampleData.buyingAHouse.option1.title")
+				static let color: String = String(localized: "exampleData.buyingAHouse.option1.color")
 				static let colorGoodness: BoundFloat = BoundFloat(0.4)
-				static let price: String = "244k"
+				static let price: String = String(localized: "exampleData.buyingAHouse.option1.price")
 				static let priceGoodness: BoundFloat = BoundFloat(0.13)
-				static let location: String = "Near work"
+				static let location: String = String(localized: "exampleData.buyingAHouse.option1.location")
 				static let locationGoodness: BoundFloat = BoundFloat(0.9)
 			}
 			
 			struct Option2 {
-				static let title: String = "N. Broadway Yellow House"
-				static let color: String = "Yellow"
+				static let title: String = String(localized: "exampleData.buyingAHouse.option2.title")
+				static let color: String = String(localized: "exampleData.buyingAHouse.option2.color")
 				static let colorGoodness: BoundFloat = BoundFloat(0.1)
-				static let price: String = "197k"
+				static let price: String = String(localized: "exampleData.buyingAHouse.option2.price")
 				static let priceGoodness: BoundFloat = BoundFloat(0.3)
-				static let location: String = "Near dog park"
+				static let location: String = String(localized: "exampleData.buyingAHouse.option2.location")
 				static let locationGoodness: BoundFloat = BoundFloat(1.0)
 			}
 			
 			struct Option3 {
-				static let title: String = "Condo on 47th"
-				static let color: String = "Brown"
+				static let title: String = String(localized: "exampleData.buyingAHouse.option3.title")
+				static let color: String = String(localized: "exampleData.buyingAHouse.option3.color")
 				static let colorGoodness: BoundFloat = BoundFloat(0.35)
-				static let price: String = "152k"
+				static let price: String = String(localized: "exampleData.buyingAHouse.option3.price")
 				static let priceGoodness: BoundFloat = BoundFloat(0.66)
-				static let location: String = "Nearest to work"
+				static let location: String = String(localized: "exampleData.buyingAHouse.option3.location")
 				static let locationGoodness: BoundFloat = BoundFloat(0.95)
 			}
 			
 			struct Option4 {
-				static let title: String = "Split-level on Grand"
-				static let color: String = "Purple"
+				static let title: String = String(localized: "exampleData.buyingAHouse.option4.title")
+				static let color: String = String(localized: "exampleData.buyingAHouse.option4.color")
 				static let colorGoodness: BoundFloat = BoundFloat(1.0)
-				static let price: String = "114k"
+				static let price: String = String(localized: "exampleData.buyingAHouse.option4.price")
 				static let priceGoodness: BoundFloat = BoundFloat(1.0)
-				static let location: String = "Near Gym"
+				static let location: String = String(localized: "exampleData.buyingAHouse.option4.location")
 				static let locationGoodness: BoundFloat = BoundFloat(0.8)
 			}
 		}
 	}
 	
 	struct Decision {
-		static let newDecisionTitle: String = "New Decision"
-		static let enterNewPrompt: String = "Enter decision title"
-		static let titlePlaceholder: String = "Decision Title"
-		static let getResults: String = "Get Results"
-		static let addNewTitle: String = "Add new decision"
-		static let mainListTitle: String = "Decisions"
+		static let newDecisionTitle: String = String(localized: "decision.newDecisionTitle")
+		static let enterNewPrompt: String = String(localized: "decision.enterNewPrompt")
+		static let titlePlaceholder: String = String(localized: "decision.titlePlaceholder")
+		static let getResults: String = String(localized: "decision.getResults")
+		static let addNewTitle: String = String(localized: "decision.addNewTitle")
+		static let mainListTitle: String = String(localized: "decision.mainListTitle")
 	}
 	
 	struct Result {
-		static let title: String = "Results"
-		static let oneItemTitle: String = "You only have one option in your list! Come back when you have more options to consider."
-		static let noItemsTitle: String = "You don't have any options in your list! Come back when you've added some."
-		static let runnersUpTitle: String = "Runners Up"
+		static let title: String = String(localized: "result.title")
+		static let oneItemTitle: String = String(localized: "result.oneItemTitle")
+		static let noItemsTitle: String = String(localized: "result.noItemsTitle")
+		static let runnersUpTitle: String = String(localized: "result.runnersUpTitle")
 	}
 	
 	struct StaticAttributes {
-		static let groupLabel: String = "Attributes I'm looking for"
-		static let addNewTitle: String = "Add new attribute"
-		static let newAttributeTitle: String = "New attribute"
-		static let defaultTitle: String = "Title"
-		static let importanceLabel: String = "Importance:"
-		static let editAttributeNavTitle: String = "Edit attribute"
-		static let importanceSliderStartLabel: String = "Not important"
-		static let importanceSliderEndLabel: String = "Very important"
+		static let groupLabel: String = String(localized: "staticAttributes.groupLabel")
+		static let addNewTitle: String = String(localized: "staticAttributes.addNewTitle")
+		static let newAttributeTitle: String = String(localized: "staticAttributes.newAttributeTitle")
+		static let defaultTitle: String = String(localized: "staticAttributes.defaultTitle")
+		static let importanceLabel: String = String(localized: "staticAttributes.importanceLabel")
+		static let editAttributeNavTitle: String = String(localized: "staticAttributes.editAttributeNavTitle")
+		static let importanceSliderStartLabel: String = String(localized: "staticAttributes.importanceSliderStartLabel")
+		static let importanceSliderEndLabel: String = String(localized: "staticAttributes.importanceSliderEndLabel")
 	}
 	
 	struct Options {
-		static let groupLabel: String = "Options I have"
-		static let addNewTitle: String = "Add new option"
-		static let newOptionTitle: String = "New option"
-		static let defaultTitle: String = "Title"
-		static let editOptionNavTitle: String = "Edit option"
+		static let groupLabel: String = String(localized: "options.groupLabel")
+		static let addNewTitle: String = String(localized: "options.addNewTitle")
+		static let newOptionTitle: String = String(localized: "options.newOptionTitle")
+		static let defaultTitle: String = String(localized: "options.defaultTitle")
+		static let editOptionNavTitle: String = String(localized: "options.editOptionNavTitle")
 	}
 	
 	struct OptionAttributes {
-		static let defaultValue: String = "Value"
-		static let goodnessLabel: String = "How happy I am with this value:"
-		static let goodnessSliderStartLabel: String = "Not great"
-		static let goodnessSliderEndLabel: String = "Very happy"
+		static let defaultValue: String = String(localized: "optionAttributes.defaultValue")
+		static let goodnessLabel: String = String(localized: "optionAttributes.goodnessLabel")
+		static let goodnessSliderStartLabel: String = String(localized: "optionAttributes.goodnessSliderStartLabel")
+		static let goodnessSliderEndLabel: String = String(localized: "optionAttributes.goodnessSliderEndLabel")
 	}
 	
 	struct Common {
-		static let done: String = "Done"
-		static let search: String = "Search"
-		static let defaultEmoji: String = "⋯"
+		static let done: String = String(localized: "common.done")
+		static let search: String = String(localized: "common.search")
+		static let defaultEmoji: String = String(localized: "common.defaultEmoji")
 	}
 	
 	struct EmojiPicker {
-		static let title: String = "Choose an Emoji"
+		static let title: String = String(localized: "emojiPicker.title")
 	}
 }

@@ -1,0 +1,72 @@
+/* 
+  Localizable.strings
+  DecisionMaker
+
+  Created by Emma Sinclair on 7/2/23.
+  
+*/
+
+"app.title" = "Decision Maker";
+
+"exampleData.buyingAHouse.title" = "Example: House Buying";
+"exampleData.buyingAHouse.color" = "Color";
+"exampleData.buyingAHouse.price" = "Price";
+"exampleData.buyingAHouse.location" = "Location";
+
+"exampleData.buyingAHouse.option1.title" = "144 38th St.";
+"exampleData.buyingAHouse.option1.color" = "Green";
+"exampleData.buyingAHouse.option1.price" = "244k";
+"exampleData.buyingAHouse.option1.location" = "Near work";
+
+"exampleData.buyingAHouse.option2.title" = "N. Broadway Yellow House";
+"exampleData.buyingAHouse.option2.color" = "Yellow";
+"exampleData.buyingAHouse.option2.price" = "197k";
+"exampleData.buyingAHouse.option2.location" = "Near dog park";
+
+"exampleData.buyingAHouse.option3.title" = "Condo on 47th";
+"exampleData.buyingAHouse.option3.color" = "Brown";
+"exampleData.buyingAHouse.option3.price" = "152k";
+"exampleData.buyingAHouse.option3.location" = "Nearest to work";
+
+"exampleData.buyingAHouse.option4.title" = "Split-level on Grand";
+"exampleData.buyingAHouse.option4.color" = "Purple";
+"exampleData.buyingAHouse.option4.price" = "114k";
+"exampleData.buyingAHouse.option4.location" = "Near Gym";
+
+"decision.newDecisionTitle" = "New Decision";
+"decision.enterNewPrompt" = "Enter decision title";
+"decision.titlePlaceholder" = "Decision Title";
+"decision.getResults" = "Get Results";
+"decision.addNewTitle" = "Add new decision";
+"decision.mainListTitle" = "Decisions";
+
+"result.title" = "Results";
+"result.oneItemTitle" = "You only have one option in your list! Come back when you have more options to consider.";
+"result.noItemsTitle" = "You don't have any options in your list! Come back when you've added some.";
+"result.runnersUpTitle" = "Runners Up";
+
+"staticAttributes.groupLabel" = "Attributes I'm looking for";
+"staticAttributes.addNewTitle" = "Add new attribute";
+"staticAttributes.newAttributeTitle" = "New attribute";
+"staticAttributes.defaultTitle" = "Title";
+"staticAttributes.importanceLabel" = "Importance:";
+"staticAttributes.editAttributeNavTitle" = "Edit attribute";
+"staticAttributes.importanceSliderStartLabel" = "Not important";
+"staticAttributes.importanceSliderEndLabel" = "Very important";
+
+"options.groupLabel" = "Options I have";
+"options.addNewTitle" = "Add new option";
+"options.newOptionTitle" = "New option";
+"options.defaultTitle" = "Title";
+"options.editOptionNavTitle" = "Edit option";
+
+"optionAttributes.defaultValue" = "Value";
+"optionAttributes.goodnessLabel" = "How happy I am with this value:";
+"optionAttributes.goodnessSliderStartLabel" = "Not great";
+"optionAttributes.goodnessSliderEndLabel" = "Very happy";
+
+"common.done" = "Done";
+"common.search" = "Search";
+"common.defaultEmoji" = "⋯";
+
+"emojiPicker.title" = "Choose an Emoji";
