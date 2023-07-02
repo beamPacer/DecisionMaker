@@ -8,7 +8,7 @@
 
 "app.title" = "Decision Maker";
 
-"exampleData.buyingAHouse.title" = "Example: House Buying";
+"exampleData.buyingAHouse.title" = "Example: Buying a House";
 "exampleData.buyingAHouse.color" = "Color";
 "exampleData.buyingAHouse.price" = "Price";
 "exampleData.buyingAHouse.location" = "Location";
