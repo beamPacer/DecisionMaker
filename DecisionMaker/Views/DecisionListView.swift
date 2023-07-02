@@ -13,7 +13,7 @@ struct DecisionListView: View {
 	@State private var isShowingNewDecisionView = false
 	
 	var body: some View {
-		NavigationView {
+		NavigationStack {
 			List {
 				ForEach(decisionData.decisions.indices, id: \.self) { index in
 					NavigationLink(destination: DecisionView(decision: $decisionData.decisions[index])) {
