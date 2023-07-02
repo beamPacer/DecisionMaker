@@ -41,7 +41,7 @@ def count_lines_of_change_all_time(repo_path):
                     line_count += int(added) if added != '-' else 0
                     line_count += int(deleted) if deleted != '-' else 0
 
-        return line_count
+        return line_count - 835 # number of lines of change in the initial commit, which only contained Xcode-generated content
     except subprocess.CalledProcessError:
         return 0
 
