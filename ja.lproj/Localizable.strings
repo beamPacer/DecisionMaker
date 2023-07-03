@@ -1,0 +1,73 @@
+/*
+  Localizable.strings
+  DecisionMaker
+
+  Created by Emma Sinclair on 7/2/23.
+  
+*/
+
+"app.title" = "意思決定メーカー";
+
+"exampleData.buyingAHouse.title" = "例：家を買う";
+"exampleData.buyingAHouse.color" = "色";
+"exampleData.buyingAHouse.price" = "価格";
+"exampleData.buyingAHouse.location" = "場所";
+
+"exampleData.buyingAHouse.option1.title" = "144 38th St.";
+"exampleData.buyingAHouse.option1.color" = "緑";
+"exampleData.buyingAHouse.option1.price" = "244k";
+"exampleData.buyingAHouse.option1.location" = "職場の近く";
+
+"exampleData.buyingAHouse.option2.title" = "N. Broadway Yellow House";
+"exampleData.buyingAHouse.option2.color" = "黄色";
+"exampleData.buyingAHouse.option2.price" = "197k";
+"exampleData.buyingAHouse.option2.location" = "犬の公園の近く";
+
+"exampleData.buyingAHouse.option3.title" = "47番街のコンドミニアム";
+"exampleData.buyingAHouse.option3.color" = "茶色";
+"exampleData.buyingAHouse.option3.price" = "152k";
+"exampleData.buyingAHouse.option3.location" = "職場に最も近い";
+
+"exampleData.buyingAHouse.option4.title" = "Grandのスプリットレベル";
+"exampleData.buyingAHouse.option4.color" = "紫";
+"exampleData.buyingAHouse.option4.price" = "114k";
+"exampleData.buyingAHouse.option4.location" = "ジムの近く";
+
+"decision.newDecisionTitle" = "新しい決定";
+"decision.newDecisionPrompt" = "タイトルを入力してください：";
+"decision.enterNewPrompt" = "決定のタイトルを入力してください";
+"decision.titlePlaceholder" = "決定のタイトル";
+"decision.getResults" = "結果を得る";
+"decision.addNewTitle" = "新しい決定を追加";
+"decision.mainListTitle" = "決定事項";
+
+"result.title" = "結果";
+"result.oneItemTitle" = "リストには一つの選択肢しかありません！他の選択肢が増えたら戻ってきてください。";
+"result.noItemsTitle" = "リストには選択肢がありません！何か追加したら戻ってきてください。";
+"result.runnersUpTitle" = "次点";
+
+"staticAttributes.groupLabel" = "探している属性";
+"staticAttributes.addNewTitle" = "新しい属性を追加";
+"staticAttributes.newAttributeTitle" = "新しい属性";
+"staticAttributes.defaultTitle" = "タイトル";
+"staticAttributes.importanceLabel" = "重要性：";
+"staticAttributes.editAttributeNavTitle" = "属性を編集";
+"staticAttributes.importanceSliderStartLabel" = "重要でない";
+"staticAttributes.importanceSliderEndLabel" = "非常に重要";
+
+"options.groupLabel" = "私が持っている選択肢";
+"options.addNewTitle" = "新しいオプションを追加";
+"options.newOptionTitle" = "新しいオプション";
+"options.defaultTitle" = "タイトル";
+"options.editOptionNavTitle" = "オプションを編集";
+
+"optionAttributes.defaultValue" = "値";
+"optionAttributes.goodnessLabel" = "この価値にどれだけ満足しているか：";
+"optionAttributes.goodnessSliderStartLabel" = "それほど良くない";
+"optionAttributes.goodnessSliderEndLabel" = "非常に満足";
+
+"common.done" = "完了";
+"common.search" = "検索";
+"common.defaultEmoji" = "⋯";
+
+"emojiPicker.title" = "絵文字を選択";

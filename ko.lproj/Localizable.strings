@@ -1,0 +1,73 @@
+/*
+  Localizable.strings
+  DecisionMaker
+
+  Created by Emma Sinclair on 7/2/23.
+  
+*/
+
+"app.title" = "결정 메이커";
+
+"exampleData.buyingAHouse.title" = "예시: 집 구매";
+"exampleData.buyingAHouse.color" = "색상";
+"exampleData.buyingAHouse.price" = "가격";
+"exampleData.buyingAHouse.location" = "위치";
+
+"exampleData.buyingAHouse.option1.title" = "144 38th St.";
+"exampleData.buyingAHouse.option1.color" = "녹색";
+"exampleData.buyingAHouse.option1.price" = "244k";
+"exampleData.buyingAHouse.option1.location" = "근무지 근처";
+
+"exampleData.buyingAHouse.option2.title" = "N. Broadway Yellow House";
+"exampleData.buyingAHouse.option2.color" = "노란색";
+"exampleData.buyingAHouse.option2.price" = "197k";
+"exampleData.buyingAHouse.option2.location" = "개 공원 근처";
+
+"exampleData.buyingAHouse.option3.title" = "47번가의 콘도";
+"exampleData.buyingAHouse.option3.color" = "갈색";
+"exampleData.buyingAHouse.option3.price" = "152k";
+"exampleData.buyingAHouse.option3.location" = "근무지와 가장 가까움";
+
+"exampleData.buyingAHouse.option4.title" = "Grand의 Split-level";
+"exampleData.buyingAHouse.option4.color" = "보라색";
+"exampleData.buyingAHouse.option4.price" = "114k";
+"exampleData.buyingAHouse.option4.location" = "체육관 근처";
+
+"decision.newDecisionTitle" = "새로운 결정";
+"decision.newDecisionPrompt" = "제목을 입력하세요:";
+"decision.enterNewPrompt" = "결정 제목을 입력하세요";
+"decision.titlePlaceholder" = "결정 제목";
+"decision.getResults" = "결과 보기";
+"decision.addNewTitle" = "새로운 결정 추가";
+"decision.mainListTitle" = "결정 사항";
+
+"result.title" = "결과";
+"result.oneItemTitle" = "목록에 한 가지 옵션만 있습니다! 더 많은 옵션을 고려할 수 있을 때 다시 와보세요.";
+"result.noItemsTitle" = "목록에 옵션이 없습니다! 추가한 후 다시 와보세요.";
+"result.runnersUpTitle" = "준우승자들";
+
+"staticAttributes.groupLabel" = "내가 찾고 있는 속성";
+"staticAttributes.addNewTitle" = "새로운 속성 추가";
+"staticAttributes.newAttributeTitle" = "새로운 속성";
+"staticAttributes.defaultTitle" = "제목";
+"staticAttributes.importanceLabel" = "중요성:";
+"staticAttributes.editAttributeNavTitle" = "속성 수정";
+"staticAttributes.importanceSliderStartLabel" = "별로 중요하지 않음";
+"staticAttributes.importanceSliderEndLabel" = "매우 중요함";
+
+"options.groupLabel" = "내가 가진 옵션";
+"options.addNewTitle" = "새로운 옵션 추가";
+"options.newOptionTitle" = "새로운 옵션";
+"options.defaultTitle" = "제목";
+"options.editOptionNavTitle" = "옵션 수정";
+
+"optionAttributes.defaultValue" = "값";
+"optionAttributes.goodnessLabel" = "이 값에 대해 얼마나 만족하는지:";
+"optionAttributes.goodnessSliderStartLabel" = "그다지 좋지 않음";
+"optionAttributes.goodnessSliderEndLabel" = "매우 행복함";
+
+"common.done" = "완료";
+"common.search" = "검색";
+"common.defaultEmoji" = "⋯";
+
+"emojiPicker.title" = "이모티콘 선택";
