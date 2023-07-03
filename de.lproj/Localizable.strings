@@ -1,0 +1,74 @@
+/*
+  Localizable.strings
+  DecisionMaker
+
+  Created by Emma Sinclair on 7/2/23.
+  
+*/
+
+"app.title" = "Entscheidungsträger";
+
+"exampleData.buyingAHouse.title" = "Beispiel: Hauskauf";
+"exampleData.buyingAHouse.color" = "Farbe";
+"exampleData.buyingAHouse.price" = "Preis";
+"exampleData.buyingAHouse.location" = "Standort";
+
+"exampleData.buyingAHouse.option1.title" = "144 38th St.";
+"exampleData.buyingAHouse.option1.color" = "Grün";
+"exampleData.buyingAHouse.option1.price" = "244k";
+"exampleData.buyingAHouse.option1.location" = "In der Nähe der Arbeit";
+
+"exampleData.buyingAHouse.option2.title" = "Gelbes Haus auf N. Broadway";
+"exampleData.buyingAHouse.option2.color" = "Gelb";
+"exampleData.buyingAHouse.option2.price" = "197k";
+"exampleData.buyingAHouse.option2.location" = "In der Nähe des Hundeparks";
+
+"exampleData.buyingAHouse.option3.title" = "Condo auf der 47th";
+"exampleData.buyingAHouse.option3.color" = "Braun";
+"exampleData.buyingAHouse.option3.price" = "152k";
+"exampleData.buyingAHouse.option3.location" = "Am nächsten zur Arbeit";
+
+"exampleData.buyingAHouse.option4.title" = "Mehrebenenhaus auf Grand";
+"exampleData.buyingAHouse.option4.color" = "Lila";
+"exampleData.buyingAHouse.option4.price" = "114k";
+"exampleData.buyingAHouse.option4.location" = "In der Nähe des Fitnessstudios";
+
+"decision.newDecisionTitle" = "Neue Entscheidung";
+"decision.newDecisionPrompt" = "Geben Sie einen Titel ein:";
+"decision.enterNewPrompt" = "Entscheidungstitel eingeben";
+"decision.titlePlaceholder" = "Entscheidungstitel";
+"decision.getResults" = "Ergebnisse erhalten";
+"decision.addNewTitle" = "Neue Entscheidung hinzufügen";
+"decision.mainListTitle" = "Entscheidungen";
+
+"result.title" = "Ergebnisse";
+"result.oneItemTitle" = "Sie haben nur eine Option auf Ihrer Liste! Kommen Sie zurück, wenn Sie mehr Optionen zur Verfügung haben.";
+"result.noItemsTitle" = "Sie haben keine Optionen auf Ihrer Liste! Kommen Sie zurück, wenn Sie einige hinzugefügt haben.";
+"result.runnersUpTitle" = "Zweiter Sieger";
+
+"staticAttributes.groupLabel" = "Attribute, die ich suche";
+"staticAttributes.addNewTitle" = "Neues Attribut hinzufügen";
+"staticAttributes.newAttributeTitle" = "Neues Attribut";
+"staticAttributes.defaultTitle" = "Titel";
+"staticAttributes.importanceLabel" = "Wichtigkeit:";
+"staticAttributes.editAttributeNavTitle" = "Attribut bearbeiten";
+"staticAttributes.importanceSliderStartLabel" = "Nicht wichtig";
+"staticAttributes.importanceSliderEndLabel" = "Sehr wichtig";
+
+"options.groupLabel" = "Optionen, die ich habe";
+"options.addNewTitle" = "Neue Option hinzufügen";
+"options.newOptionTitle" = "Neue Option";
+"options.defaultTitle" = "Titel";
+"options.editOptionNavTitle" = "Option bearbeiten";
+
+"optionAttributes.defaultValue" = "Wert";
+"optionAttributes.goodnessLabel" = "Wie zufrieden ich mit diesem Wert bin:";
+"optionAttributes.goodnessSliderStartLabel" = "Nicht so toll";
+"optionAttributes.goodnessSliderEndLabel" = "Sehr glücklich";
+
+"common.done" = "Fertig";
+"common.search" = "Suche";
+"common.defaultEmoji" = "⋯";
+
+"emojiPicker.title" = "Wählen Sie ein Emoji";
+

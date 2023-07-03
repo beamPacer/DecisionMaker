@@ -1,0 +1,73 @@
+/*
+  Localizable.strings
+  DecisionMaker
+
+  Created by Emma Sinclair on 7/2/23.
+  
+*/
+
+"app.title" = "Decisione";
+
+"exampleData.buyingAHouse.title" = "Esempio: Acquisto di una casa";
+"exampleData.buyingAHouse.color" = "Colore";
+"exampleData.buyingAHouse.price" = "Prezzo";
+"exampleData.buyingAHouse.location" = "Ubicazione";
+
+"exampleData.buyingAHouse.option1.title" = "144 38th St.";
+"exampleData.buyingAHouse.option1.color" = "Verde";
+"exampleData.buyingAHouse.option1.price" = "244k";
+"exampleData.buyingAHouse.option1.location" = "Vicino al lavoro";
+
+"exampleData.buyingAHouse.option2.title" = "N. Broadway Yellow House";
+"exampleData.buyingAHouse.option2.color" = "Giallo";
+"exampleData.buyingAHouse.option2.price" = "197k";
+"exampleData.buyingAHouse.option2.location" = "Vicino al parco per cani";
+
+"exampleData.buyingAHouse.option3.title" = "Condo su 47th";
+"exampleData.buyingAHouse.option3.color" = "Marrone";
+"exampleData.buyingAHouse.option3.price" = "152k";
+"exampleData.buyingAHouse.option3.location" = "Più vicino al lavoro";
+
+"exampleData.buyingAHouse.option4.title" = "Split-level su Grand";
+"exampleData.buyingAHouse.option4.color" = "Viola";
+"exampleData.buyingAHouse.option4.price" = "114k";
+"exampleData.buyingAHouse.option4.location" = "Vicino alla palestra";
+
+"decision.newDecisionTitle" = "Nuova decisione";
+"decision.newDecisionPrompt" = "Inserisci un titolo:";
+"decision.enterNewPrompt" = "Inserisci il titolo della decisione";
+"decision.titlePlaceholder" = "Titolo della decisione";
+"decision.getResults" = "Ottieni risultati";
+"decision.addNewTitle" = "Aggiungi una nuova decisione";
+"decision.mainListTitle" = "Decisioni";
+
+"result.title" = "Risultati";
+"result.oneItemTitle" = "Hai solo un'opzione nella tua lista! Torna quando hai più opzioni da considerare.";
+"result.noItemsTitle" = "Non hai opzioni nella tua lista! Torna quando ne avrai aggiunto qualcuna.";
+"result.runnersUpTitle" = "Secondi classificati";
+
+"staticAttributes.groupLabel" = "Attributi che sto cercando";
+"staticAttributes.addNewTitle" = "Aggiungi un nuovo attributo";
+"staticAttributes.newAttributeTitle" = "Nuovo attributo";
+"staticAttributes.defaultTitle" = "Titolo";
+"staticAttributes.importanceLabel" = "Importanza:";
+"staticAttributes.editAttributeNavTitle" = "Modifica attributo";
+"staticAttributes.importanceSliderStartLabel" = "Non importante";
+"staticAttributes.importanceSliderEndLabel" = "Molto importante";
+
+"options.groupLabel" = "Opzioni che ho";
+"options.addNewTitle" = "Aggiungi una nuova opzione";
+"options.newOptionTitle" = "Nuova opzione";
+"options.defaultTitle" = "Titolo";
+"options.editOptionNavTitle" = "Modifica opzione";
+
+"optionAttributes.defaultValue" = "Valore";
+"optionAttributes.goodnessLabel" = "Quanto sono contento di questo valore:";
+"optionAttributes.goodnessSliderStartLabel" = "Non è fantastico";
+"optionAttributes.goodnessSliderEndLabel" = "Molto felice";
+
+"common.done" = "Fatto";
+"common.search" = "Ricerca";
+"common.defaultEmoji" = "⋯";
+
+"emojiPicker.title" = "Scegli un'emoji";
