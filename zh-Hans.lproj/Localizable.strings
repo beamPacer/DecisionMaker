@@ -1,0 +1,73 @@
+/*
+  Localizable.strings
+  DecisionMaker
+
+  Created by Emma Sinclair on 7/2/23.
+  
+*/
+
+"app.title" = "决策者";
+
+"exampleData.buyingAHouse.title" = "例子：购买房屋";
+"exampleData.buyingAHouse.color" = "颜色";
+"exampleData.buyingAHouse.price" = "价格";
+"exampleData.buyingAHouse.location" = "位置";
+
+"exampleData.buyingAHouse.option1.title" = "38街144号";
+"exampleData.buyingAHouse.option1.color" = "绿色";
+"exampleData.buyingAHouse.option1.price" = "244k";
+"exampleData.buyingAHouse.option1.location" = "靠近工作地点";
+
+"exampleData.buyingAHouse.option2.title" = "北百老汇黄色房子";
+"exampleData.buyingAHouse.option2.color" = "黄色";
+"exampleData.buyingAHouse.option2.price" = "197k";
+"exampleData.buyingAHouse.option2.location" = "靠近狗公园";
+
+"exampleData.buyingAHouse.option3.title" = "47街的公寓";
+"exampleData.buyingAHouse.option3.color" = "棕色";
+"exampleData.buyingAHouse.option3.price" = "152k";
+"exampleData.buyingAHouse.option3.location" = "离工作地点最近";
+
+"exampleData.buyingAHouse.option4.title" = "大道上的分层";
+"exampleData.buyingAHouse.option4.color" = "紫色";
+"exampleData.buyingAHouse.option4.price" = "114k";
+"exampleData.buyingAHouse.option4.location" = "靠近健身房";
+
+"decision.newDecisionTitle" = "新决定";
+"decision.newDecisionPrompt" = "输入一个标题：";
+"decision.enterNewPrompt" = "输入决定标题";
+"decision.titlePlaceholder" = "决定标题";
+"decision.getResults" = "获取结果";
+"decision.addNewTitle" = "添加新决定";
+"decision.mainListTitle" = "决定";
+
+"result.title" = "结果";
+"result.oneItemTitle" = "你的列表中只有一个选项！当你有更多的选项来考虑时，再回来。";
+"result.noItemsTitle" = "你的列表中没有任何选项！当你添加了一些选项后，再回来。";
+"result.runnersUpTitle" = "亚军";
+
+"staticAttributes.groupLabel" = "我正在寻找的属性";
+"staticAttributes.addNewTitle" = "添加新属性";
+"staticAttributes.newAttributeTitle" = "新属性";
+"staticAttributes.defaultTitle" = "标题";
+"staticAttributes.importanceLabel" = "重要性：";
+"staticAttributes.editAttributeNavTitle" = "编辑属性";
+"staticAttributes.importanceSliderStartLabel" = "不重要";
+"staticAttributes.importanceSliderEndLabel" = "非常重要";
+
+"options.groupLabel" = "我拥有的选项";
+"options.addNewTitle" = "添加新选项";
+"options.newOptionTitle" = "新选项";
+"options.defaultTitle" = "标题";
+"options.editOptionNavTitle" = "编辑选项";
+
+"optionAttributes.defaultValue" = "价值";
+"optionAttributes.goodnessLabel" = "我对这个价值的满意度：";
+"optionAttributes.goodnessSliderStartLabel" = "不好";
+"optionAttributes.goodnessSliderEndLabel" = "非常满意";
+
+"common.done" = "完成";
+"common.search" = "搜索";
+"common.defaultEmoji" = "⋯";
+
+"emojiPicker.title" = "选择一个表情符号";

@@ -1,0 +1,73 @@
+/*
+  Localizable.strings
+  DecisionMaker
+
+  Created by Emma Sinclair on 7/2/23.
+  
+*/
+
+"app.title" = "Decisor";
+
+"exampleData.buyingAHouse.title" = "Exemplo: Comprando uma Casa";
+"exampleData.buyingAHouse.color" = "Cor";
+"exampleData.buyingAHouse.price" = "Preço";
+"exampleData.buyingAHouse.location" = "Localização";
+
+"exampleData.buyingAHouse.option1.title" = "144 Rua 38";
+"exampleData.buyingAHouse.option1.color" = "Verde";
+"exampleData.buyingAHouse.option1.price" = "244k";
+"exampleData.buyingAHouse.option1.location" = "Perto do trabalho";
+
+"exampleData.buyingAHouse.option2.title" = "Casa Amarela da Broadway Norte";
+"exampleData.buyingAHouse.option2.color" = "Amarelo";
+"exampleData.buyingAHouse.option2.price" = "197k";
+"exampleData.buyingAHouse.option2.location" = "Perto do parque para cães";
+
+"exampleData.buyingAHouse.option3.title" = "Condomínio na 47ª";
+"exampleData.buyingAHouse.option3.color" = "Marrom";
+"exampleData.buyingAHouse.option3.price" = "152k";
+"exampleData.buyingAHouse.option3.location" = "Mais perto do trabalho";
+
+"exampleData.buyingAHouse.option4.title" = "Split-level na Grand";
+"exampleData.buyingAHouse.option4.color" = "Roxo";
+"exampleData.buyingAHouse.option4.price" = "114k";
+"exampleData.buyingAHouse.option4.location" = "Perto da academia";
+
+"decision.newDecisionTitle" = "Nova Decisão";
+"decision.newDecisionPrompt" = "Insira um título:";
+"decision.enterNewPrompt" = "Digite o título da decisão";
+"decision.titlePlaceholder" = "Título da Decisão";
+"decision.getResults" = "Obter Resultados";
+"decision.addNewTitle" = "Adicionar nova decisão";
+"decision.mainListTitle" = "Decisões";
+
+"result.title" = "Resultados";
+"result.oneItemTitle" = "Você só tem uma opção em sua lista! Volte quando tiver mais opções para considerar.";
+"result.noItemsTitle" = "Você não tem nenhuma opção em sua lista! Volte quando tiver adicionado algumas.";
+"result.runnersUpTitle" = "Vice-campeões";
+
+"staticAttributes.groupLabel" = "Atributos que estou procurando";
+"staticAttributes.addNewTitle" = "Adicionar novo atributo";
+"staticAttributes.newAttributeTitle" = "Novo atributo";
+"staticAttributes.defaultTitle" = "Título";
+"staticAttributes.importanceLabel" = "Importância:";
+"staticAttributes.editAttributeNavTitle" = "Editar atributo";
+"staticAttributes.importanceSliderStartLabel" = "Não é importante";
+"staticAttributes.importanceSliderEndLabel" = "Muito importante";
+
+"options.groupLabel" = "Opções que eu tenho";
+"options.addNewTitle" = "Adicionar nova opção";
+"options.newOptionTitle" = "Nova opção";
+"options.defaultTitle" = "Título";
+"options.editOptionNavTitle" = "Editar opção";
+
+"optionAttributes.defaultValue" = "Valor";
+"optionAttributes.goodnessLabel" = "Quão feliz estou com este valor:";
+"optionAttributes.goodnessSliderStartLabel" = "Não é ótimo";
+"optionAttributes.goodnessSliderEndLabel" = "Muito feliz";
+
+"common.done" = "Feito";
+"common.search" = "Pesquisar";
+"common.defaultEmoji" = "⋯";
+
+"emojiPicker.title" = "Escolha um Emoji";

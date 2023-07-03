@@ -1,0 +1,73 @@
+/*
+  Localizable.strings
+  DecisionMaker
+
+  Created by Emma Sinclair on 7/2/23.
+  
+*/
+
+"app.title" = "Приниматель решений";
+
+"exampleData.buyingAHouse.title" = "Пример: Покупка дома";
+"exampleData.buyingAHouse.color" = "Цвет";
+"exampleData.buyingAHouse.price" = "Цена";
+"exampleData.buyingAHouse.location" = "Местоположение";
+
+"exampleData.buyingAHouse.option1.title" = "144 улица 38";
+"exampleData.buyingAHouse.option1.color" = "Зеленый";
+"exampleData.buyingAHouse.option1.price" = "244 тыс.";
+"exampleData.buyingAHouse.option1.location" = "Рядом с работой";
+
+"exampleData.buyingAHouse.option2.title" = "Желтый дом на Северной Бродвее";
+"exampleData.buyingAHouse.option2.color" = "Желтый";
+"exampleData.buyingAHouse.option2.price" = "197 тыс.";
+"exampleData.buyingAHouse.option2.location" = "Рядом с парком для собак";
+
+"exampleData.buyingAHouse.option3.title" = "Кондоминиум на 47-й";
+"exampleData.buyingAHouse.option3.color" = "Коричневый";
+"exampleData.buyingAHouse.option3.price" = "152 тыс.";
+"exampleData.buyingAHouse.option3.location" = "Ближайшее к работе";
+
+"exampleData.buyingAHouse.option4.title" = "Двухуровневый дом на Гранд";
+"exampleData.buyingAHouse.option4.color" = "Пурпурный";
+"exampleData.buyingAHouse.option4.price" = "114 тыс.";
+"exampleData.buyingAHouse.option4.location" = "Рядом с тренажерным залом";
+
+"decision.newDecisionTitle" = "Новое решение";
+"decision.newDecisionPrompt" = "Введите название:";
+"decision.enterNewPrompt" = "Введите название решения";
+"decision.titlePlaceholder" = "Название решения";
+"decision.getResults" = "Получить результаты";
+"decision.addNewTitle" = "Добавить новое решение";
+"decision.mainListTitle" = "Решения";
+
+"result.title" = "Результаты";
+"result.oneItemTitle" = "У вас всего один вариант в списке! Вернитесь, когда у вас будет больше вариантов для рассмотрения.";
+"result.noItemsTitle" = "У вас нет никаких вариантов в списке! Вернитесь, когда вы добавите некоторые.";
+"result.runnersUpTitle" = "Претенденты";
+
+"staticAttributes.groupLabel" = "Атрибуты, которые я ищу";
+"staticAttributes.addNewTitle" = "Добавить новый атрибут";
+"staticAttributes.newAttributeTitle" = "Новый атрибут";
+"staticAttributes.defaultTitle" = "Название";
+"staticAttributes.importanceLabel" = "Важность:";
+"staticAttributes.editAttributeNavTitle" = "Редактировать атрибут";
+"staticAttributes.importanceSliderStartLabel" = "Не важно";
+"staticAttributes.importanceSliderEndLabel" = "Очень важно";
+
+"options.groupLabel" = "Варианты, которые у меня есть";
+"options.addNewTitle" = "Добавить новый вариант";
+"options.newOptionTitle" = "Новый вариант";
+"options.defaultTitle" = "Название";
+"options.editOptionNavTitle" = "Редактировать вариант";
+
+"optionAttributes.defaultValue" = "Значение";
+"optionAttributes.goodnessLabel" = "Насколько я доволен этим значением:";
+"optionAttributes.goodnessSliderStartLabel" = "Не здорово";
+"optionAttributes.goodnessSliderEndLabel" = "Очень доволен";
+
+"common.done" = "Готово";
+"common.search" = "Поиск";
+"common.defaultEmoji" = "⋯";
+
+"emojiPicker.title" = "Выберите эмодзи";
