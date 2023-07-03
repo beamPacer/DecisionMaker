@@ -1,0 +1,73 @@
+/*
+  Localizable.strings
+  DecisionMaker
+
+  Created by Emma Sinclair on 7/2/23.
+  
+*/
+
+"app.title" = "صانع القرار";
+
+"exampleData.buyingAHouse.title" = "مثال: شراء منزل";
+"exampleData.buyingAHouse.color" = "اللون";
+"exampleData.buyingAHouse.price" = "السعر";
+"exampleData.buyingAHouse.location" = "الموقع";
+
+"exampleData.buyingAHouse.option1.title" = "144 شارع 38";
+"exampleData.buyingAHouse.option1.color" = "أخضر";
+"exampleData.buyingAHouse.option1.price" = "244k";
+"exampleData.buyingAHouse.option1.location" = "بالقرب من العمل";
+
+"exampleData.buyingAHouse.option2.title" = "المنزل الأصفر في شمال برودواي";
+"exampleData.buyingAHouse.option2.color" = "أصفر";
+"exampleData.buyingAHouse.option2.price" = "197k";
+"exampleData.buyingAHouse.option2.location" = "بالقرب من حديقة الكلاب";
+
+"exampleData.buyingAHouse.option3.title" = "شقة في الشارع 47";
+"exampleData.buyingAHouse.option3.color" = "بني";
+"exampleData.buyingAHouse.option3.price" = "152k";
+"exampleData.buyingAHouse.option3.location" = "أقرب إلى العمل";
+
+"exampleData.buyingAHouse.option4.title" = "منزل مستويات على جراند";
+"exampleData.buyingAHouse.option4.color" = "أرجواني";
+"exampleData.buyingAHouse.option4.price" = "114k";
+"exampleData.buyingAHouse.option4.location" = "بالقرب من الجيم";
+
+"decision.newDecisionTitle" = "قرار جديد";
+"decision.newDecisionPrompt" = "أدخل عنوانًا:";
+"decision.enterNewPrompt" = "أدخل عنوان القرار";
+"decision.titlePlaceholder" = "عنوان القرار";
+"decision.getResults" = "احصل على النتائج";
+"decision.addNewTitle" = "أضف قرارًا جديدًا";
+"decision.mainListTitle" = "القرارات";
+
+"result.title" = "النتائج";
+"result.oneItemTitle" = "لديك خيار واحد فقط في قائمتك! عد عندما يكون لديك المزيد من الخيارات للنظر فيها.";
+"result.noItemsTitle" = "ليس لديك أي خيارات في قائمتك! عد عندما تضيف بعضها.";
+"result.runnersUpTitle" = "الخاسرون";
+
+"staticAttributes.groupLabel" = "الخصائص التي أبحث عنها";
+"staticAttributes.addNewTitle" = "أضف خاصية جديدة";
+"staticAttributes.newAttributeTitle" = "خاصية جديدة";
+"staticAttributes.defaultTitle" = "العنوان";
+"staticAttributes.importanceLabel" = "الأهمية:";
+"staticAttributes.editAttributeNavTitle" = "تعديل الخاصية";
+"staticAttributes.importanceSliderStartLabel" = "غير مهم";
+"staticAttributes.importanceSliderEndLabel" = "مهم جدا";
+
+"options.groupLabel" = "الخيارات التي لدي";
+"options.addNewTitle" = "أضف خيارًا جديدًا";
+"options.newOptionTitle" = "خيار جديد";
+"options.defaultTitle" = "العنوان";
+"options.editOptionNavTitle" = "تعديل الخيار";
+
+"optionAttributes.defaultValue" = "القيمة";
+"optionAttributes.goodnessLabel" = "كم أنا سعيد بهذه القيمة:";
+"optionAttributes.goodnessSliderStartLabel" = "ليس جيد";
+"optionAttributes.goodnessSliderEndLabel" = "سعيد جدا";
+
+"common.done" = "تم";
+"common.search" = "بحث";
+"common.defaultEmoji" = "⋯";
+
+"emojiPicker.title" = "اختر الإيموجي";
