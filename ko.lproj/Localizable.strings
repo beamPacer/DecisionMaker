@@ -45,6 +45,8 @@
 "result.oneItemTitle" = "목록에 한 가지 옵션만 있습니다! 더 많은 옵션을 고려할 수 있을 때 다시 와보세요.";
 "result.noItemsTitle" = "목록에 옵션이 없습니다! 추가한 후 다시 와보세요.";
 "result.runnersUpTitle" = "준우승자들";
+"result.bestOptionLabel" = "당신의 최선의 선택은";
+"result.scoresBreakdownLabel" = "점수 분석:";
 
 "staticAttributes.groupLabel" = "내가 찾고 있는 속성";
 "staticAttributes.addNewTitle" = "새로운 속성 추가";

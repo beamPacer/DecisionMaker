@@ -45,6 +45,8 @@
 "result.oneItemTitle" = "你的列表中只有一个选项！当你有更多的选项来考虑时，再回来。";
 "result.noItemsTitle" = "你的列表中没有任何选项！当你添加了一些选项后，再回来。";
 "result.runnersUpTitle" = "亚军";
+"result.bestOptionLabel" = "你最好的选择是";
+"result.scoresBreakdownLabel" = "分数细分：";
 
 "staticAttributes.groupLabel" = "我正在寻找的属性";
 "staticAttributes.addNewTitle" = "添加新属性";

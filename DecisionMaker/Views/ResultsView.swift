@@ -43,12 +43,25 @@ struct ResultsView: View {
 		GeometryReader { geometry in
 			ScrollView {
 				VStack {
+					Spacer()
+						   .frame(height: 20)
+					
 					if let firstResult = results.first {
+						Text(Strings.Result.bestOptionLabel)
 						Text(firstResult.option.title)
 							.font(.system(size: 32))
 							.multilineTextAlignment(.center)
 							.padding()
 					}
+					
+					Spacer()
+						   .frame(height: 20)
+					
+					Text(Strings.Result.scoresBreakdownLabel)
+						.italic()
+					
+					Spacer()
+						   .frame(height: 20)
 					
 					ResultSwiftUIView(results: results)
 							.frame(width: geometry.size.width, height: 400)

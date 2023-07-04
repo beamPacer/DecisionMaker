@@ -45,6 +45,8 @@
 "result.oneItemTitle" = "Hai solo un'opzione nella tua lista! Torna quando hai più opzioni da considerare.";
 "result.noItemsTitle" = "Non hai opzioni nella tua lista! Torna quando ne avrai aggiunto qualcuna.";
 "result.runnersUpTitle" = "Secondi classificati";
+"result.bestOptionLabel" = "La tua migliore opzione è";
+"result.scoresBreakdownLabel" = "Scomposizione dei punteggi:";
 
 "staticAttributes.groupLabel" = "Attributi che sto cercando";
 "staticAttributes.addNewTitle" = "Aggiungi un nuovo attributo";

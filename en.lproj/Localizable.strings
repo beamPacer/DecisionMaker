@@ -45,6 +45,8 @@
 "result.oneItemTitle" = "You only have one option in your list! Come back when you have more options to consider.";
 "result.noItemsTitle" = "You don't have any options in your list! Come back when you've added some.";
 "result.runnersUpTitle" = "Runners Up";
+"result.bestOptionLabel" = "Your best option is";
+"result.scoresBreakdownLabel" = "Scores Breakdown:";
 
 "staticAttributes.groupLabel" = "Attributes I'm looking for";
 "staticAttributes.addNewTitle" = "Add new attribute";

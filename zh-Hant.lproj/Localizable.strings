@@ -45,6 +45,8 @@
 "result.oneItemTitle" = "您的列表中只有一個選項！當您有更多的選項來考慮時，再回來。";
 "result.noItemsTitle" = "您的列表中沒有任何選項！當您添加了一些選項後，再回來。";
 "result.runnersUpTitle" = "亞軍";
+"result.bestOptionLabel" = "你最好的選擇是";
+"result.scoresBreakdownLabel" = "分數細分：";
 
 "staticAttributes.groupLabel" = "我正在尋找的屬性";
 "staticAttributes.addNewTitle" = "添加新屬性";

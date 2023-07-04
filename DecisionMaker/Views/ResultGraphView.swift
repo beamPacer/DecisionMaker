@@ -10,11 +10,15 @@ import UIKit
 
 class ResultGraphView: UIView {
 	private struct Dimensions {
-		static let dotDiameter: Double = 10
-		static let dotRadius: Double = dotDiameter / 2
-		static let textOffsetFromDotY: Double = dotDiameter * 0.75
-		static let margin: CGFloat = 20
-		static let verticalPadding: CGFloat = dotDiameter
+		static let dotDiameter: Double			= 10
+		static let dotRadius: Double			= dotDiameter / 2
+		
+		static let fatDotDiameter: Double		= dotDiameter * 2
+		static let fatDotRadius: Double			= fatDotDiameter / 2
+		
+		static let textOffsetFromDotY: Double	= dotDiameter * 1
+		static let margin: CGFloat				= 20
+		static let verticalPadding: CGFloat		= 10
 	}
 	
 	private struct Colors {
@@ -71,20 +75,22 @@ class ResultGraphView: UIView {
 		
 		// Draw markers for each result
 		for result in results {
+			let isFatDot: Bool = result == results.first
+			
 			// Adjust y position according to the padding
 			let yPos = (rect.height - 2 * Dimensions.verticalPadding) - CGFloat(result.percentWeightedAverage) * (rect.height - 2 * Dimensions.verticalPadding) + Dimensions.verticalPadding
 			context.setFillColor(Colors.dot(for: style).cgColor)
 			context.addEllipse(in: CGRect(
-				x: lineXPosition - Dimensions.dotRadius,
-				y: yPos - Dimensions.dotRadius,
-				width: Dimensions.dotDiameter,
-				height: Dimensions.dotDiameter
+				x: lineXPosition - (isFatDot ? Dimensions.fatDotRadius : Dimensions.dotRadius),
+				y: yPos - (isFatDot ? Dimensions.fatDotRadius : Dimensions.dotRadius),
+				width: (isFatDot ? Dimensions.fatDotDiameter : Dimensions.dotDiameter),
+				height: (isFatDot ? Dimensions.fatDotDiameter : Dimensions.dotDiameter)
 			))
 			context.fillPath()
 
 			let text: NSString = (result.option.title + " " + formattedPercentString(for: result)) as NSString
 			let textAttributes: [NSAttributedString.Key: Any] = [
-				.font: UIFont.systemFont(ofSize: 16),
+				.font: UIFont.systemFont(ofSize: isFatDot ? 18 : 16),
 				.foregroundColor: Colors.textPrimary(for: style)
 			]
 			
@@ -110,7 +116,10 @@ class ResultGraphView: UIView {
 				textToDisplay = "\(textToDisplay) \(formattedPercentString(for: result))" as NSString
 			}
 
-			let textPoint = CGPoint(x: lineXPosition + Dimensions.dotDiameter, y: yPos - Dimensions.textOffsetFromDotY)
+			let textPoint = CGPoint(
+				x: lineXPosition + (isFatDot ? Dimensions.fatDotDiameter : Dimensions.dotDiameter),
+				y: yPos - Dimensions.textOffsetFromDotY
+			)
 			var textFrame = CGRect(origin: textPoint, size: textSize)
 		   
 			// Check for collisions and adjust frame if necessary

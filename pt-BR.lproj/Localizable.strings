@@ -45,6 +45,8 @@
 "result.oneItemTitle" = "Você só tem uma opção em sua lista! Volte quando tiver mais opções para considerar.";
 "result.noItemsTitle" = "Você não tem nenhuma opção em sua lista! Volte quando tiver adicionado algumas.";
 "result.runnersUpTitle" = "Vice-campeões";
+"result.bestOptionLabel" = "Sua melhor opção é";
+"result.scoresBreakdownLabel" = "Desagregação das pontuações:";
 
 "staticAttributes.groupLabel" = "Atributos que estou procurando";
 "staticAttributes.addNewTitle" = "Adicionar novo atributo";

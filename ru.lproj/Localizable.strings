@@ -45,6 +45,8 @@
 "result.oneItemTitle" = "У вас всего один вариант в списке! Вернитесь, когда у вас будет больше вариантов для рассмотрения.";
 "result.noItemsTitle" = "У вас нет никаких вариантов в списке! Вернитесь, когда вы добавите некоторые.";
 "result.runnersUpTitle" = "Претенденты";
+"result.bestOptionLabel" = "Ваш лучший вариант это";
+"result.scoresBreakdownLabel" = "Разбивка баллов:";
 
 "staticAttributes.groupLabel" = "Атрибуты, которые я ищу";
 "staticAttributes.addNewTitle" = "Добавить новый атрибут";

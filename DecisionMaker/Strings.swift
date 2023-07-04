@@ -80,6 +80,8 @@ struct Strings {
 		static let oneItemTitle: String = String(localized: "result.oneItemTitle")
 		static let noItemsTitle: String = String(localized: "result.noItemsTitle")
 		static let runnersUpTitle: String = String(localized: "result.runnersUpTitle")
+		static let bestOptionLabel: String = String(localized: "result.bestOptionLabel")
+		static let scoresBreakdownLabel: String = String(localized: "result.scoresBreakdownLabel")
 	}
 	
 	struct StaticAttributes {

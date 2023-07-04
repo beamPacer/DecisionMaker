@@ -45,6 +45,8 @@
 "result.oneItemTitle" = "リストには一つの選択肢しかありません！他の選択肢が増えたら戻ってきてください。";
 "result.noItemsTitle" = "リストには選択肢がありません！何か追加したら戻ってきてください。";
 "result.runnersUpTitle" = "次点";
+"result.bestOptionLabel" = "最善の選択は";
+"result.scoresBreakdownLabel" = "スコアの内訳:";
 
 "staticAttributes.groupLabel" = "探している属性";
 "staticAttributes.addNewTitle" = "新しい属性を追加";

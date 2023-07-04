@@ -45,6 +45,8 @@
 "result.oneItemTitle" = "لديك خيار واحد فقط في قائمتك! عد عندما يكون لديك المزيد من الخيارات للنظر فيها.";
 "result.noItemsTitle" = "ليس لديك أي خيارات في قائمتك! عد عندما تضيف بعضها.";
 "result.runnersUpTitle" = "الخاسرون";
+"result.bestOptionLabel" = "أفضل خيار لك هو";
+"result.scoresBreakdownLabel" = "تفاصيل النقاط:";
 
 "staticAttributes.groupLabel" = "الخصائص التي أبحث عنها";
 "staticAttributes.addNewTitle" = "أضف خاصية جديدة";
