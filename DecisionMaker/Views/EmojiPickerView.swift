@@ -28,7 +28,7 @@ struct EmojiPicker: View {
 				SearchBar(text: $searchText)
 					.padding(.horizontal)
 					.onChange(of: searchText) { newValue in
-						if newValue.isEmpty || newValue.count == 1 {
+						if newValue.isEmpty {
 							filteredEmojis = emojis
 						} else {
 							EmojiHandler.shared.emojis(for: newValue) { results in

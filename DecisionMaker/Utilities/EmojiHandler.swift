@@ -96,6 +96,5 @@ struct EmojiHandler {
 		searchString
 			.split(separator: " ")
 			.map { String($0).uppercased() }
-			.filter { $0.count > 1 }
 	}
 }
