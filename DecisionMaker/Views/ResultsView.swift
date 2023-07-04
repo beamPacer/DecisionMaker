@@ -50,12 +50,8 @@ struct ResultsView: View {
 							.padding()
 					}
 					
-					HStack {
-						ResultSwiftUIView(results: results)
+					ResultSwiftUIView(results: results)
 							.frame(width: geometry.size.width, height: 400)
-							
-						Spacer()
-					}
 				}
 				.navigationTitle(Strings.Result.title)
 			}
