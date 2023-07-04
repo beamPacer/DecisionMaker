@@ -26,7 +26,7 @@
 		B59F5FD22A4ED1EB0090BAB6 /* EmojiHandler.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F5FD12A4ED1EB0090BAB6 /* EmojiHandler.swift */; };
 		B59F5FD42A4ED2410090BAB6 /* EmojiHandlerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B59F5FD32A4ED2410090BAB6 /* EmojiHandlerTests.swift */; };
 		B5EF81CD2A4EDFF000BBE751 /* EmojiPickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF81CC2A4EDFF000BBE751 /* EmojiPickerView.swift */; };
-		B5EF81CF2A4FB14F00BBE751 /* Common.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF81CE2A4FB14F00BBE751 /* Common.swift */; };
+		B5EF81CF2A4FB14F00BBE751 /* CommonViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF81CE2A4FB14F00BBE751 /* CommonViews.swift */; };
 		B5EF81D22A4FCE4A00BBE751 /* OptionsTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF81D12A4FCE4A00BBE751 /* OptionsTypes.swift */; };
 		B5EF81D42A4FCE7C00BBE751 /* BoundFloat.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF81D32A4FCE7C00BBE751 /* BoundFloat.swift */; };
 		B5EF81D62A4FCEAF00BBE751 /* StaticAttributeTypes.swift in Sources */ = {isa = PBXBuildFile; fileRef = B5EF81D52A4FCEAF00BBE751 /* StaticAttributeTypes.swift */; };
@@ -86,7 +86,7 @@
 		B59F5FD32A4ED2410090BAB6 /* EmojiHandlerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiHandlerTests.swift; sourceTree = "<group>"; };
 		B5BD212F2A5140E4003FA27F /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = ../en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		B5EF81CC2A4EDFF000BBE751 /* EmojiPickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiPickerView.swift; sourceTree = "<group>"; };
-		B5EF81CE2A4FB14F00BBE751 /* Common.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Common.swift; sourceTree = "<group>"; };
+		B5EF81CE2A4FB14F00BBE751 /* CommonViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommonViews.swift; sourceTree = "<group>"; };
 		B5EF81D12A4FCE4A00BBE751 /* OptionsTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionsTypes.swift; sourceTree = "<group>"; };
 		B5EF81D32A4FCE7C00BBE751 /* BoundFloat.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoundFloat.swift; sourceTree = "<group>"; };
 		B5EF81D52A4FCEAF00BBE751 /* StaticAttributeTypes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StaticAttributeTypes.swift; sourceTree = "<group>"; };
@@ -184,7 +184,7 @@
 		B59F5FC82A4ECF710090BAB6 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				B5EF81CE2A4FB14F00BBE751 /* Common.swift */,
+				B5EF81CE2A4FB14F00BBE751 /* CommonViews.swift */,
 				B5EF81DA2A4FD3B100BBE751 /* DecisionListView.swift */,
 				B531B8E22A3E15D900A59DBC /* DecisionView.swift */,
 				B59F5FCD2A4ED0130090BAB6 /* EditOptionViews.swift */,
@@ -367,7 +367,7 @@
 				B5EF81D82A4FCEEA00BBE751 /* ResultsTypes.swift in Sources */,
 				B5EF81D22A4FCE4A00BBE751 /* OptionsTypes.swift in Sources */,
 				B59F5FCE2A4ED0130090BAB6 /* EditOptionViews.swift in Sources */,
-				B5EF81CF2A4FB14F00BBE751 /* Common.swift in Sources */,
+				B5EF81CF2A4FB14F00BBE751 /* CommonViews.swift in Sources */,
 				B59F5FC62A4BE6970090BAB6 /* ExampleData.swift in Sources */,
 				B5EF81CD2A4EDFF000BBE751 /* EmojiPickerView.swift in Sources */,
 				B59F5FCC2A4ECFF50090BAB6 /* EditStaticAttributeView.swift in Sources */,
