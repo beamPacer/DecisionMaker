@@ -59,7 +59,7 @@ struct EmojiHandler {
 				}
 			}
 			DispatchQueue.main.async {
-				completion(candidates)
+				completion(candidates.sorted().reversed())
 			}
 		}
 	}
