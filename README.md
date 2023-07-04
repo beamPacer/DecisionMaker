@@ -20,18 +20,18 @@ The big takeaway for me for developing with the assistance of chatGPT is that it
 
 Probably the most helpful thing it has been able to do is generate Localizable.strings files, including the translations, just based on the Strings struct. That required zero revisions and was work that would have been both tedious and beyond my skill set (for the translations), and was of course lightning fast. So that was particularly great.
 
-Through the course of working on this project, I saw exactly one basic generation mistake: a missed closing brace. I think that it's incredibly impressive that out of 2194 lines of change, I saw only one basic error like this. There were plenty of high-level mistakes, but chatGPT was able to resolve 99% of those, after the compiler error or missing functionality was pointed out to it.
+Through the course of working on this project, I saw exactly one basic generation mistake: a missed closing brace. I think that it's incredibly impressive that out of all of its work (see statistics below), I saw only one basic error like this. There were plenty of high-level mistakes, but chatGPT was able to resolve 99% of those, after the compiler error or missing functionality was pointed out to it.
 
 ## AI Coding Statistics
 
 As of the previous commit, and only considering .swift and .strings files:
 
-ChatGPT has contributed 2245 lines of change to this branch.
-Overall, there have been 4662 lines of change to this branch.
-ChatGPT has contributed 48% of the lines of change to this branch.
+ChatGPT has contributed 2291 lines of change to this branch.
+Overall, there have been 4778 lines of change to this branch.
+ChatGPT has contributed 47% of the lines of change to this branch.
 
-Additionally, ChatGPT has contributed 32 out of 120 commits to this branch, or 26%.
+Additionally, ChatGPT has contributed 33 out of 123 commits to this branch, or 26%.
 
 Thanks chatGPT!
 
-> A note about these numbers: I did specifically account for the 835 lines of change in the initial commit, which was non-GPT; but many types of changes affect this number in various ways. For intance, it's artificially low because I moved all of the code out of a single file, which were commits that weren't tagged GPT. Etc. A good rule of thumb with this project is that about 90% of the total lines in the UI layer were written by chatGPT, and about 50% of the total lines in the data layer were written by me (because the UI changes necessaitated changes to the data layer, mostly Hashable, Equatable, etc. conformance and also additions of @State and @Binding decorators).
+> A note about these numbers: I did specifically account for the 835 lines of "change" in the initial commit, which was non-GPT; but many types of changes affect this number in various ways. For instance, it's slightly artificially low because I moved all of the code into individual files, in a commit that wasn't tagged GPT. But it's pretty close to a good representation of chatGPT's contribution to this project.
