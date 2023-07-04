@@ -21,7 +21,7 @@ struct EmojiPicker: View {
 		GridItem(.flexible()),
 		GridItem(.flexible())
 	]
-		
+	
 	var body: some View {
 		NavigationView {
 			VStack {
@@ -49,6 +49,7 @@ struct EmojiPicker: View {
 								}) {
 									Text(emoji)
 										.font(.title)
+										.foregroundColor(.primary)
 								}
 							}
 						}

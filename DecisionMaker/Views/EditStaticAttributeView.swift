@@ -22,6 +22,7 @@ struct EditStaticAttributeView: View {
 				}) {
 					Text(selectedEmoji == nil ? staticAttribute.emoji : selectedEmoji!)
 						.font(.largeTitle)
+						.foregroundColor(.primary)
 				}
 				.sheet(isPresented: $showEmojiPicker, content: {
 					EmojiPicker(emojis: [EmojiHandler.shared.allEmojisArray], selectedEmoji: $selectedEmoji)
