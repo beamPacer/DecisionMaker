@@ -33,8 +33,22 @@ class ResultGraphView: UIView {
 	
 	var results: [Result] = [] {
 		didSet {
+			isAccessibilityElement = true
 			setNeedsDisplay()
 		}
+	}
+	
+	init(results: [Result]) {
+		self.results = results
+		super.init(frame: .zero)
+	}
+	
+	override init(frame: CGRect) {
+		super.init(frame: frame)
+	}
+	
+	required init?(coder: NSCoder) {
+		fatalError("init(coder:) has not been implemented")
 	}
 	
 	override func draw(_ rect: CGRect) {
@@ -99,15 +113,15 @@ class ResultGraphView: UIView {
 			let textPoint = CGPoint(x: lineXPosition + Dimensions.dotDiameter, y: yPos - Dimensions.textOffsetFromDotY)
 			var textFrame = CGRect(origin: textPoint, size: textSize)
 		   
-		   // Check for collisions and adjust frame if necessary
-		   for usedFrame in usedFrames {
-			   if textFrame.intersects(usedFrame) {
-				   textFrame.origin.y = usedFrame.maxY // Move the frame below the existing one
-			   }
-		   }
-		   
-		   // Add frame to used frames and draw the text
-		   usedFrames.append(textFrame)
+			// Check for collisions and adjust frame if necessary
+			for usedFrame in usedFrames {
+				if textFrame.intersects(usedFrame) {
+					textFrame.origin.y = usedFrame.maxY // Move the frame below the existing one
+				}
+			}
+			
+			// Add frame to used frames and draw the text
+			usedFrames.append(textFrame)
 			textToDisplay.draw(in: textFrame, withAttributes: textAttributes)
 		}
 	}
@@ -123,12 +137,26 @@ struct ResultSwiftUIView: UIViewRepresentable {
 	func makeUIView(context: Context) -> ResultGraphView {
 		let view = ResultGraphView(frame: .zero)
 		view.backgroundColor = .clear
+		view.isAccessibilityElement = true
+		view.accessibilityLabel = "results display"
+		setAccessibilityValue(on: view)
 		view.results = results
 		return view
 	}
 
 	func updateUIView(_ uiView: ResultGraphView, context: Context) {
+		setAccessibilityValue(on: uiView)
 		uiView.results = results
+	}
+	
+	private func voiceOverString(for result: Result) -> String {
+		"\(result.option.title), \(Int(result.percentWeightedAverage * 100)) percent"
+	}
+	
+	private func setAccessibilityValue(on view: UIView) {
+		view.accessibilityValue = results
+			.map { voiceOverString(for: $0) }
+			.reduce("") { $0 == "" ? $1 : $0 + ", " + $1 }
 	}
 }
 
