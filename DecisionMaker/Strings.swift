@@ -111,7 +111,7 @@ struct Strings {
 	struct Common {
 		static let done: String = String(localized: "common.done")
 		static let search: String = String(localized: "common.search")
-		static let defaultEmoji: String = String(localized: "common.defaultEmoji")
+		static let defaultEmoji: String = "★"
 	}
 	
 	struct EmojiPicker {
