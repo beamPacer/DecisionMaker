@@ -53,6 +53,7 @@ struct ResultsView: View {
 					HStack {
 						ResultSwiftUIView(results: results)
 							.frame(width: geometry.size.width, height: 400)
+							
 						Spacer()
 					}
 				}

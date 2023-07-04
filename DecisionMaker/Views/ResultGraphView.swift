@@ -29,10 +29,6 @@ class ResultGraphView: UIView {
 		static func dot(for style: UIUserInterfaceStyle) -> UIColor {
 			style == .dark ? .white : .black
 		}
-		
-		static func background(for style: UIUserInterfaceStyle) -> UIColor {
-			style == .dark ? .black : .white
-		}
 	}
 	
 	var results: [Result] = [] {
@@ -47,10 +43,7 @@ class ResultGraphView: UIView {
 		guard let context = UIGraphicsGetCurrentContext() else { return }
 		
 		let style: UIUserInterfaceStyle = traitCollection.userInterfaceStyle
-		
-		Colors.background(for: style).setFill()
-		UIBezierPath(rect: rect).fill()
-		
+				
 		// Draw the vertical line with added padding for the top and bottom
 		let lineXPosition = rect.minX + Dimensions.margin
 		context.move(to: CGPoint(x: lineXPosition, y: Dimensions.verticalPadding))
@@ -129,6 +122,7 @@ struct ResultSwiftUIView: UIViewRepresentable {
 
 	func makeUIView(context: Context) -> ResultGraphView {
 		let view = ResultGraphView(frame: .zero)
+		view.backgroundColor = .clear
 		view.results = results
 		return view
 	}
