@@ -26,12 +26,12 @@ Through the course of working on this project, I saw exactly one basic generatio
 
 As of the previous commit, and only considering .swift and .strings files:
 
-ChatGPT has contributed 2067 lines of change to this branch.
-Overall, there have been 4467 lines of change to this branch.
-ChatGPT has contributed 46% of the lines of change to this branch.
+ChatGPT has contributed 2245 lines of change to this branch.
+Overall, there have been 4662 lines of change to this branch.
+ChatGPT has contributed 48% of the lines of change to this branch.
 
-Additionally, ChatGPT has contributed 31 out of 116 commits to this branch, or 26%.
+Additionally, ChatGPT has contributed 32 out of 120 commits to this branch, or 26%.
 
 Thanks chatGPT!
 
-> A note about these numbers: I did specifically account for the 835 lines of change in the initial commit, which was non-GPT; but many types of changes affect this number in various ways. For intance, it's artificially low because I moved all of the code out of a single file, which were commits that weren't tagged GPT. Etc. A good rule of thumb with this project is that about 90% of the total lines in the UI layer was written by chatGPT, and about 50% of the total lines in the data layer were written by me (because the UI changes necessaitated changes to the data layer, mostly Hashable, Equatable, etc. conformance and also additions of @State and @Binding decorators).
+> A note about these numbers: I did specifically account for the 835 lines of change in the initial commit, which was non-GPT; but many types of changes affect this number in various ways. For intance, it's artificially low because I moved all of the code out of a single file, which were commits that weren't tagged GPT. Etc. A good rule of thumb with this project is that about 90% of the total lines in the UI layer were written by chatGPT, and about 50% of the total lines in the data layer were written by me (because the UI changes necessaitated changes to the data layer, mostly Hashable, Equatable, etc. conformance and also additions of @State and @Binding decorators).
