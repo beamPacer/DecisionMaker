@@ -23,8 +23,6 @@ def count_lines_of_change_with_keywords(repo_path, keywords):
     except subprocess.CalledProcessError:
         return 0
 
-import subprocess
-
 def count_lines_of_change_all_time(repo_path):
     command = ['git', '-C', repo_path, 'log', '--pretty=format:""', '--numstat']
 
