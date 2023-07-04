@@ -40,32 +40,24 @@ struct ResultsView: View {
 	}
 	
 	var properResultsView: some View {
-		VStack {
-			if let firstResult = results.first {
-				Text(firstResult.option.title)
-					.font(.system(size: 32))
-					.multilineTextAlignment(.center)
-					.padding()
-				Text(formatPercentWeightedAverage(for: firstResult))
-			}
-			
-			List {
-				Section(header: Text(Strings.Result.runnersUpTitle)) {
-					ForEach(results.dropFirst(), id: \.self) { result in
-						HStack {
-							Text(result.option.title)
-							Spacer()
-							Text(formatPercentWeightedAverage(for: result))
-								.foregroundColor(.gray)
-						}
+		GeometryReader { geometry in
+			ScrollView {
+				VStack {
+					if let firstResult = results.first {
+						Text(firstResult.option.title)
+							.font(.system(size: 32))
+							.multilineTextAlignment(.center)
+							.padding()
+					}
+					
+					HStack {
+						ResultSwiftUIView(results: results)
+							.frame(width: geometry.size.width, height: 400)
+						Spacer()
 					}
 				}
+				.navigationTitle(Strings.Result.title)
 			}
 		}
-		.navigationTitle(Strings.Result.title)
-	}
-	
-	private func formatPercentWeightedAverage(for result: Result) -> String {
-		"\(Int(result.percentWeightedAverage * 100))%"
 	}
 }
