@@ -24,6 +24,9 @@ struct NewDecisionView: View {
 					.textFieldStyle(.roundedBorder)
 					.padding(.horizontal)
 				
+				Spacer()
+					.frame(height: 30)
+				
 				HStack {
 					Spacer()
 					Button(action: {
