@@ -12,14 +12,7 @@ struct EmojiPicker: View {
 	@Binding var selectedEmoji: String?
 	@State var searchText = ""
 	@Environment(\.presentationMode) var presentationMode
-	
-	var filteredEmojis: [[String]] {
-		if searchText.isEmpty || searchText.count == 1 {
-			return emojis
-		} else {
-			return [EmojiHandler.shared.emojis(for: searchText)]
-		}
-	}
+	@State var filteredEmojis: [[String]] = [EmojiHandler.shared.allEmojisArray]
 	
 	let gridItemLayout = [
 		GridItem(.flexible()),
@@ -34,6 +27,15 @@ struct EmojiPicker: View {
 			VStack {
 				SearchBar(text: $searchText)
 					.padding(.horizontal)
+					.onChange(of: searchText) { newValue in
+						if newValue.isEmpty || newValue.count == 1 {
+							filteredEmojis = emojis
+						} else {
+							EmojiHandler.shared.emojis(for: newValue) { results in
+								filteredEmojis = [results]
+							}
+						}
+					}
 				
 				ScrollView {
 					LazyVGrid(columns: gridItemLayout, spacing: 8) {

@@ -38,19 +38,23 @@ struct EmojiHandler {
 		}
 	}
 	
-	func emojis(for searchString: String) -> [String] {
-		let searchTerms: [String] = getSearchTerms(for: searchString)
-		var candidates: [String] = []
-		for key in allEmojis.keys {
-			for searchTerm in searchTerms {
-				if key.contains(searchTerm), let value = allEmojis[key], !candidates.contains(value) {
-					candidates.append(value)
+	func emojis(for searchString: String, completion: @escaping ([String]) -> Void) {
+		DispatchQueue.global(qos: .userInitiated).async {
+			let searchTerms: [String] = self.getSearchTerms(for: searchString)
+			var candidates: [String] = []
+			for key in self.allEmojis.keys {
+				for searchTerm in searchTerms {
+					if key.contains(searchTerm), let value = self.allEmojis[key], !candidates.contains(value) {
+						candidates.append(value)
+					}
 				}
 			}
+			DispatchQueue.main.async {
+				completion(candidates)
+			}
 		}
-		
-		return candidates
 	}
+
 	
 	func emoji(for searchString: String) -> String? {
 		let searchTerms: [String] = getSearchTerms(for: searchString)
