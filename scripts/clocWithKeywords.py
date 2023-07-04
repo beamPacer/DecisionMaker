@@ -1,6 +1,7 @@
 # Written by chatGPT 4
 
 import subprocess
+import os
 
 def count_lines_of_change_with_keywords(repo_path, keywords):
     command = ['git', '-C', repo_path, 'log', '--grep']
@@ -15,9 +16,10 @@ def count_lines_of_change_with_keywords(repo_path, keywords):
         for line in lines_of_change:
             if line.strip():
                 fields = line.strip().split('\t')
-                if len(fields) >= 2:
-                    added, deleted = fields[:2]
-                    line_count += int(added) + int(deleted)
+                if len(fields) >= 3:
+                    added, deleted, filename = fields[:3]
+                    if filename.endswith(('.swift', '.strings')):
+                        line_count += int(added) + int(deleted)
 
         return line_count
     except subprocess.CalledProcessError:
@@ -34,12 +36,13 @@ def count_lines_of_change_all_time(repo_path):
         for line in lines_of_change:
             if line.strip():
                 fields = line.strip().split('\t')
-                if len(fields) >= 2:
-                    added, deleted = fields[:2]
-                    line_count += int(added) if added != '-' else 0
-                    line_count += int(deleted) if deleted != '-' else 0
+                if len(fields) >= 3:
+                    added, deleted, filename = fields[:3]
+                    if filename.endswith(('.swift', '.strings')):
+                        line_count += int(added) if added != '-' else 0
+                        line_count += int(deleted) if deleted != '-' else 0
 
-        return line_count - 835 # number of lines of change in the initial commit, which only contained Xcode-generated content
+        return line_count - 835  # Subtract the number of lines of change in the initial commit
     except subprocess.CalledProcessError:
         return 0
 
