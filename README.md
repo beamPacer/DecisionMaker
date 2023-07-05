@@ -4,11 +4,7 @@ DecisionMaker (name and app icon TBD) is an app that uses weighted average decis
 
 ## Current status
 
-The app is in beta through TestFlight, and seems to work properly on phones, pads, and macs (built for iPad).
-
-Other things to consider before go-live:
-- iCloud storage for sharing decisions across devices (need to decide on final app name before implementation due to the importance of having a final bundle ID)
-- Localization into other languages than English
+The app is in beta through TestFlight, and is currently feature-complete according to original project specs.
 
 ## Coding Philosophy
 
@@ -27,11 +23,16 @@ Through the course of working on this project, I saw exactly one basic generatio
 As of the previous commit, and only considering .swift and .strings files:
 
 ChatGPT has contributed 2291 lines of change to this branch.
-Overall, there have been 4778 lines of change to this branch.
-ChatGPT has contributed 47% of the lines of change to this branch.
+Overall, there have been 4920 lines of change to this branch.
+So, chatGPT has contributed 46% of the lines of change to this branch.
 
-Additionally, ChatGPT has contributed 33 out of 123 commits to this branch, or 26%.
+Additionally, ChatGPT has contributed 33 out of 127 commits to this branch, or 25%.
 
 Thanks chatGPT!
+
+|   | Total | chatGPT 4 | Portion thereof |
+|---|-------|-----------|-----------------|
+|Lines of change|4920|2291|46%|
+|Commits|127|33|25%|
 
 > A note about these numbers: I did specifically account for the 835 lines of "change" in the initial commit, which was non-GPT; but many types of changes affect this number in various ways. For instance, it's slightly artificially low because I moved all of the code into individual files, in a commit that wasn't tagged GPT. But it's pretty close to a good representation of chatGPT's contribution to this project.
