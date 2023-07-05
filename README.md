@@ -36,3 +36,15 @@ Thanks chatGPT!
 |Commits|127|33|25%|
 
 > A note about these numbers: I did specifically account for the 835 lines of "change" in the initial commit, which was non-GPT; but many types of changes affect this number in various ways. For instance, it's slightly artificially low because I moved all of the code into individual files, in a commit that wasn't tagged GPT. But it's pretty close to a good representation of chatGPT's contribution to this project.
+
+## Code File Statistics
+
+Language|files|blank|comment|code
+:-------|-------:|-------:|-------:|-------:
+Swift|24|309|173|1689
+Markdown|2|125|0|508
+XML|6|0|0|162
+Python|3|18|1|81
+JSON|3|0|0|31
+--------|--------|--------|--------|--------
+SUM:|38|452|174|2471
