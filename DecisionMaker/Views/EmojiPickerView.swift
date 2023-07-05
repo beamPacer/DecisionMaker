@@ -71,3 +71,11 @@ struct EmojiPicker: View {
 		}
 	}
 }
+
+struct EmojiPicker_Previews: PreviewProvider {
+	@State static var value: String? = nil
+	
+	static var previews: some View {
+		EmojiPicker(emojis: [EmojiHandler.shared.allEmojisArray], selectedEmoji: $value)
+	}
+}

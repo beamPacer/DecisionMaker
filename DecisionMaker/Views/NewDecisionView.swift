@@ -55,3 +55,13 @@ struct NewDecisionView: View {
 		}
 	}
 }
+
+struct NewDecisionView_Previews: PreviewProvider {
+	@State static var isPresented: Bool = true
+	@State static var newDecisionTitle: String = ""
+	static let decisionData: DecisionData = DecisionData(ExampleData.buyingAHouse)
+	
+	static var previews: some View {
+		NewDecisionView(isPresented: $isPresented, newDecisionTitle: $newDecisionTitle, decisionData: decisionData)
+	}
+}

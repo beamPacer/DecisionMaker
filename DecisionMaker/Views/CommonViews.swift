@@ -34,6 +34,16 @@ struct AnnotatedSlider: View {
 	}
 }
 
+struct AnnotatedSlider_Previews: PreviewProvider {
+	@State static var value: Float = 0.7
+	
+	static var previews: some View {
+		Form {
+			AnnotatedSlider(startLabel: "startLabel", endLabel: "endLabel", value: $value, range: 0...1)
+		}
+	}
+}
+
 struct SearchBar: View {
 	@Binding var text: String
 	
@@ -54,6 +64,16 @@ struct SearchBar: View {
 			}
 			.padding(.trailing, 8)
 			.opacity(text.isEmpty ? 0 : 1)
+		}
+	}
+}
+
+struct SearchBar_Previews: PreviewProvider {
+	@State static var value: String = ""
+	
+	static var previews: some View {
+		Form {
+			SearchBar(text: $value)
 		}
 	}
 }

@@ -49,7 +49,7 @@ struct ResultsView: View {
 					if let firstResult = results.first {
 						Text(Strings.Result.bestOptionLabel)
 						Text(firstResult.option.title)
-							.font(.system(size: 32))
+							.font(.title)
 							.multilineTextAlignment(.center)
 							.padding()
 					}
@@ -63,11 +63,24 @@ struct ResultsView: View {
 					Spacer()
 						   .frame(height: 20)
 					
-					ResultSwiftUIView(results: results)
+					ResultGraphSwiftUIView(results: results)
 							.frame(width: geometry.size.width, height: 400)
 				}
 				.navigationTitle(Strings.Result.title)
 			}
 		}
+	}
+}
+
+struct ResultsView_Previews: PreviewProvider {
+	static let options: [Option] = ExampleData.buyingAHouse.options
+	
+	static var previews: some View {
+		ResultsView(results: [
+			Result(option: options[0], weightedAverage: 3.0, percentWeightedAverage: 1.0),
+			   Result(option: options[1], weightedAverage: 1.5, percentWeightedAverage: 0.5),
+			   Result(option: options[2], weightedAverage: 0, percentWeightedAverage: 0.0)
+		   ]
+		)
 	}
 }

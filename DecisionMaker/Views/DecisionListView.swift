@@ -38,3 +38,10 @@ struct DecisionListView: View {
 	}
 }
 
+struct DecisionListView_Previews: PreviewProvider {
+	static let value: DecisionData = DecisionData(ExampleData.buyingAHouse)
+	
+	static var previews: some View {
+		DecisionListView().environmentObject(value)
+	}
+}

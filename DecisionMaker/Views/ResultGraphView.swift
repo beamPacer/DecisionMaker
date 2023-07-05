@@ -140,7 +140,7 @@ class ResultGraphView: UIView {
 	}
 }
 
-struct ResultSwiftUIView: UIViewRepresentable {
+struct ResultGraphSwiftUIView: UIViewRepresentable {
 	var results: [Result]
 
 	func makeUIView(context: Context) -> ResultGraphView {
@@ -163,9 +163,32 @@ struct ResultSwiftUIView: UIViewRepresentable {
 	}
 	
 	private func setAccessibilityValue(on view: UIView) {
-		view.accessibilityValue = results
+		let value: String = results
 			.map { voiceOverString(for: $0) }
 			.reduce("") { $0 == "" ? $1 : $0 + ", " + $1 }
+		view.accessibilityValue = value
 	}
 }
 
+struct ResultGraphSwiftUIView_Previews: PreviewProvider {
+	static let options: [Option] = ExampleData.buyingAHouse.options
+	static let useEdgeCases: Bool = false
+	
+	static var previews: some View {
+		if useEdgeCases {
+			ResultGraphSwiftUIView(results: [
+				Result(option: options[0], weightedAverage: 3.0, percentWeightedAverage: 1.0),
+				Result(option: options[1], weightedAverage: 2.99, percentWeightedAverage: 0.99),
+				Result(option: options[2], weightedAverage: 1.5, percentWeightedAverage: 0.5),
+				Result(option: options[3], weightedAverage: 1.5, percentWeightedAverage: 0.5),
+				Result(option: options[0], weightedAverage: 0, percentWeightedAverage: 0.0)
+			])
+		} else {
+			ResultGraphSwiftUIView(results: [
+				Result(option: options[0], weightedAverage: 3.0, percentWeightedAverage: 1.0),
+				Result(option: options[2], weightedAverage: 1.5, percentWeightedAverage: 0.5),
+				Result(option: options[0], weightedAverage: 0, percentWeightedAverage: 0.0)
+			])
+		}
+	}
+}

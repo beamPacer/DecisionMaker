@@ -155,6 +155,14 @@ struct DecisionView: View {
 	}
 }
 
+struct DecisionView_Previews: PreviewProvider {
+	@State static var value: Decision = ExampleData.buyingAHouse
+	
+	static var previews: some View {
+		DecisionView(decision: $value)
+	}
+}
+
 struct OptionCellView: View {
 	let option: Option
 	let decision: Decision
@@ -162,7 +170,7 @@ struct OptionCellView: View {
 	var body: some View {
 		VStack(alignment: .leading, spacing: 4) {
 			Text(option.title)
-				.font(.system(size: 20))
+				.font(.title3)
 				.bold()
 				.lineLimit(1)
 			
@@ -185,3 +193,13 @@ struct OptionCellView: View {
 	}
 }
 
+struct OptionCellView_Previews: PreviewProvider {
+	static let value: Decision = ExampleData.buyingAHouse
+	
+	static var previews: some View {
+		OptionCellView(
+			option: value.options.last!,
+			decision: value
+		)
+	}
+}

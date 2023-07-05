@@ -49,3 +49,11 @@ struct EditStaticAttributeView: View {
 		.navigationTitle(Strings.StaticAttributes.editAttributeNavTitle)
 	}
 }
+
+struct EditStaticAttributeView_Previews: PreviewProvider {
+	@State static var value = ExampleData.buyingAHouse.staticAttributes.first!
+	
+	static var previews: some View {
+		EditStaticAttributeView(staticAttribute: $value)
+	}
+}

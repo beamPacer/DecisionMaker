@@ -40,6 +40,19 @@ struct EditOptionAttributeView: View {
 	}
 }
 
+struct EditOptionAttributeView_Previews: PreviewProvider {
+	static let exampleData = ExampleData.buyingAHouse
+	static let value: OptionAttributeViewModel = OptionAttributeViewModel(
+		staticAttribute: exampleData.staticAttributes.first!,
+		option: exampleData.options.last!,
+		optionAttribute: exampleData.options.last!.getOptionAttribute(for: exampleData.staticAttributes.first!)
+	)
+	
+	static var previews: some View {
+		EditOptionAttributeView(viewModel: value)
+	}
+}
+
 struct EditOptionView: View {
 	@Binding var option: Option
 	@ObservedObject var decision: Decision
@@ -79,5 +92,14 @@ struct EditOptionView: View {
 			}
 		}
 		.navigationTitle(Strings.Options.editOptionNavTitle)
+	}
+}
+
+struct EditOptionView_Previews: PreviewProvider {
+	@State static var option = ExampleData.buyingAHouse.options.last!
+	static let decision = ExampleData.buyingAHouse
+	
+	static var previews: some View {
+		EditOptionView(option: $option, decision: decision)
 	}
 }
