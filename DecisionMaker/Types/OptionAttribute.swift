@@ -5,11 +5,13 @@
 //  Created by Emma Sinclair on 6/30/23.
 //
 
-import Foundation
+import SwiftUI
 
-class OptionAttribute: ObservableObject, Codable {
-	@Published var value: String = ""
-	@Published var goodness: BoundFloat = BoundFloat(0)
+struct OptionAttribute: Codable {
+	@State var value: String = ""
+	@State var goodness: BoundFloat = BoundFloat(0)
+	var optionId: UUID = UUID()
+	var staticAttributeId: UUID = UUID()
 
 	init(value: String = "", goodness: BoundFloat = BoundFloat(0)) {
 		self.value = value
@@ -22,7 +24,7 @@ class OptionAttribute: ObservableObject, Codable {
 		case value, goodness
 	}
 
-	required init(from decoder: Decoder) throws {
+	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		value = try container.decode(String.self, forKey: .value)
 		goodness = try container.decode(BoundFloat.self, forKey: .goodness)

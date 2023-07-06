@@ -40,22 +40,22 @@ struct EditOptionAttributeView: View {
 	}
 }
 
-struct EditOptionAttributeView_Previews: PreviewProvider {
-	static let exampleData = ExampleData.buyingAHouse
-	static let value: OptionAttributeViewModel = OptionAttributeViewModel(
-		staticAttribute: exampleData.staticAttributes.first!,
-		option: exampleData.options.last!,
-		optionAttribute: exampleData.options.last!.getOptionAttribute(for: exampleData.staticAttributes.first!)
-	)
-	
-	static var previews: some View {
-		EditOptionAttributeView(viewModel: value)
-	}
-}
+//struct EditOptionAttributeView_Previews: PreviewProvider {
+//	static let exampleData = ExampleData.buyingAHouse
+//	static let value: OptionAttributeViewModel = OptionAttributeViewModel(
+//		staticAttribute: exampleData.staticAttributes.first!,
+//		option: exampleData.options.last!,
+//		optionAttribute: exampleData.options.last!.getOptionAttribute(for: exampleData.staticAttributes.first!)
+//	)
+//	
+//	static var previews: some View {
+//		EditOptionAttributeView(viewModel: value)
+//	}
+//}
 
 struct EditOptionView: View {
 	@Binding var option: Option
-	@ObservedObject var decision: Decision
+	@State var decision: Decision
 	@State private var uiRefreshToggle: Bool = false
 
 	var body: some View {

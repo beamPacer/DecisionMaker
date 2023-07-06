@@ -9,6 +9,8 @@ import Foundation
 
 struct ExampleData {
 	static var buyingAHouse: Decision {
+		var decision: Decision = Decision()
+		
 		let colorAttribute = StaticAttribute(
 			title: Strings.ExampleData.BuyingAHouse.color,
 			importance: Strings.ExampleData.BuyingAHouse.colorImportance,
@@ -26,150 +28,168 @@ struct ExampleData {
 		)
 		
 		let option1 = Option(title: Strings.ExampleData.BuyingAHouse.Option1.title)
-		option1.setOptionAttribute(
+		decision.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option1.color,
 				goodness: Strings.ExampleData.BuyingAHouse.Option1.colorGoodness
 			),
-			for: colorAttribute
+			forStaticAttributeById: colorAttribute.id,
+			optionAttributeById: option1.id
 		)
-		option1.setOptionAttribute(
+		decision.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option1.price,
 				goodness: Strings.ExampleData.BuyingAHouse.Option1.priceGoodness
 			),
-			for: priceAttribute
+			forStaticAttributeById: priceAttribute.id,
+			optionAttributeById: option1.id
 		)
-		option1.setOptionAttribute(
+		decision.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option1.location,
 				goodness: Strings.ExampleData.BuyingAHouse.Option1.locationGoodness
 			),
-			for: locationAttribute
+			forStaticAttributeById: locationAttribute.id,
+			optionAttributeById: option1.id
 		)
 		
 		let option2 = Option(title: Strings.ExampleData.BuyingAHouse.Option2.title)
-		option2.setOptionAttribute(
+		decision.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option2.color,
 				goodness: Strings.ExampleData.BuyingAHouse.Option2.colorGoodness
 			),
-			for: colorAttribute
+			forStaticAttributeById: colorAttribute.id,
+			optionAttributeById: option2.id
 		)
-		option2.setOptionAttribute(
+		decision.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option2.price,
 				goodness: Strings.ExampleData.BuyingAHouse.Option2.priceGoodness
 			),
-			for: priceAttribute
+			forStaticAttributeById: priceAttribute.id,
+			optionAttributeById: option2.id
 		)
-		option2.setOptionAttribute(
+		decision.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option2.location,
 				goodness: Strings.ExampleData.BuyingAHouse.Option2.locationGoodness
 			),
-			for: locationAttribute
+			forStaticAttributeById: locationAttribute.id,
+			optionAttributeById: option2.id
 		)
 		
 		let option3 = Option(title: Strings.ExampleData.BuyingAHouse.Option3.title)
-		option3.setOptionAttribute(
+		decision.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option3.color,
 				goodness: Strings.ExampleData.BuyingAHouse.Option3.colorGoodness
 			),
-			for: colorAttribute
+			forStaticAttributeById: colorAttribute.id,
+			optionAttributeById: option3.id
 		)
-		option3.setOptionAttribute(
+		decision.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option3.price,
 				goodness: Strings.ExampleData.BuyingAHouse.Option3.priceGoodness
 			),
-			for: priceAttribute
+			forStaticAttributeById: priceAttribute.id,
+			optionAttributeById: option3.id
 		)
-		option3.setOptionAttribute(
+		decision.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option3.location,
 				goodness: Strings.ExampleData.BuyingAHouse.Option3.locationGoodness
 			),
-			for: locationAttribute
+			forStaticAttributeById: locationAttribute.id,
+			optionAttributeById: option3.id
 		)
 		
 		let option4 = Option(title: Strings.ExampleData.BuyingAHouse.Option4.title)
-		option4.setOptionAttribute(
+		decision.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option4.color,
 				goodness: Strings.ExampleData.BuyingAHouse.Option4.colorGoodness
 			),
-			for: colorAttribute
+			forStaticAttributeById: colorAttribute.id,
+			optionAttributeById: option4.id
 		)
-		option4.setOptionAttribute(
+		decision.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option4.price,
 				goodness: Strings.ExampleData.BuyingAHouse.Option4.priceGoodness
 			),
-			for: priceAttribute
+			forStaticAttributeById: priceAttribute.id,
+			optionAttributeById: option4.id
 		)
-		option4.setOptionAttribute(
+		decision.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option4.location,
 				goodness: Strings.ExampleData.BuyingAHouse.Option4.locationGoodness
 			),
-			for: locationAttribute
+			forStaticAttributeById: locationAttribute.id,
+			optionAttributeById: option4.id
 		)
 		
-		return Decision(
-			staticAttributes: [
-				colorAttribute,
-				priceAttribute,
-				locationAttribute
-			],
-			options: [
-				option1,
-				option2,
-				option3,
-				option4
-			],
-			title: Strings.ExampleData.BuyingAHouse.title
-		)
+		decision.staticAttributes = [
+			colorAttribute,
+			priceAttribute,
+			locationAttribute
+		]
+		decision.options = [
+			option1,
+			option2,
+			option3,
+			option4
+		]
+		decision.title = Strings.ExampleData.BuyingAHouse.title
+		
+		return decision
 	}
 	
 	static var minimumOptions: Decision {
+		var decision: Decision = Decision()
+		
 		let oneAttribute = StaticAttribute(
 			title: "oneAttribute",
 			importance: BoundFloat(0.5)
 		)
 		
 		let option1 = Option(title: "a")
-		option1.setOptionAttribute(
+		decision.setOptionAttribute(
 			OptionAttribute(
 				value: "oneAttributeValue1",
 				goodness: BoundFloat(0.25)
 			),
-			for: oneAttribute
+			forStaticAttributeById: oneAttribute.id,
+			optionAttributeById: option1.id
 		)
 		
 		let option2 = Option(title: "b")
-		option2.setOptionAttribute(
+		decision.setOptionAttribute(
 			OptionAttribute(
 				value: "oneAttributeValue2",
 				goodness: BoundFloat(0.75)
 			),
-			for: oneAttribute
+			forStaticAttributeById: oneAttribute.id,
+			optionAttributeById: option2.id
 		)
 		
-		return Decision(
-			staticAttributes: [
-				oneAttribute
-			],
-			options: [
-				option1,
-				option2
-			],
-			title: "minimumSetup"
-		)
+		decision.staticAttributes = [
+			oneAttribute
+		]
+		decision.options = [
+			option1,
+			option2
+		]
+		decision.title = "minimumSetup"
+		
+		return decision
 	}
 	
 	static var minimumOptions_greaterThan1Average: Decision {
+		var decision: Decision = Decision()
+		
 		let attribute1 = StaticAttribute(
 			title: "attribute1",
 			importance: BoundFloat(1.0)
@@ -180,35 +200,39 @@ struct ExampleData {
 		)
 		
 		let option1 = Option(title: "a")
-		option1.setOptionAttribute(
+		decision.setOptionAttribute(
 			OptionAttribute(
 				value: "attribute1Value1",
 				goodness: BoundFloat(1.0)
 			),
-			for: attribute1
+			forStaticAttributeById: attribute1.id,
+			optionAttributeById: option1.id
 		)
-		option1.setOptionAttribute(
+		decision.setOptionAttribute(
 			OptionAttribute(
 				value: "attribute2Value1",
 				goodness: BoundFloat(0.5)
 			),
-			for: attribute2
+			forStaticAttributeById: attribute2.id,
+			optionAttributeById: option1.id
 		)
 		
 		let option2 = Option(title: "b")
-		option2.setOptionAttribute(
+		decision.setOptionAttribute(
 			OptionAttribute(
 				value: "attribute1Value2",
 				goodness: BoundFloat(0.75)
 			),
-			for: attribute1
+			forStaticAttributeById: attribute1.id,
+			optionAttributeById: option2.id
 		)
-		option2.setOptionAttribute(
+		decision.setOptionAttribute(
 			OptionAttribute(
 				value: "attribute2Value2",
 				goodness: BoundFloat(0.75)
 			),
-			for: attribute2
+			forStaticAttributeById: attribute2.id,
+			optionAttributeById: option2.id
 		)
 		
 		return Decision(
@@ -225,6 +249,8 @@ struct ExampleData {
 	}
 	
 	static var minimumOptions_allZero: Decision {
+		var decision: Decision = Decision()
+		
 		let attribute1 = StaticAttribute(
 			title: "attribute1",
 			importance: BoundFloat(0.0)
@@ -234,48 +260,52 @@ struct ExampleData {
 			importance: BoundFloat(0.0)
 		)
 		
-		let option1 = Option(title: "a")
-		option1.setOptionAttribute(
+		var option1 = Option(title: "a")
+		decision.setOptionAttribute(
 			OptionAttribute(
 				value: "attribute1Value1",
 				goodness: BoundFloat(0.0)
 			),
-			for: attribute1
+			forStaticAttributeById: attribute1.id,
+			optionAttributeById: option1.id
 		)
-		option1.setOptionAttribute(
+		decision.setOptionAttribute(
 			OptionAttribute(
 				value: "attribute2Value1",
 				goodness: BoundFloat(0.0)
 			),
-			for: attribute2
+			forStaticAttributeById: attribute2.id,
+			optionAttributeById: option1.id
 		)
 		
-		let option2 = Option(title: "b")
-		option2.setOptionAttribute(
+		var option2 = Option(title: "b")
+		decision.setOptionAttribute(
 			OptionAttribute(
 				value: "attribute1Value2",
 				goodness: BoundFloat(0.0)
 			),
-			for: attribute1
+			forStaticAttributeById: attribute1.id,
+			optionAttributeById: option2.id
 		)
-		option2.setOptionAttribute(
+		decision.setOptionAttribute(
 			OptionAttribute(
 				value: "attribute2Value2",
 				goodness: BoundFloat(0.0)
 			),
-			for: attribute2
+			forStaticAttributeById: attribute2.id,
+			optionAttributeById: option2.id
 		)
 		
-		return Decision(
-			staticAttributes: [
-				attribute1,
-				attribute2
-			],
-			options: [
-				option1,
-				option2
-			],
-			title: "minimumSetup"
-		)
+		decision.staticAttributes = [
+			attribute1,
+			attribute2
+		]
+		decision.options = [
+			option1,
+			option2
+		]
+		decision.title = "minimumSetup"
+		
+		return decision
 	}
 }

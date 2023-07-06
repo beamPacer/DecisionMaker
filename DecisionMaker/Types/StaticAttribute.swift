@@ -5,39 +5,36 @@
 //  Created by Emma Sinclair on 6/30/23.
 //
 
-import Foundation
+import SwiftUI
 
-class StaticAttribute: ObservableObject, Codable {
+struct StaticAttribute: Codable {
 	var id = UUID()
-	@Published var title: String
-	@Published var importance: BoundFloat
-	var emoji: String
+	@State var title: String = ""
+	@State var importance: BoundFloat = BoundFloat(0)
+	var emoji: String = Strings.Common.defaultEmoji
 
 	init(title: String = "", importance: BoundFloat = BoundFloat(0), emoji: String? = nil) {
 		self.title = title
 		self.importance = importance
 		self.emoji = emoji != nil ? emoji! : EmojiHandler.shared.emoji(for: title) ?? Strings.Common.defaultEmoji
 	}
-	
-	// MARK: Codable conformance
+}
 
+// MARK: Codable conformance
+
+extension StaticAttribute {
 	enum CodingKeys: CodingKey {
 		case id, title, importance, emoji
 	}
-
-	required init(from decoder: Decoder) throws {
+	
+	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		id = try container.decode(UUID.self, forKey: .id)
-		let stringTitle = try container.decode(String.self, forKey: .title)
-		title = stringTitle
+		title = try container.decode(String.self, forKey: .title)
 		importance = try container.decode(BoundFloat.self, forKey: .importance)
-		do {
-			emoji = try container.decode(String.self, forKey: .emoji)
-		} catch {
-			emoji = EmojiHandler.shared.emoji(for: stringTitle) ?? Strings.Common.defaultEmoji
-		}
+		emoji = try container.decode(String.self, forKey: .emoji)
 	}
-
+	
 	func encode(to encoder: Encoder) throws {
 		var container = encoder.container(keyedBy: CodingKeys.self)
 		try container.encode(id, forKey: .id)

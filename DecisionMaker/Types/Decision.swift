@@ -5,12 +5,13 @@
 //  Created by Emma Sinclair on 6/17/23.
 //
 
-import Foundation
+import SwiftUI
 
-class Decision: ObservableObject, Codable {
-	@Published var staticAttributes: [StaticAttribute] = []
-	@Published var options: [Option] = []
-	@Published var title: String = ""
+struct Decision: Codable {
+	@State var staticAttributes: [StaticAttribute] = []
+	@State var options: [Option] = []
+	@State var optionAttributes: [OptionAttribute] = []
+	@State var title: String = ""
 	var id = UUID()
 	
 	init(staticAttributes: [StaticAttribute] = [], options: [Option] = [], title: String = "") {
@@ -21,15 +22,13 @@ class Decision: ObservableObject, Codable {
 
 	func addAttribute(_ attribute: StaticAttribute) {
 		self.staticAttributes.append(attribute)
-		self.objectWillChange.send()
 	}
 
 	func addOption(_ option: Option) {
 		self.options.append(option)
-		self.objectWillChange.send()
 	}
 
-	func getResults() -> [Result] {
+	mutating func getResults() -> [Result] {
 		let returnValue: [Result] = options.map {
 			Result(
 				option: $0,
@@ -55,11 +54,11 @@ class Decision: ObservableObject, Codable {
 		}
 	}
 	
-	func getWeightedAverage(for option: Option) -> Float {
+	mutating func getWeightedAverage(for option: Option) -> Float {
 		var weightedAverage: Float = 0
 		
 		for staticAttribute in staticAttributes {
-			let optionAttribute: OptionAttribute = option.getOptionAttribute(for: staticAttribute)
+			let optionAttribute: OptionAttribute = getOptionAttribute(forStaticAttributeById: staticAttribute.id, optionAttributeById: option.id)
 			
 			let weight: Float = staticAttribute.importance.value
 			weightedAverage = weightedAverage + ((optionAttribute.goodness.value) * weight)
@@ -68,20 +67,69 @@ class Decision: ObservableObject, Codable {
 		return weightedAverage
 	}
 	
-	// MARK: Codable conformance
-	
+	mutating func getOptionAttribute(
+		forStaticAttributeById staticAttributeId: UUID,
+		optionAttributeById optionAttributeId: UUID
+	) -> OptionAttribute {
+		if optionAttributes.first(where: { $0.optionId == optionAttributeId && $0.staticAttributeId == staticAttributeId }) == nil {
+			optionAttributes.append(OptionAttribute())
+		}
+
+		guard let optionAttribute = optionAttributes.first(where: { $0.optionId == optionAttributeId && $0.staticAttributeId == staticAttributeId }) else {
+			return OptionAttribute()
+		}
+
+		return optionAttribute
+	}
+
+	mutating func setOptionAttribute(
+		_ optionAttribute: OptionAttribute,
+		forStaticAttributeById staticAttributeId: UUID,
+		optionAttributeById optionAttributeId: UUID
+	) {
+		optionAttributes = optionAttributes.map { iteratedOptionAttribute in
+			if iteratedOptionAttribute.optionId == optionAttributeId,
+			   iteratedOptionAttribute.staticAttributeId == staticAttributeId {
+				return optionAttribute
+			} else {
+				return iteratedOptionAttribute
+			}
+		}
+	}
+
+	mutating func setOptionAttributeGoodness(
+		_ goodness: BoundFloat,
+		forStaticAttributeById staticAttributeId: UUID,
+		optionAttributeById optionAttributeId: UUID
+	) {
+		let optionAttribute = getOptionAttribute(
+			forStaticAttributeById: staticAttributeId,
+			optionAttributeById: optionAttributeId
+		)
+		optionAttribute.goodness = goodness
+		setOptionAttribute(
+			optionAttribute,
+			forStaticAttributeById: staticAttributeId,
+			optionAttributeById: optionAttributeId
+		)
+	}
+}
+
+// MARK: Codable conformance
+
+extension Decision {
 	enum CodingKeys: CodingKey {
 		case staticAttributes, options, title, id
 	}
-
-	required init(from decoder: Decoder) throws {
+	
+	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		staticAttributes = try container.decode([StaticAttribute].self, forKey: .staticAttributes)
 		options = try container.decode([Option].self, forKey: .options)
 		title = try container.decode(String.self, forKey: .title)
 		id = try container.decode(UUID.self, forKey: .id)
 	}
-
+	
 	func encode(to encoder: Encoder) throws {
 		var container = encoder.container(keyedBy: CodingKeys.self)
 		try container.encode(staticAttributes, forKey: .staticAttributes)
@@ -93,28 +141,28 @@ class Decision: ObservableObject, Codable {
 
 // MARK: CustomStringConvertible conformance
 
-extension Decision: CustomStringConvertible {
-	var description: String {
-		var returnString: String = "Static attributes:\n"
-		for staticAttribute in staticAttributes {
-			returnString += staticAttribute.description
-			returnString += "\n"
-		}
-		
-		returnString += "Option attributes:\n"
-		
-		for option in options {
-			returnString += option.description
-			returnString += "\n"
-			for staticAttribute in staticAttributes {
-				returnString += staticAttribute.description
-				returnString += ": "
-				returnString += option.getOptionAttribute(for: staticAttribute).description
-				returnString += "\n"
-			}
-		}
-		
-		return returnString
-	}
-}
+//extension Decision: CustomStringConvertible {
+//	var description: String {
+//		var returnString: String = "Static attributes:\n"
+//		for staticAttribute in staticAttributes {
+//			returnString += staticAttribute.description
+//			returnString += "\n"
+//		}
+//		
+//		returnString += "Option attributes:\n"
+//		
+//		for option in options {
+//			returnString += option.description
+//			returnString += "\n"
+//			for staticAttribute in staticAttributes {
+//				returnString += staticAttribute.description
+//				returnString += ": "
+//				returnString += getOptionAttribute(forStaticAttributeById: staticAttribute.id, optionAttributeById: option.id).description
+//				returnString += "\n"
+//			}
+//		}
+//		
+//		return returnString
+//	}
+//}
 

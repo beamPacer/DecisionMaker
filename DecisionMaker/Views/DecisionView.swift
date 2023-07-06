@@ -164,7 +164,7 @@ struct DecisionView_Previews: PreviewProvider {
 
 struct OptionCellView: View {
 	let option: Option
-	let decision: Decision
+	var decision: Decision
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 4) {
@@ -174,7 +174,7 @@ struct OptionCellView: View {
 				.lineLimit(1)
 			
 			ForEach(decision.staticAttributes, id: \.self) { staticAttribute in
-				let optionAttribute = option.getOptionAttribute(for: staticAttribute)
+				let optionAttribute = decision.getOptionAttribute(forStaticAttributeById: staticAttribute.id, optionAttributeById: option.id)
 				
 				HStack {
 					Text("\(staticAttribute.emoji)")
