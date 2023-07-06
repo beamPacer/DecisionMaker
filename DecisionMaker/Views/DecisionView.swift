@@ -79,12 +79,8 @@ struct DecisionView: View {
 						
 					}
 				}
-				.onAppear {
-					decision = Decision(
-						staticAttributes: decision.staticAttributes,
-						options: decision.options,
-						title: decision.title
-					)
+				.onDisappear {
+					refreshDecision()
 				}
 			}
 			.onDelete { indexSet in
@@ -122,6 +118,9 @@ struct DecisionView: View {
 			ForEach(decision.options, id: \.self) { option in
 				NavigationLink(destination: EditOptionView(option: .constant(option), decision: decision)) {
 					OptionCellView(option: option, decision: decision)
+				}
+				.onDisappear {
+					refreshDecision()
 				}
 			}
 			.onDelete { indexSet in

@@ -69,7 +69,7 @@ final class EmojiHandlerTests: XCTestCase {
 		let emojiHandler = EmojiHandler()
 		let search: String = "ca b"
 		let searchTerms = emojiHandler.getSearchTerms(for: search)
-		XCTAssertEqual(searchTerms.count, 1)
-		XCTAssertEqual(searchTerms, ["CA"])
+		XCTAssertEqual(searchTerms.count, 2)
+		XCTAssertEqual(searchTerms, ["CA", "B"])
 	}
 }
