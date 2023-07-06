@@ -7,11 +7,19 @@
 
 import Foundation
 
-class StaticAttribute: ObservableObject, Codable, Identifiable, Hashable, CustomStringConvertible {
+class StaticAttribute: ObservableObject, Codable {
 	var id = UUID()
 	@Published var title: String
 	@Published var importance: BoundFloat
 	var emoji: String
+
+	init(title: String = "", importance: BoundFloat = BoundFloat(0), emoji: String? = nil) {
+		self.title = title
+		self.importance = importance
+		self.emoji = emoji != nil ? emoji! : EmojiHandler.shared.emoji(for: title) ?? Strings.Common.defaultEmoji
+	}
+	
+	// MARK: Codable conformance
 
 	enum CodingKeys: CodingKey {
 		case id, title, importance, emoji
@@ -37,13 +45,27 @@ class StaticAttribute: ObservableObject, Codable, Identifiable, Hashable, Custom
 		try container.encode(importance, forKey: .importance)
 		try container.encode(emoji, forKey: .emoji)
 	}
-	
-	init(title: String = "", importance: BoundFloat = BoundFloat(0), emoji: String? = nil) {
-		self.title = title
-		self.importance = importance
-		self.emoji = emoji != nil ? emoji! : EmojiHandler.shared.emoji(for: title) ?? Strings.Common.defaultEmoji
+}
+
+// MARK: Identifiable conformance
+
+extension StaticAttribute: Identifiable {}
+
+// MARK: Hashable conformance
+
+extension StaticAttribute: Hashable {
+	static func == (lhs: StaticAttribute, rhs: StaticAttribute) -> Bool {
+		lhs.id == rhs.id
 	}
-	
+
+	func hash(into hasher: inout Hasher) {
+		hasher.combine(id)
+	}
+}
+
+// MARK: CustomStringConvertible conformance
+
+extension StaticAttribute: CustomStringConvertible {
 	var description: String {
 		"StaticAttribute("
 		+ "\"\(title)\""
@@ -51,12 +73,5 @@ class StaticAttribute: ObservableObject, Codable, Identifiable, Hashable, Custom
 		+ "\(importance.description)"
 		+ ")"
 	}
-	
-	static func == (lhs: StaticAttribute, rhs: StaticAttribute) -> Bool {
-		lhs.id == rhs.id
-	}
-	
-	func hash(into hasher: inout Hasher) {
-		hasher.combine(id)
-	}
 }
+
