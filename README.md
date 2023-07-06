@@ -22,29 +22,27 @@ Through the course of working on this project, I saw exactly one basic generatio
 
 As of the previous commit, and only considering .swift and .strings files:
 
-ChatGPT has contributed 2291 lines of change to this branch.
-Overall, there have been 4920 lines of change to this branch.
-So, chatGPT has contributed 46% of the lines of change to this branch.
+ChatGPT has contributed 2449 lines of change to this branch.
+Overall, there have been 5093 lines of change to this branch.
+So, chatGPT has contributed 48% of the lines of change to this branch.
 
-Additionally, ChatGPT has contributed 33 out of 127 commits to this branch, or 25%.
+Additionally, ChatGPT has contributed 34 out of 131 commits to this branch, or 25%.
 
 Thanks chatGPT!
 
 |   | Total | chatGPT 4 | Portion thereof |
 |---|-------|-----------|-----------------|
-|Lines of change|4920|2291|46%|
-|Commits|127|33|25%|
-
-> A note about these numbers: I did specifically account for the 835 lines of "change" in the initial commit, which was non-GPT; but many types of changes affect this number in various ways. For instance, it's slightly artificially low because I moved all of the code into individual files, in a commit that wasn't tagged GPT. But it's pretty close to a good representation of chatGPT's contribution to this project.
+|Lines of change|5093|2449|48%|
+|Commits|131|34|25%|
 
 ## Code File Statistics
 
 Language|files|blank|comment|code
 :-------|-------:|-------:|-------:|-------:
-Swift|24|309|173|1689
-Markdown|2|125|0|508
+Swift|26|328|200|1705
+Markdown|2|126|0|517
 XML|6|0|0|162
 Python|3|18|1|81
 JSON|3|0|0|31
 --------|--------|--------|--------|--------
-SUM:|38|452|174|2471
+SUM:|40|472|201|2496
