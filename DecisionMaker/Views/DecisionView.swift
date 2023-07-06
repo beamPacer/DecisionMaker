@@ -174,7 +174,7 @@ struct OptionCellView: View {
 				.lineLimit(1)
 			
 			ForEach(decision.staticAttributes, id: \.self) { staticAttribute in
-				let optionAttribute = option.getOptionAttribute(for: staticAttribute)
+				let optionAttribute = decision.getOptionAttribute(forOptionId: option.id, staticAttributeId: staticAttribute.id)
 				
 				HStack {
 					Text("\(staticAttribute.emoji)")

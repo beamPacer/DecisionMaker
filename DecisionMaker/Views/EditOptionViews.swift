@@ -41,11 +41,11 @@ struct EditOptionAttributeView: View {
 }
 
 struct EditOptionAttributeView_Previews: PreviewProvider {
-	static let exampleData = ExampleData.buyingAHouse
+	static let exampleData: Decision = ExampleData.buyingAHouse
 	static let value: OptionAttributeViewModel = OptionAttributeViewModel(
 		staticAttribute: exampleData.staticAttributes.first!,
 		option: exampleData.options.last!,
-		optionAttribute: exampleData.options.last!.getOptionAttribute(for: exampleData.staticAttributes.first!)
+		optionAttribute: exampleData.getOptionAttribute(forOptionId: exampleData.options.last!.id, staticAttributeId: exampleData.staticAttributes.first!.id)
 	)
 	
 	static var previews: some View {
@@ -70,14 +70,14 @@ struct EditOptionView: View {
 						viewModel: OptionAttributeViewModel(
 							staticAttribute: staticAttribute,
 							option: option,
-							optionAttribute: option.getOptionAttribute(for: staticAttribute)
+							optionAttribute: decision.getOptionAttribute(forOptionId: option.id, staticAttributeId: staticAttribute.id)
 						)
 					)) {
 						HStack {
 							Text(staticAttribute.title)
 							Spacer()
 							if uiRefreshToggle || !uiRefreshToggle {
-								Text(option.getOptionAttribute(for: staticAttribute).value)
+								Text(decision.getOptionAttribute(forOptionId: option.id, staticAttributeId: staticAttribute.id).value)
 									.foregroundColor(.gray)
 							}
 						}

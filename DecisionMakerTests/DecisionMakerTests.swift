@@ -50,9 +50,9 @@ final class TypesTests: XCTestCase {
 		let exampleData: Decision = ExampleData.minimumOptions
 		let firstAttribute: StaticAttribute = exampleData.staticAttributes.first!
 		let firstOption: Option = exampleData.options.first!
-		let firstOptionFirstAttribute: OptionAttribute = firstOption.getOptionAttribute(for: firstAttribute)
+		let firstOptionFirstAttribute: OptionAttribute = exampleData.getOptionAttribute(forOptionId: firstOption.id, staticAttributeId: firstAttribute.id)
 		let lastOption: Option = exampleData.options.last!
-		let lastOptionFirstAttribute: OptionAttribute = lastOption.getOptionAttribute(for: firstAttribute)
+		let lastOptionFirstAttribute: OptionAttribute = exampleData.getOptionAttribute(forOptionId: lastOption.id, staticAttributeId: firstAttribute.id)
 		
 		XCTAssertEqual(firstOptionFirstAttribute.value, "oneAttributeValue1")
 		XCTAssertEqual(firstOptionFirstAttribute.goodness, BoundFloat(0.25))

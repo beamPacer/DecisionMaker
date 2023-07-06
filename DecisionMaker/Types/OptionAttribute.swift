@@ -10,6 +10,8 @@ import Foundation
 class OptionAttribute: ObservableObject, Codable {
 	@Published var value: String = ""
 	@Published var goodness: BoundFloat = BoundFloat(0)
+	var optionId: UUID = UUID()
+	var staticAttributeId: UUID = UUID()
 
 	init(value: String = "", goodness: BoundFloat = BoundFloat(0)) {
 		self.value = value

@@ -10,6 +10,7 @@ import Foundation
 class Decision: ObservableObject, Codable {
 	@Published var staticAttributes: [StaticAttribute] = []
 	@Published var options: [Option] = []
+	@Published var optionAttributes: [OptionAttribute] = []
 	@Published var title: String = ""
 	var id = UUID()
 	
@@ -27,6 +28,36 @@ class Decision: ObservableObject, Codable {
 	func addOption(_ option: Option) {
 		self.options.append(option)
 		self.objectWillChange.send()
+	}
+	
+	func getOptionAttribute(
+		forOptionId optionId: UUID,
+		staticAttributeId: UUID
+	) -> OptionAttribute {
+		let attribute: OptionAttribute? = optionAttributes.first { optionAttribute in
+			optionAttribute.optionId == optionId && optionAttribute.staticAttributeId == staticAttributeId
+		}
+		
+		if let attribute = attribute { return attribute }
+		else {
+			let newOptionAttribute: OptionAttribute = OptionAttribute()
+			optionAttributes.append(newOptionAttribute)
+			return newOptionAttribute
+		}
+	}
+	
+	func setOptionAttribute(
+		_ optionAttribute: OptionAttribute,
+		forOptionID optionId: UUID,
+		staticAttributeId: UUID
+	) {
+		optionAttributes = optionAttributes.map {
+			if $0.optionId == optionId && $0.staticAttributeId == staticAttributeId {
+				return optionAttribute
+			} else {
+				return $0
+			}
+		}
 	}
 
 	func getResults() -> [Result] {
@@ -59,7 +90,10 @@ class Decision: ObservableObject, Codable {
 		var weightedAverage: Float = 0
 		
 		for staticAttribute in staticAttributes {
-			let optionAttribute: OptionAttribute = option.getOptionAttribute(for: staticAttribute)
+			let optionAttribute: OptionAttribute = getOptionAttribute(
+				forOptionId: option.id,
+				staticAttributeId: staticAttribute.id
+			)
 			
 			let weight: Float = staticAttribute.importance.value
 			weightedAverage = weightedAverage + ((optionAttribute.goodness.value) * weight)
@@ -71,13 +105,14 @@ class Decision: ObservableObject, Codable {
 	// MARK: Codable conformance
 	
 	enum CodingKeys: CodingKey {
-		case staticAttributes, options, title, id
+		case staticAttributes, options, optionAttributes, title, id
 	}
 
 	required init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		staticAttributes = try container.decode([StaticAttribute].self, forKey: .staticAttributes)
 		options = try container.decode([Option].self, forKey: .options)
+		optionAttributes = try container.decode([OptionAttribute].self, forKey: .optionAttributes)
 		title = try container.decode(String.self, forKey: .title)
 		id = try container.decode(UUID.self, forKey: .id)
 	}
@@ -86,6 +121,7 @@ class Decision: ObservableObject, Codable {
 		var container = encoder.container(keyedBy: CodingKeys.self)
 		try container.encode(staticAttributes, forKey: .staticAttributes)
 		try container.encode(options, forKey: .options)
+		try container.encode(optionAttributes, forKey: .optionAttributes)
 		try container.encode(title, forKey: .title)
 		try container.encode(id, forKey: .id)
 	}
@@ -109,7 +145,7 @@ extension Decision: CustomStringConvertible {
 			for staticAttribute in staticAttributes {
 				returnString += staticAttribute.description
 				returnString += ": "
-				returnString += option.getOptionAttribute(for: staticAttribute).description
+				returnString += getOptionAttribute(forOptionId: option.id, staticAttributeId: staticAttribute.id).description
 				returnString += "\n"
 			}
 		}
