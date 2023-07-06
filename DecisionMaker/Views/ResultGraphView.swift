@@ -90,7 +90,7 @@ class ResultGraphView: UIView {
 
 			let text: NSString = (result.option.title + " " + formattedPercentString(for: result)) as NSString
 			let textAttributes: [NSAttributedString.Key: Any] = [
-				.font: UIFont.systemFont(ofSize: isFatDot ? 18 : 16),
+				.font: isFatDot ? UIFont.preferredFont(forTextStyle: .title3) : UIFont.preferredFont(forTextStyle: .body),
 				.foregroundColor: Colors.textPrimary(for: style)
 			]
 			
