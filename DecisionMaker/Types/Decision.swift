@@ -51,12 +51,18 @@ class Decision: ObservableObject, Codable {
 		forOptionID optionId: UUID,
 		staticAttributeId: UUID
 	) {
+		var found: Bool = false
 		optionAttributes = optionAttributes.map {
 			if $0.optionId == optionId && $0.staticAttributeId == staticAttributeId {
+				found = true
 				return optionAttribute
 			} else {
 				return $0
 			}
+		}
+		
+		if !found {
+			optionAttributes.append(optionAttribute)
 		}
 	}
 
