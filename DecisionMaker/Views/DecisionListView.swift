@@ -39,14 +39,14 @@ struct DecisionListView: View {
 				}
 			}
 			.navigationBarTitle(Strings.Decision.mainListTitle)
-			.navigationBarItems(trailing:
-				Button("Tutorial") {
-					isShowingTutorial = true
-				}
-				.sheet(isPresented: $isShowingTutorial) {
-					TutorialPageView(tutorialPages: tutorialPages)
-				}
-			)
+//			.navigationBarItems(trailing:
+//				Button("Tutorial") {
+//					isShowingTutorial = true
+//				}
+//				.sheet(isPresented: $isShowingTutorial) {
+//					TutorialPageView(tutorialPages: tutorialPages)
+//				}
+//			)
 		}
 	}
 }
