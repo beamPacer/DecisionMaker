@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		B50F49F22A567A2D00D9CCE8 /* DecisionData.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F49F12A567A2D00D9CCE8 /* DecisionData.swift */; };
 		B50F49F42A567C2600D9CCE8 /* Option.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F49F32A567C2600D9CCE8 /* Option.swift */; };
+		B50F49F82A5F598500D9CCE8 /* TutorialPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F49F72A5F598500D9CCE8 /* TutorialPage.swift */; };
+		B50F49FA2A5F59A500D9CCE8 /* TutorialViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = B50F49F92A5F59A500D9CCE8 /* TutorialViews.swift */; };
 		B531B8E12A3E15D900A59DBC /* DecisionMakerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B531B8E02A3E15D900A59DBC /* DecisionMakerApp.swift */; };
 		B531B8E32A3E15D900A59DBC /* DecisionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B531B8E22A3E15D900A59DBC /* DecisionView.swift */; };
 		B531B8E52A3E15D900A59DBC /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B531B8E42A3E15D900A59DBC /* Assets.xcassets */; };
@@ -58,6 +60,8 @@
 /* Begin PBXFileReference section */
 		B50F49F12A567A2D00D9CCE8 /* DecisionData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionData.swift; sourceTree = "<group>"; };
 		B50F49F32A567C2600D9CCE8 /* Option.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Option.swift; sourceTree = "<group>"; };
+		B50F49F72A5F598500D9CCE8 /* TutorialPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialPage.swift; sourceTree = "<group>"; };
+		B50F49F92A5F59A500D9CCE8 /* TutorialViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TutorialViews.swift; sourceTree = "<group>"; };
 		B531B8DD2A3E15D900A59DBC /* DecisionMaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = DecisionMaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B531B8E02A3E15D900A59DBC /* DecisionMakerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionMakerApp.swift; sourceTree = "<group>"; };
 		B531B8E22A3E15D900A59DBC /* DecisionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DecisionView.swift; sourceTree = "<group>"; };
@@ -210,6 +214,7 @@
 				B55BC47F2A51663A0006FB97 /* NewDecisionView.swift */,
 				B55BC48F2A53C6FD0006FB97 /* ResultGraphView.swift */,
 				B59F5FC92A4ECFB70090BAB6 /* ResultsView.swift */,
+				B50F49F92A5F59A500D9CCE8 /* TutorialViews.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -224,6 +229,7 @@
 				B5EF81D12A4FCE4A00BBE751 /* OptionAttribute.swift */,
 				B5EF81D72A4FCEEA00BBE751 /* Result.swift */,
 				B5EF81D32A4FCE7C00BBE751 /* BoundFloat.swift */,
+				B50F49F72A5F598500D9CCE8 /* TutorialPage.swift */,
 			);
 			path = Types;
 			sourceTree = "<group>";
@@ -393,12 +399,14 @@
 				B5EF81CD2A4EDFF000BBE751 /* EmojiPickerView.swift in Sources */,
 				B59F5FCC2A4ECFF50090BAB6 /* EditStaticAttributeView.swift in Sources */,
 				B55BC4802A51663A0006FB97 /* NewDecisionView.swift in Sources */,
+				B50F49F82A5F598500D9CCE8 /* TutorialPage.swift in Sources */,
 				B5EF81D42A4FCE7C00BBE751 /* BoundFloat.swift in Sources */,
 				B50F49F42A567C2600D9CCE8 /* Option.swift in Sources */,
 				B5325CFC2A40D40E000142BF /* Strings.swift in Sources */,
 				B59F5FCA2A4ECFB70090BAB6 /* ResultsView.swift in Sources */,
 				B531B8E12A3E15D900A59DBC /* DecisionMakerApp.swift in Sources */,
 				B55BC4902A53C6FD0006FB97 /* ResultGraphView.swift in Sources */,
+				B50F49FA2A5F59A500D9CCE8 /* TutorialViews.swift in Sources */,
 				B5EF81DB2A4FD3B100BBE751 /* DecisionListView.swift in Sources */,
 				B54D53F22A4BE387003F804C /* Persistence.swift in Sources */,
 				B55BC48D2A539D7F0006FB97 /* Character.swift in Sources */,
