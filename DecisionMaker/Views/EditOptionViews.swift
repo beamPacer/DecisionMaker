@@ -23,20 +23,17 @@ struct EditOptionAttributeView: View {
 	@ObservedObject var viewModel: OptionAttributeViewModel
 
 	var body: some View {
-		Form {
-			TextField(Strings.OptionAttributes.defaultValue, text: $viewModel.optionAttribute.value)
-			VStack(alignment: .leading) {
-				Text(Strings.OptionAttributes.goodnessLabel)
-				AnnotatedSlider(
-					startLabel: Strings.OptionAttributes.goodnessSliderStartLabel,
-					endLabel: Strings.OptionAttributes.goodnessSliderEndLabel,
-					value: $viewModel.optionAttribute.goodness.value,
-					range: viewModel.optionAttribute.goodness.minimumLimit...viewModel.optionAttribute.goodness.maximumLimit
-				)
-					.accentColor(.blue)
-			}
+		TextField(Strings.OptionAttributes.defaultValue, text: $viewModel.optionAttribute.value)
+		VStack(alignment: .leading) {
+			Text(Strings.OptionAttributes.goodnessLabel)
+			AnnotatedSlider(
+				startLabel: Strings.OptionAttributes.goodnessSliderStartLabel,
+				endLabel: Strings.OptionAttributes.goodnessSliderEndLabel,
+				value: $viewModel.optionAttribute.goodness.value,
+				range: viewModel.optionAttribute.goodness.minimumLimit...viewModel.optionAttribute.goodness.maximumLimit
+			)
+			.accentColor(.blue)
 		}
-		.navigationTitle(viewModel.staticAttribute.title)
 	}
 }
 
@@ -65,28 +62,22 @@ struct EditOptionView: View {
 			}
 			
 			Section() {
-				ForEach(decision.staticAttributes, id: \.self) { staticAttribute in
-					NavigationLink(destination: EditOptionAttributeView(
-						viewModel: OptionAttributeViewModel(
-							staticAttribute: staticAttribute,
-							option: option,
-							optionAttribute: option.getOptionAttribute(for: staticAttribute)
-						)
-					)) {
+				ForEach(Array(decision.staticAttributes.enumerated()), id: \.offset) { index, staticAttribute in
+					VStack {
 						HStack {
 							Text(staticAttribute.title)
+								.bold()
 							Spacer()
-							if uiRefreshToggle || !uiRefreshToggle {
-								Text(option.getOptionAttribute(for: staticAttribute).value)
-									.foregroundColor(.gray)
-							}
+							Text(staticAttribute.emoji)
 						}
-					}
-					.onAppear {
-						uiRefreshToggle.toggle()
-					}
-					.onDisappear {
-						uiRefreshToggle.toggle()
+						
+						EditOptionAttributeView(
+							viewModel: OptionAttributeViewModel(
+								staticAttribute: staticAttribute,
+								option: option,
+								optionAttribute: option.getOptionAttribute(for: staticAttribute)
+							)
+						)
 					}
 				}
 			}
