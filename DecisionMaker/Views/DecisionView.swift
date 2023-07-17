@@ -69,7 +69,7 @@ struct DecisionView: View {
 	var staticAttributesListView: some View {
 		Section(header: Text(Strings.StaticAttributes.groupLabel).textCase(.none)) {
 			ForEach(decision.staticAttributes, id: \.self) { staticAttribute in
-				NavigationLink(destination: EditStaticAttributeView(staticAttribute: .constant(staticAttribute))) {
+				NavigationLink(destination: EditStaticAttributeView(viewModel: StaticAttributeViewModel(staticAttribute: staticAttribute))) {
 					if uiRefreshToggle || !uiRefreshToggle {
 						HStack {
 							Text(staticAttribute.title)
@@ -98,7 +98,7 @@ struct DecisionView: View {
 			}
 			.sheet(isPresented: $isShowingNewAttributeView) {
 				NavigationView {
-					EditStaticAttributeView(staticAttribute: $newAttribute)
+					EditStaticAttributeView(viewModel: StaticAttributeViewModel(staticAttribute: newAttribute))
 						.navigationBarTitle(Strings.StaticAttributes.editAttributeNavTitle, displayMode: .inline)
 						.toolbar {
 							Button(Strings.Common.done) {

@@ -7,20 +7,28 @@
 
 import SwiftUI
 
+class StaticAttributeViewModel: ObservableObject {
+	@Published var staticAttribute: StaticAttribute
+	
+	init(staticAttribute: StaticAttribute) {
+		self.staticAttribute = staticAttribute
+	}
+}
+
 struct EditStaticAttributeView: View {
-	@Binding var staticAttribute: StaticAttribute
+	@ObservedObject var viewModel: StaticAttributeViewModel
 	@State private var selectedEmoji: String? = nil
 	@State private var showEmojiPicker = false
 	
 	var body: some View {
 		Form {
 			HStack {
-				TextField(Strings.StaticAttributes.defaultTitle, text: self.$staticAttribute.title)
+				TextField(Strings.StaticAttributes.defaultTitle, text: self.$viewModel.staticAttribute.title)
 				Spacer()
 				Button(action: {
 					showEmojiPicker = true
 				}) {
-					Text(selectedEmoji == nil ? staticAttribute.emoji : selectedEmoji!)
+					Text(selectedEmoji == nil ? viewModel.staticAttribute.emoji : selectedEmoji!)
 						.font(.largeTitle)
 						.foregroundColor(.primary)
 				}
@@ -28,7 +36,7 @@ struct EditStaticAttributeView: View {
 					EmojiPicker(emojis: [EmojiHandler.shared.allEmojisArray], selectedEmoji: $selectedEmoji)
 						.onDisappear {
 							if let selected = selectedEmoji {
-								staticAttribute.emoji = selected
+								viewModel.staticAttribute.emoji = selected
 							}
 						}
 				})
@@ -40,8 +48,8 @@ struct EditStaticAttributeView: View {
 				AnnotatedSlider(
 					startLabel: Strings.StaticAttributes.importanceSliderStartLabel,
 					endLabel: Strings.StaticAttributes.importanceSliderEndLabel,
-					value: $staticAttribute.importance.value,
-					range: staticAttribute.importance.minimumLimit...staticAttribute.importance.maximumLimit
+					value: $viewModel.staticAttribute.importance.value,
+					range: viewModel.staticAttribute.importance.minimumLimit...viewModel.staticAttribute.importance.maximumLimit
 				)
 					.accentColor(.blue)
 			}
@@ -54,6 +62,6 @@ struct EditStaticAttributeView_Previews: PreviewProvider {
 	@State static var value = ExampleData.buyingAHouse.staticAttributes.first!
 	
 	static var previews: some View {
-		EditStaticAttributeView(staticAttribute: $value)
+		EditStaticAttributeView(viewModel: StaticAttributeViewModel(staticAttribute: value))
 	}
 }
