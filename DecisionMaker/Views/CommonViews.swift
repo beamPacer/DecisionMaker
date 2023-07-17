@@ -12,6 +12,9 @@ struct AnnotatedSlider: View {
 	let endLabel: String
 	@Binding var value: Float
 	var range: ClosedRange<Float>
+	var valueTransformer: ((Float) -> String) = { floatValue in
+		return String(Int(floatValue * 100))
+	}
 
 	var body: some View {
 		VStack(alignment: .leading) {
@@ -22,6 +25,12 @@ struct AnnotatedSlider: View {
 					.font(.caption)
 					.foregroundColor(.gray)
 				
+				Spacer()
+
+				Text(valueTransformer(value)) // The value label
+					.font(.caption)
+					.foregroundColor(.gray)
+
 				Spacer()
 
 				Text(endLabel)

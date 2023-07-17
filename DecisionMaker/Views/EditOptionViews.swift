@@ -26,13 +26,14 @@ struct EditOptionAttributeView: View {
 		TextField(Strings.OptionAttributes.defaultValue, text: $viewModel.optionAttribute.value)
 		VStack(alignment: .leading) {
 			Text(Strings.OptionAttributes.goodnessLabel)
+				.italic()
 			AnnotatedSlider(
 				startLabel: Strings.OptionAttributes.goodnessSliderStartLabel,
 				endLabel: Strings.OptionAttributes.goodnessSliderEndLabel,
 				value: $viewModel.optionAttribute.goodness.value,
 				range: viewModel.optionAttribute.goodness.minimumLimit...viewModel.optionAttribute.goodness.maximumLimit
 			)
-			.accentColor(.blue)
+				.accentColor(.blue)
 		}
 	}
 }
