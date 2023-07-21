@@ -29,92 +29,92 @@ struct ExampleData {
 		option1.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option1.color,
-				goodness: Strings.ExampleData.BuyingAHouse.Option1.colorGoodness
-			),
-			for: colorAttribute
+				goodness: Strings.ExampleData.BuyingAHouse.Option1.colorGoodness,
+				staticAttribute: colorAttribute
+			)
 		)
 		option1.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option1.price,
-				goodness: Strings.ExampleData.BuyingAHouse.Option1.priceGoodness
-			),
-			for: priceAttribute
+				goodness: Strings.ExampleData.BuyingAHouse.Option1.priceGoodness,
+				staticAttribute: priceAttribute
+			)
 		)
 		option1.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option1.location,
-				goodness: Strings.ExampleData.BuyingAHouse.Option1.locationGoodness
-			),
-			for: locationAttribute
+				goodness: Strings.ExampleData.BuyingAHouse.Option1.locationGoodness,
+				staticAttribute: locationAttribute
+			)
 		)
 		
 		var option2 = Option(title: Strings.ExampleData.BuyingAHouse.Option2.title)
 		option2.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option2.color,
-				goodness: Strings.ExampleData.BuyingAHouse.Option2.colorGoodness
-			),
-			for: colorAttribute
+				goodness: Strings.ExampleData.BuyingAHouse.Option2.colorGoodness,
+				staticAttribute: colorAttribute
+			)
 		)
 		option2.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option2.price,
-				goodness: Strings.ExampleData.BuyingAHouse.Option2.priceGoodness
-			),
-			for: priceAttribute
+				goodness: Strings.ExampleData.BuyingAHouse.Option2.priceGoodness,
+				staticAttribute: priceAttribute
+			)
 		)
 		option2.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option2.location,
-				goodness: Strings.ExampleData.BuyingAHouse.Option2.locationGoodness
-			),
-			for: locationAttribute
+				goodness: Strings.ExampleData.BuyingAHouse.Option2.locationGoodness,
+				staticAttribute: locationAttribute
+			)
 		)
 		
 		var option3 = Option(title: Strings.ExampleData.BuyingAHouse.Option3.title)
 		option3.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option3.color,
-				goodness: Strings.ExampleData.BuyingAHouse.Option3.colorGoodness
-			),
-			for: colorAttribute
+				goodness: Strings.ExampleData.BuyingAHouse.Option3.colorGoodness,
+				staticAttribute: colorAttribute
+			)
 		)
 		option3.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option3.price,
-				goodness: Strings.ExampleData.BuyingAHouse.Option3.priceGoodness
-			),
-			for: priceAttribute
+				goodness: Strings.ExampleData.BuyingAHouse.Option3.priceGoodness,
+				staticAttribute: priceAttribute
+			)
 		)
 		option3.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option3.location,
-				goodness: Strings.ExampleData.BuyingAHouse.Option3.locationGoodness
-			),
-			for: locationAttribute
+				goodness: Strings.ExampleData.BuyingAHouse.Option3.locationGoodness,
+				staticAttribute: locationAttribute
+			)
 		)
 		
 		var option4 = Option(title: Strings.ExampleData.BuyingAHouse.Option4.title)
 		option4.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option4.color,
-				goodness: Strings.ExampleData.BuyingAHouse.Option4.colorGoodness
-			),
-			for: colorAttribute
+				goodness: Strings.ExampleData.BuyingAHouse.Option4.colorGoodness,
+				staticAttribute: colorAttribute
+			)
 		)
 		option4.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option4.price,
-				goodness: Strings.ExampleData.BuyingAHouse.Option4.priceGoodness
-			),
-			for: priceAttribute
+				goodness: Strings.ExampleData.BuyingAHouse.Option4.priceGoodness,
+				staticAttribute: priceAttribute
+			)
 		)
 		option4.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option4.location,
-				goodness: Strings.ExampleData.BuyingAHouse.Option4.locationGoodness
-			),
-			for: locationAttribute
+				goodness: Strings.ExampleData.BuyingAHouse.Option4.locationGoodness,
+				staticAttribute: locationAttribute
+			)
 		)
 		
 		return Decision(
@@ -143,18 +143,18 @@ struct ExampleData {
 		option1.setOptionAttribute(
 			OptionAttribute(
 				value: "oneAttributeValue1",
-				goodness: BoundFloat(0.25)
-			),
-			for: oneAttribute
+				goodness: BoundFloat(0.25),
+				staticAttribute: oneAttribute
+			)
 		)
 		
 		var option2 = Option(title: "b")
 		option2.setOptionAttribute(
 			OptionAttribute(
 				value: "oneAttributeValue2",
-				goodness: BoundFloat(0.75)
-			),
-			for: oneAttribute
+				goodness: BoundFloat(0.75),
+				staticAttribute: oneAttribute
+			)
 		)
 		
 		return Decision(
@@ -183,32 +183,32 @@ struct ExampleData {
 		option1.setOptionAttribute(
 			OptionAttribute(
 				value: "attribute1Value1",
-				goodness: BoundFloat(1.0)
-			),
-			for: attribute1
+				goodness: BoundFloat(1.0),
+				staticAttribute: attribute1
+			)
 		)
 		option1.setOptionAttribute(
 			OptionAttribute(
 				value: "attribute2Value1",
-				goodness: BoundFloat(0.5)
-			),
-			for: attribute2
+				goodness: BoundFloat(0.5),
+				staticAttribute: attribute2
+			)
 		)
 		
 		var option2 = Option(title: "b")
 		option2.setOptionAttribute(
 			OptionAttribute(
 				value: "attribute1Value2",
-				goodness: BoundFloat(0.75)
-			),
-			for: attribute1
+				goodness: BoundFloat(0.75),
+				staticAttribute: attribute1
+			)
 		)
 		option2.setOptionAttribute(
 			OptionAttribute(
 				value: "attribute2Value2",
-				goodness: BoundFloat(0.75)
-			),
-			for: attribute2
+				goodness: BoundFloat(0.75),
+				staticAttribute: attribute2
+			)
 		)
 		
 		return Decision(
@@ -238,32 +238,32 @@ struct ExampleData {
 		option1.setOptionAttribute(
 			OptionAttribute(
 				value: "attribute1Value1",
-				goodness: BoundFloat(0.0)
-			),
-			for: attribute1
+				goodness: BoundFloat(0.0),
+				staticAttribute: attribute1
+			)
 		)
 		option1.setOptionAttribute(
 			OptionAttribute(
 				value: "attribute2Value1",
-				goodness: BoundFloat(0.0)
-			),
-			for: attribute2
+				goodness: BoundFloat(0.0),
+				staticAttribute: attribute2
+			)
 		)
 		
 		var option2 = Option(title: "b")
 		option2.setOptionAttribute(
 			OptionAttribute(
 				value: "attribute1Value2",
-				goodness: BoundFloat(0.0)
-			),
-			for: attribute1
+				goodness: BoundFloat(0.0),
+				staticAttribute: attribute1
+			)
 		)
 		option2.setOptionAttribute(
 			OptionAttribute(
 				value: "attribute2Value2",
-				goodness: BoundFloat(0.0)
-			),
-			for: attribute2
+				goodness: BoundFloat(0.0),
+				staticAttribute: attribute2
+			)
 		)
 		
 		return Decision(

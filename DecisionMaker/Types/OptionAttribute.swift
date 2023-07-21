@@ -10,29 +10,32 @@ import Foundation
 struct OptionAttribute: Codable {
 	var value: String = ""
 	var goodness: BoundFloat = BoundFloat(0)
-	var staticAttribute: StaticAttribute = StaticAttribute()
+	var staticAttribute: StaticAttribute
 
-	init(value: String = "", goodness: BoundFloat = BoundFloat(0), staticAttribute: StaticAttribute = StaticAttribute()) {
+	init(value: String = "", goodness: BoundFloat = BoundFloat(0), staticAttribute: StaticAttribute) {
 		self.value = value
 		self.goodness = goodness
+		self.staticAttribute = staticAttribute
 	}
 	
 	// MARK: Codable conformance
 
 	enum CodingKeys: CodingKey {
-		case value, goodness
+		case value, goodness, staticAttribute
 	}
 
 	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		value = try container.decode(String.self, forKey: .value)
 		goodness = try container.decode(BoundFloat.self, forKey: .goodness)
+		staticAttribute = try container.decode(StaticAttribute.self, forKey: .staticAttribute)
 	}
 
 	func encode(to encoder: Encoder) throws {
 		var container = encoder.container(keyedBy: CodingKeys.self)
 		try container.encode(value, forKey: .value)
 		try container.encode(goodness, forKey: .goodness)
+		try container.encode(staticAttribute, forKey: .staticAttribute)
 	}
 }
 

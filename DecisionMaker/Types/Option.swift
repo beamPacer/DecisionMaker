@@ -22,13 +22,16 @@ struct Option: Codable {
 	}
 
 	mutating func setOptionAttribute(
-		_ optionAttribute: OptionAttribute,
-		for staticAttribute: StaticAttribute
+		_ optionAttribute: OptionAttribute
 	) {
-		optionAttributes = optionAttributes.map {
-			$0.staticAttribute == staticAttribute ?
-			optionAttribute :
-			$0
+		if optionAttributes.contains(where: { $0.staticAttribute == optionAttribute.staticAttribute }) {
+			optionAttributes = optionAttributes.map {
+				$0.staticAttribute == optionAttribute.staticAttribute ?
+				optionAttribute :
+				$0
+			}
+		} else {
+			optionAttributes.append(optionAttribute)
 		}
 	}
 
@@ -38,7 +41,7 @@ struct Option: Codable {
 	) {
 		var optionAttribute = getOptionAttribute(for: staticAttribute)
 		optionAttribute.goodness = goodness
-		setOptionAttribute(optionAttribute, for: staticAttribute)
+		setOptionAttribute(optionAttribute)
 	}
 	
 	// MARK: Codable conformance
