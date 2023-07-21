@@ -7,31 +7,21 @@
 
 import SwiftUI
 
-class OptionAttributeViewModel: ObservableObject {
+struct EditOptionAttributeView: View {
 	let staticAttribute: StaticAttribute
 	let option: Option
-	@Published var optionAttribute: OptionAttribute
-	
-	init(staticAttribute: StaticAttribute, option: Option, optionAttribute: OptionAttribute) {
-		self.staticAttribute = staticAttribute
-		self.option = option
-		self.optionAttribute = optionAttribute
-	}
-}
-
-struct EditOptionAttributeView: View {
-	@ObservedObject var viewModel: OptionAttributeViewModel
+	@State var optionAttribute: OptionAttribute
 
 	var body: some View {
-		TextField(Strings.OptionAttributes.defaultValue, text: $viewModel.optionAttribute.value)
+		TextField(Strings.OptionAttributes.defaultValue, text: $optionAttribute.value)
 		VStack(alignment: .leading) {
 			Text(Strings.OptionAttributes.goodnessLabel)
 				.italic()
 			AnnotatedSlider(
 				startLabel: Strings.OptionAttributes.goodnessSliderStartLabel,
 				endLabel: Strings.OptionAttributes.goodnessSliderEndLabel,
-				value: $viewModel.optionAttribute.goodness.value,
-				range: viewModel.optionAttribute.goodness.minimumLimit...viewModel.optionAttribute.goodness.maximumLimit
+				value: $optionAttribute.goodness.value,
+				range: optionAttribute.goodness.minimumLimit...optionAttribute.goodness.maximumLimit
 			)
 				.accentColor(.blue)
 		}
@@ -40,14 +30,13 @@ struct EditOptionAttributeView: View {
 
 struct EditOptionAttributeView_Previews: PreviewProvider {
 	static let exampleData = ExampleData.buyingAHouse
-	static let value: OptionAttributeViewModel = OptionAttributeViewModel(
-		staticAttribute: exampleData.staticAttributes.first!,
-		option: exampleData.options.last!,
-		optionAttribute: exampleData.options.last!.getOptionAttribute(for: exampleData.staticAttributes.first!)
-	)
 	
 	static var previews: some View {
-		EditOptionAttributeView(viewModel: value)
+		EditOptionAttributeView(
+			staticAttribute: exampleData.staticAttributes.first!,
+			option: exampleData.options.last!,
+			optionAttribute: exampleData.options.last!.getOptionAttribute(for: exampleData.staticAttributes.first!)
+		)
 	}
 }
 
@@ -73,11 +62,9 @@ struct EditOptionView: View {
 						}
 						
 						EditOptionAttributeView(
-							viewModel: OptionAttributeViewModel(
-								staticAttribute: staticAttribute,
-								option: option,
-								optionAttribute: option.getOptionAttribute(for: staticAttribute)
-							)
+							staticAttribute: staticAttribute,
+							option: option,
+							optionAttribute: option.getOptionAttribute(for: staticAttribute)
 						)
 					}
 				}
