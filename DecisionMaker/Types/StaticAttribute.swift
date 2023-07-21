@@ -7,10 +7,10 @@
 
 import Foundation
 
-class StaticAttribute: ObservableObject, Codable {
+struct StaticAttribute: Codable {
 	var id = UUID()
-	@Published var title: String
-	@Published var importance: BoundFloat
+	var title: String
+	var importance: BoundFloat
 	var emoji: String
 
 	init(title: String = "", importance: BoundFloat = BoundFloat(0), emoji: String? = nil) {
@@ -25,7 +25,7 @@ class StaticAttribute: ObservableObject, Codable {
 		case id, title, importance, emoji
 	}
 
-	required init(from decoder: Decoder) throws {
+	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		id = try container.decode(UUID.self, forKey: .id)
 		let stringTitle = try container.decode(String.self, forKey: .title)

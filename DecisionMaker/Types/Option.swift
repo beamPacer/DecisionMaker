@@ -7,43 +7,36 @@
 
 import Foundation
 
-class Option: ObservableObject, Codable {
+struct Option: Codable {
 	var id = UUID()
-	@Published var title: String
+	var title: String
+	var optionAttributes: [OptionAttribute] = []
 
-	private var map: [StaticAttribute: OptionAttribute] = [:]
-
-	init(title: String = "") {
+	init(title: String = "", optionAttributes: [OptionAttribute] = []) {
 		self.title = title
 	}
 
-	func getOptionAttributes() -> [OptionAttribute] { Array(map.values) }
-
 	func getOptionAttribute(for staticAttribute: StaticAttribute) -> OptionAttribute {
-		if map[staticAttribute] == nil {
-			map[staticAttribute] = OptionAttribute()
-		}
-
-		// For the compiler
-		guard let optionAttribute = map[staticAttribute] else {
-			return OptionAttribute()
-		}
-
-		return optionAttribute
+		return optionAttributes.first { $0.staticAttribute == staticAttribute }
+		?? OptionAttribute(value: "", goodness: BoundFloat(0), staticAttribute: staticAttribute)
 	}
 
-	func setOptionAttribute(
+	mutating func setOptionAttribute(
 		_ optionAttribute: OptionAttribute,
 		for staticAttribute: StaticAttribute
 	) {
-		map[staticAttribute] = optionAttribute
+		optionAttributes = optionAttributes.map {
+			$0.staticAttribute == staticAttribute ?
+			optionAttribute :
+			$0
+		}
 	}
 
-	func setOptionAttributeGoodness(
+	mutating func setOptionAttributeGoodness(
 		_ goodness: BoundFloat,
 		for staticAttribute: StaticAttribute
 	) {
-		let optionAttribute = getOptionAttribute(for: staticAttribute)
+		var optionAttribute = getOptionAttribute(for: staticAttribute)
 		optionAttribute.goodness = goodness
 		setOptionAttribute(optionAttribute, for: staticAttribute)
 	}
@@ -51,21 +44,35 @@ class Option: ObservableObject, Codable {
 	// MARK: Codable conformance
 	
 	enum CodingKeys: CodingKey {
-		case id, title, map
+		case id
+		case title
+		// legacy
+		case map
+		case optionAttributes
 	}
 
-	required init(from decoder: Decoder) throws {
+	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		id = try container.decode(UUID.self, forKey: .id)
 		title = try container.decode(String.self, forKey: .title)
-		map = try container.decode([StaticAttribute: OptionAttribute].self, forKey: .map)
+		if let map = try? container.decode([StaticAttribute: OptionAttribute].self, forKey: .map) {
+			optionAttributes = map.map {
+				OptionAttribute(
+					value: $0.value.value,
+					goodness: $0.value.goodness,
+					staticAttribute: $0.key
+				)
+			}
+		} else {
+			optionAttributes = try container.decode([OptionAttribute].self, forKey: .optionAttributes)
+		}
 	}
 
 	func encode(to encoder: Encoder) throws {
 		var container = encoder.container(keyedBy: CodingKeys.self)
 		try container.encode(id, forKey: .id)
 		try container.encode(title, forKey: .title)
-		try container.encode(map, forKey: .map)
+		try container.encode(optionAttributes, forKey: .optionAttributes)
 	}
 }
 

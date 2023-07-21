@@ -7,10 +7,14 @@
 
 import Foundation
 
-class Decision: ObservableObject, Codable {
-	@Published var staticAttributes: [StaticAttribute] = []
-	@Published var options: [Option] = []
-	@Published var title: String = ""
+struct Decision: Codable {
+	var staticAttributes: [StaticAttribute] = [] {
+		didSet {
+			rectifyOptions()
+		}
+	}
+	var options: [Option] = []
+	var title: String = ""
 	var id = UUID()
 	
 	init(staticAttributes: [StaticAttribute] = [], options: [Option] = [], title: String = "") {
@@ -19,14 +23,12 @@ class Decision: ObservableObject, Codable {
 		self.title = title
 	}
 
-	func addAttribute(_ attribute: StaticAttribute) {
+	mutating func addAttribute(_ attribute: StaticAttribute) {
 		self.staticAttributes.append(attribute)
-		self.objectWillChange.send()
 	}
 
-	func addOption(_ option: Option) {
+	mutating func addOption(_ option: Option) {
 		self.options.append(option)
-		self.objectWillChange.send()
 	}
 
 	func getResults() -> [Result] {
@@ -68,13 +70,37 @@ class Decision: ObservableObject, Codable {
 		return weightedAverage
 	}
 	
+	private func newOptionAttributes(from inputOptionAttributes: [OptionAttribute]) -> [OptionAttribute] {
+		func optionAttribute(for staticAttribute: StaticAttribute) -> OptionAttribute? {
+			return inputOptionAttributes.first { $0.staticAttribute == staticAttribute }
+		}
+		
+		return staticAttributes.map { staticAttribute in
+			if let optionAttribute = optionAttribute(for: staticAttribute) {
+				return optionAttribute
+			}
+			
+			return OptionAttribute(staticAttribute: staticAttribute)
+		}
+	}
+	
+	mutating func rectifyOptions() {
+		var newOptions: [Option] = []
+		
+		for option in options {
+			newOptions.append(Option(title: option.title, optionAttributes: newOptionAttributes(from: option.optionAttributes)))
+		}
+		
+		options = newOptions
+	}
+	
 	// MARK: Codable conformance
 	
 	enum CodingKeys: CodingKey {
 		case staticAttributes, options, title, id
 	}
 
-	required init(from decoder: Decoder) throws {
+	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		staticAttributes = try container.decode([StaticAttribute].self, forKey: .staticAttributes)
 		options = try container.decode([Option].self, forKey: .options)

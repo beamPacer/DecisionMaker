@@ -21,10 +21,6 @@ struct Persistence {
 		return 0
 	}
 	
-	var needsNewExampleData: Bool {
-		return getLatestPersistenceVersion() < Persistence.currentPersistenceVersion
-	}
-	
 	func getArchiveURL() -> URL {
 		let documentsDirectory = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask).first!
 		return documentsDirectory.appendingPathComponent("decision_data").appendingPathExtension("plist")
@@ -48,7 +44,7 @@ struct Persistence {
 				return DecisionData(ExampleData.buyingAHouse)
 			}
 			
-			return needsNewExampleData ? forceLoadLatestExample(into: returnValue) : returnValue
+			return returnValue
 		}
 		
 		return DecisionData(ExampleData.buyingAHouse)

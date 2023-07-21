@@ -14,7 +14,6 @@ struct DecisionView: View {
 	@State private var isShowingResultsView: Bool = false
 	@State private var newAttribute: StaticAttribute = StaticAttribute()
 	@State private var newOption: Option = Option()
-	@State private var uiRefreshToggle: Bool = false
 
 	var body: some View {
 		GeometryReader { geometry in
@@ -58,34 +57,19 @@ struct DecisionView: View {
 		}
 	}
 	
-	func refreshDecision() {
-		decision = Decision(
-			staticAttributes: decision.staticAttributes,
-			options: decision.options,
-			title: decision.title
-		)
-	}
-	
 	var staticAttributesListView: some View {
 		Section(header: Text(Strings.StaticAttributes.groupLabel).textCase(.none)) {
 			ForEach(decision.staticAttributes, id: \.self) { staticAttribute in
 				NavigationLink(destination: EditStaticAttributeView(viewModel: StaticAttributeViewModel(staticAttribute: staticAttribute))) {
-					if uiRefreshToggle || !uiRefreshToggle {
-						HStack {
-							Text(staticAttribute.title)
-							Spacer()
-							Text(staticAttribute.emoji)
-						}
-						
+					HStack {
+						Text(staticAttribute.title)
+						Spacer()
+						Text(staticAttribute.emoji)
 					}
-				}
-				.onDisappear {
-					refreshDecision()
 				}
 			}
 			.onDelete { indexSet in
 				decision.staticAttributes.remove(atOffsets: indexSet)
-				refreshDecision()
 			}
 
 			Button(action: {
@@ -106,9 +90,6 @@ struct DecisionView: View {
 							}
 						}
 				}
-				.onDisappear {
-					refreshDecision()
-				}
 			}
 		}
 	}
@@ -116,11 +97,8 @@ struct DecisionView: View {
 	var optionsListView: some View {
 		Section(header: Text(Strings.Options.groupLabel).textCase(.none)) {
 			ForEach(decision.options, id: \.self) { option in
-				NavigationLink(destination: EditOptionView(option: .constant(option), decision: decision)) {
+				NavigationLink(destination: EditOptionView(option: .constant(option), decision: $decision)) {
 					OptionCellView(option: option, decision: decision)
-				}
-				.onDisappear {
-					refreshDecision()
 				}
 			}
 			.onDelete { indexSet in
@@ -137,7 +115,7 @@ struct DecisionView: View {
 			}
 			.sheet(isPresented: $isShowingNewOptionView) {
 				NavigationView {
-					EditOptionView(option: .constant(newOption), decision: decision)
+					EditOptionView(option: .constant(newOption), decision: $decision)
 						.navigationBarTitle(Strings.Options.editOptionNavTitle, displayMode: .inline)
 						.toolbar {
 							Button(Strings.Common.done) {
@@ -147,7 +125,6 @@ struct DecisionView: View {
 				}
 				.onDisappear {
 					newOption = Option()
-					refreshDecision()
 				}
 			}
 		}
@@ -164,7 +141,7 @@ struct DecisionView_Previews: PreviewProvider {
 
 struct OptionCellView: View {
 	let option: Option
-	let decision: Decision
+	var decision: Decision
 	
 	var body: some View {
 		VStack(alignment: .leading, spacing: 4) {

@@ -7,11 +7,12 @@
 
 import Foundation
 
-class OptionAttribute: ObservableObject, Codable {
-	@Published var value: String = ""
-	@Published var goodness: BoundFloat = BoundFloat(0)
+struct OptionAttribute: Codable {
+	var value: String = ""
+	var goodness: BoundFloat = BoundFloat(0)
+	var staticAttribute: StaticAttribute = StaticAttribute()
 
-	init(value: String = "", goodness: BoundFloat = BoundFloat(0)) {
+	init(value: String = "", goodness: BoundFloat = BoundFloat(0), staticAttribute: StaticAttribute = StaticAttribute()) {
 		self.value = value
 		self.goodness = goodness
 	}
@@ -22,7 +23,7 @@ class OptionAttribute: ObservableObject, Codable {
 		case value, goodness
 	}
 
-	required init(from decoder: Decoder) throws {
+	init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		value = try container.decode(String.self, forKey: .value)
 		goodness = try container.decode(BoundFloat.self, forKey: .goodness)

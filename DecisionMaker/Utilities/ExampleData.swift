@@ -25,7 +25,7 @@ struct ExampleData {
 			emoji: "📍"
 		)
 		
-		let option1 = Option(title: Strings.ExampleData.BuyingAHouse.Option1.title)
+		var option1 = Option(title: Strings.ExampleData.BuyingAHouse.Option1.title)
 		option1.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option1.color,
@@ -48,7 +48,7 @@ struct ExampleData {
 			for: locationAttribute
 		)
 		
-		let option2 = Option(title: Strings.ExampleData.BuyingAHouse.Option2.title)
+		var option2 = Option(title: Strings.ExampleData.BuyingAHouse.Option2.title)
 		option2.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option2.color,
@@ -71,7 +71,7 @@ struct ExampleData {
 			for: locationAttribute
 		)
 		
-		let option3 = Option(title: Strings.ExampleData.BuyingAHouse.Option3.title)
+		var option3 = Option(title: Strings.ExampleData.BuyingAHouse.Option3.title)
 		option3.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option3.color,
@@ -94,7 +94,7 @@ struct ExampleData {
 			for: locationAttribute
 		)
 		
-		let option4 = Option(title: Strings.ExampleData.BuyingAHouse.Option4.title)
+		var option4 = Option(title: Strings.ExampleData.BuyingAHouse.Option4.title)
 		option4.setOptionAttribute(
 			OptionAttribute(
 				value: Strings.ExampleData.BuyingAHouse.Option4.color,
@@ -139,7 +139,7 @@ struct ExampleData {
 			importance: BoundFloat(0.5)
 		)
 		
-		let option1 = Option(title: "a")
+		var option1 = Option(title: "a")
 		option1.setOptionAttribute(
 			OptionAttribute(
 				value: "oneAttributeValue1",
@@ -148,7 +148,7 @@ struct ExampleData {
 			for: oneAttribute
 		)
 		
-		let option2 = Option(title: "b")
+		var option2 = Option(title: "b")
 		option2.setOptionAttribute(
 			OptionAttribute(
 				value: "oneAttributeValue2",
@@ -179,7 +179,7 @@ struct ExampleData {
 			importance: BoundFloat(0.5)
 		)
 		
-		let option1 = Option(title: "a")
+		var option1 = Option(title: "a")
 		option1.setOptionAttribute(
 			OptionAttribute(
 				value: "attribute1Value1",
@@ -195,7 +195,7 @@ struct ExampleData {
 			for: attribute2
 		)
 		
-		let option2 = Option(title: "b")
+		var option2 = Option(title: "b")
 		option2.setOptionAttribute(
 			OptionAttribute(
 				value: "attribute1Value2",
@@ -234,7 +234,7 @@ struct ExampleData {
 			importance: BoundFloat(0.0)
 		)
 		
-		let option1 = Option(title: "a")
+		var option1 = Option(title: "a")
 		option1.setOptionAttribute(
 			OptionAttribute(
 				value: "attribute1Value1",
@@ -250,7 +250,7 @@ struct ExampleData {
 			for: attribute2
 		)
 		
-		let option2 = Option(title: "b")
+		var option2 = Option(title: "b")
 		option2.setOptionAttribute(
 			OptionAttribute(
 				value: "attribute1Value2",

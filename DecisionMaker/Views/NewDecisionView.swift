@@ -30,7 +30,7 @@ struct NewDecisionView: View {
 				HStack {
 					Spacer()
 					Button(action: {
-						let newDecision = Decision()
+						var newDecision = Decision()
 						newDecision.title = newDecisionTitle
 						decisionData.decisions.append(newDecision)
 						isPresented = false
