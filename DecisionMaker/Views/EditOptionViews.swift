@@ -10,7 +10,7 @@ import SwiftUI
 struct EditOptionAttributeView: View {
 	let staticAttribute: StaticAttribute
 	let option: Option
-	@State var optionAttribute: OptionAttribute
+	@ObservedObject var optionAttribute: OptionAttribute
 
 	var body: some View {
 		TextField(Strings.OptionAttributes.defaultValue, text: $optionAttribute.value)
