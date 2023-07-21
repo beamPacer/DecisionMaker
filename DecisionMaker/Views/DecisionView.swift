@@ -97,7 +97,7 @@ struct DecisionView: View {
 	var optionsListView: some View {
 		Section(header: Text(Strings.Options.groupLabel).textCase(.none)) {
 			ForEach(decision.options, id: \.self) { option in
-				NavigationLink(destination: EditOptionView(option: .constant(option), decision: $decision)) {
+				NavigationLink(destination: EditOptionView(option: option, decision: $decision)) {
 					OptionCellView(option: option, decision: decision)
 				}
 			}
@@ -115,7 +115,7 @@ struct DecisionView: View {
 			}
 			.sheet(isPresented: $isShowingNewOptionView) {
 				NavigationView {
-					EditOptionView(option: .constant(newOption), decision: $decision)
+					EditOptionView(option: newOption, decision: $decision)
 						.navigationBarTitle(Strings.Options.editOptionNavTitle, displayMode: .inline)
 						.toolbar {
 							Button(Strings.Common.done) {

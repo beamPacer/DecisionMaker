@@ -41,7 +41,7 @@ struct EditOptionAttributeView_Previews: PreviewProvider {
 }
 
 struct EditOptionView: View {
-	@Binding var option: Option
+	@ObservedObject var option: Option
 	@Binding var decision: Decision
 	@State private var uiRefreshToggle: Bool = false
 
@@ -79,6 +79,6 @@ struct EditOptionView_Previews: PreviewProvider {
 	static let decision = ExampleData.buyingAHouse
 	
 	static var previews: some View {
-		EditOptionView(option: $option, decision: .constant(decision))
+		EditOptionView(option: option, decision: .constant(decision))
 	}
 }

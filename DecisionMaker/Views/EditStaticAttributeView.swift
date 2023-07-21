@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct EditStaticAttributeView: View {
-	@State var staticAttribute: StaticAttribute
+	@ObservedObject var staticAttribute: StaticAttribute
 	@State private var selectedEmoji: String? = nil
 	@State private var showEmojiPicker = false
 	

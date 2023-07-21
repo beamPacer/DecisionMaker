@@ -7,10 +7,10 @@
 
 import Foundation
 
-struct Option: Codable {
+class Option: ObservableObject, Codable {
 	var id = UUID()
-	var title: String
-	var optionAttributes: [OptionAttribute] = []
+	@Published var title: String
+	@Published var optionAttributes: [OptionAttribute] = []
 
 	init(title: String = "", optionAttributes: [OptionAttribute] = []) {
 		self.title = title
@@ -21,7 +21,7 @@ struct Option: Codable {
 		?? OptionAttribute(value: "", goodness: BoundFloat(0), staticAttribute: staticAttribute)
 	}
 
-	mutating func setOptionAttribute(
+	func setOptionAttribute(
 		_ optionAttribute: OptionAttribute
 	) {
 		if optionAttributes.contains(where: { $0.staticAttribute == optionAttribute.staticAttribute }) {
@@ -35,7 +35,7 @@ struct Option: Codable {
 		}
 	}
 
-	mutating func setOptionAttributeGoodness(
+	func setOptionAttributeGoodness(
 		_ goodness: BoundFloat,
 		for staticAttribute: StaticAttribute
 	) {
@@ -54,7 +54,7 @@ struct Option: Codable {
 		case optionAttributes
 	}
 
-	init(from decoder: Decoder) throws {
+	required init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
 		id = try container.decode(UUID.self, forKey: .id)
 		title = try container.decode(String.self, forKey: .title)
