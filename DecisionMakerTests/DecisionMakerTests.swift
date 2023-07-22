@@ -61,6 +61,37 @@ final class TypesTests: XCTestCase {
 		XCTAssertEqual(lastOptionFirstAttribute.goodness, BoundFloat(0.75))
 	}
 	
+	func testExampleDataRetainsCorrectOptionAttributesThroughRectification() throws {
+		var exampleData: Decision = ExampleData.minimumOptions
+		exampleData.addAttribute(StaticAttribute(title: "foo", importance: BoundFloat(0.5), emoji: "🛬"))
+		
+		let firstAttribute: StaticAttribute = exampleData.staticAttributes.first!
+		
+		let firstOption: Option = exampleData.options.first!
+		let firstOptionFirstAttribute: OptionAttribute = firstOption.getOptionAttribute(for: firstAttribute)
+		let lastOption: Option = exampleData.options.last!
+		let lastOptionFirstAttribute: OptionAttribute = lastOption.getOptionAttribute(for: firstAttribute)
+		
+		XCTAssertEqual(firstOptionFirstAttribute.value, "oneAttributeValue1")
+		XCTAssertEqual(firstOptionFirstAttribute.goodness, BoundFloat(0.25))
+		
+		XCTAssertEqual(lastOptionFirstAttribute.value, "oneAttributeValue2")
+		XCTAssertEqual(lastOptionFirstAttribute.goodness, BoundFloat(0.75))
+	}
+	
+	func testNewOptionAttributesCalculation() {
+		var exampleData: Decision = ExampleData.minimumOptions
+		let newOptionAttributes = exampleData.newOptionAttributes(from: exampleData.options.first!.optionAttributes)
+		XCTAssertEqual(newOptionAttributes.first!.value, "oneAttributeValue1")
+	}
+	
+	func testNewOptionAttributesCalculationWithNewStaticAttribute() {
+		var exampleData: Decision = ExampleData.minimumOptions
+		exampleData.addAttribute(StaticAttribute(title: "foo", importance: BoundFloat(0.76), emoji: "🦒"))
+		let newOptionAttributes = exampleData.newOptionAttributes(from: exampleData.options.first!.optionAttributes)
+		XCTAssertEqual(newOptionAttributes.first!.value, "oneAttributeValue1")
+	}
+	
 	// Test weighted average calculation
 	
 	func testGetResults() throws {

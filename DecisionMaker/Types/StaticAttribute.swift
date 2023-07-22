@@ -27,8 +27,8 @@ class StaticAttribute: ObservableObject, Codable {
 
 	required init(from decoder: Decoder) throws {
 		let container = try decoder.container(keyedBy: CodingKeys.self)
-		id = try container.decode(UUID.self, forKey: .id)
 		let stringTitle = try container.decode(String.self, forKey: .title)
+		id = try container.decode(UUID.self, forKey: .id)
 		title = stringTitle
 		importance = try container.decode(BoundFloat.self, forKey: .importance)
 		do {
@@ -49,15 +49,15 @@ class StaticAttribute: ObservableObject, Codable {
 
 // MARK: Identifiable conformance
 
-extension StaticAttribute: Identifiable {}
+extension StaticAttribute: Identifiable {
+	static func == (lhs: StaticAttribute, rhs: StaticAttribute) -> Bool {
+		lhs.id == rhs.id
+	}
+}
 
 // MARK: Hashable conformance
 
 extension StaticAttribute: Hashable {
-	static func == (lhs: StaticAttribute, rhs: StaticAttribute) -> Bool {
-		lhs.id == rhs.id
-	}
-
 	func hash(into hasher: inout Hasher) {
 		hasher.combine(id)
 	}

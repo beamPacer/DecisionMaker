@@ -8,12 +8,13 @@
 import Foundation
 
 class Option: ObservableObject, Codable {
-	var id = UUID()
+	var id: UUID = UUID()
 	@Published var title: String
 	@Published var optionAttributes: [OptionAttribute] = []
 
 	init(title: String = "", optionAttributes: [OptionAttribute] = []) {
 		self.title = title
+		self.optionAttributes = optionAttributes
 	}
 
 	func getOptionAttribute(for staticAttribute: StaticAttribute) -> OptionAttribute {
@@ -39,7 +40,7 @@ class Option: ObservableObject, Codable {
 		_ goodness: BoundFloat,
 		for staticAttribute: StaticAttribute
 	) {
-		var optionAttribute = getOptionAttribute(for: staticAttribute)
+		let optionAttribute = getOptionAttribute(for: staticAttribute)
 		optionAttribute.goodness = goodness
 		setOptionAttribute(optionAttribute)
 	}

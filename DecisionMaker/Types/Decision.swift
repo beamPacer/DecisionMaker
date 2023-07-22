@@ -70,7 +70,7 @@ struct Decision: Codable {
 		return weightedAverage
 	}
 	
-	private func newOptionAttributes(from inputOptionAttributes: [OptionAttribute]) -> [OptionAttribute] {
+	func newOptionAttributes(from inputOptionAttributes: [OptionAttribute]) -> [OptionAttribute] {
 		func optionAttribute(for staticAttribute: StaticAttribute) -> OptionAttribute? {
 			return inputOptionAttributes.first { $0.staticAttribute == staticAttribute }
 		}
